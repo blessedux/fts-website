@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
 
+
 export function BookSection() {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-gray-950">
@@ -10,10 +11,10 @@ export function BookSection() {
           <div className="flex justify-center">
             <div className="relative h-[400px] w-[300px] overflow-hidden rounded-lg shadow-xl">
               <Image
-                src="/placeholder.svg?height=600&width=400"
+                src="/imgs/Torres Silva_FannyED2 August 2024_20559_TAPA_2024-09-17 (1).webp"
                 alt="Libro de Eneagrama por Fanny Torres Da Silva"
                 fill
-                className="object-cover"
+                className="object-cover object-right"
               />
             </div>
           </div>
@@ -30,15 +31,12 @@ export function BookSection() {
             <ul className="grid gap-2 py-4">
               <li className="flex items-center gap-2">
                 <div className="rounded-full bg-green-100 p-1 dark:bg-green-800">
-                  <svg
-                    className="h-4 w-4 text-green-600 dark:text-green-50"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                  </svg>
+                <Image
+                src="/profile.png"
+                width={500}
+                height={500}
+                alt="Picture of the author"
+                />
                 </div>
                 <span>Explicación detallada de los 9 tipos</span>
               </li>

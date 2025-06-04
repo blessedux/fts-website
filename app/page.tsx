@@ -3,10 +3,12 @@ import { HeroSection } from "@/components/hero-section"
 import { FeatureSection } from "@/components/feature-section"
 import { CourseSection } from "@/components/course-section"
 import { BookSection } from "@/components/book-section"
+import { RetreatSection } from "@/components/retreat-section"
 import { TestimonialSection } from "@/components/testimonial-section"
 import { PressSection } from "@/components/press-section"
 import { RadioProgramSection } from "@/components/radio-program-section"
 import { Footer } from "@/components/footer"
+
 
 export default function Home() {
   return (
@@ -21,6 +23,7 @@ export default function Home() {
         <FeatureSection />
         <CourseSection />
         <BookSection />
+        <RetreatSection />
         <PressSection />
         <RadioProgramSection />
         <TestimonialSection />
