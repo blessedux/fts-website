@@ -9,12 +9,14 @@ export function BookSection() {
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div className="flex justify-center">
-            <div className="relative h-[400px] w-[300px] overflow-hidden rounded-lg shadow-xl">
+            <div className="relative h-[500px] w-[375px] overflow-hidden rounded-lg shadow-xl">
               <Image
-                src="/imgs/Torres Silva_FannyED2 August 2024_20559_TAPA_2024-09-17 (1).webp"
+                src="/imgs/Torres Silva_FannyED2 August 2024_20559_TAPA_2024-09-17 (2).webp"
                 alt="Libro de Eneagrama por Fanny Torres Da Silva"
                 fill
-                className="object-cover object-right"
+                sizes="(max-width: 768px) 100vw, 375px"
+                priority
+                className="object-fill"
               />
             </div>
           </div>
@@ -36,6 +38,7 @@ export function BookSection() {
                 width={500}
                 height={500}
                 alt="Picture of the author"
+                className="h-4 w-4"
                 />
                 </div>
                 <span>Explicación detallada de los 9 tipos</span>
