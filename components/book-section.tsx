@@ -33,13 +33,15 @@ export function BookSection() {
             <ul className="grid gap-2 py-4">
               <li className="flex items-center gap-2">
                 <div className="rounded-full bg-green-100 p-1 dark:bg-green-800">
-                <Image
-                src="/profile.png"
-                width={500}
-                height={500}
-                alt="Picture of the author"
-                className="h-4 w-4"
-                />
+                  <svg
+                    className="h-4 w-4 text-green-600 dark:text-green-50"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
                 </div>
                 <span>Explicación detallada de los 9 tipos</span>
               </li>

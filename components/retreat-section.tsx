@@ -29,38 +29,38 @@ export function RetreatSection() {
               <div className="rounded-full bg-[#F5E6C3] p-3 w-fit dark:bg-[#8B6B2E]">
                 <Mountain className="h-6 w-6 text-[#D4AF37] dark:text-[#F5E6C3]" />
               </div>
-              <CardTitle>Retiro de Fin de Semana</CardTitle>
+              <CardTitle>Curso introductorio</CardTitle>
               <CardDescription>Autoconocimiento y Transformación</CardDescription>
             </CardHeader>
             <CardContent className="flex-1">
               <div className="space-y-4">
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Una experiencia intensiva de dos días para profundizar en tu tipo de personalidad 
+                  Una experiencia para profundizar en tu tipo de personalidad 
                   y desarrollar herramientas prácticas de crecimiento personal.
                 </p>
                 
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm">
                     <Calendar className="h-4 w-4 text-[#D4AF37]" />
-                    <span>24-26 de Julio, 2024</span>
+                    <span>por definir</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <MapPin className="h-4 w-4 text-[#D4AF37]" />
-                    <span>Valle del Elqui, Chile</span>
+                    <span>Chile</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Clock className="h-4 w-4 text-[#D4AF37]" />
-                    <span>2 días / 1 noche</span>
+                    <span>-</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Users className="h-4 w-4 text-[#D4AF37]" />
-                    <span>Máximo 20 participantes</span>
+                    <span>Cantidad de participantes</span>
                   </div>
                 </div>
 
                 <div className="pt-2">
-                  <div className="text-2xl font-bold text-[#D4AF37]">$89.990 CLP</div>
-                  <p className="text-xs text-gray-500">Incluye alojamiento y alimentación</p>
+                  <div className="text-2xl font-bold text-[#D4AF37]">Gratis</div>
+                  <p className="text-xs text-gray-500"></p>
                 </div>
               </div>
             </CardContent>
@@ -82,37 +82,37 @@ export function RetreatSection() {
               <div className="rounded-full bg-[#F5E6C3] p-3 w-fit dark:bg-[#8B6B2E] mt-4">
                 <Heart className="h-6 w-6 text-[#D4AF37] dark:text-[#F5E6C3]" />
               </div>
-              <CardTitle>Retiro Intensivo de 5 Días</CardTitle>
+              <CardTitle>Retiro Intensivo de 2 Días</CardTitle>
               <CardDescription>Inmersión Completa en el Eneagrama</CardDescription>
             </CardHeader>
             <CardContent className="flex-1">
               <div className="space-y-4">
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Una experiencia transformadora de cinco días donde vivirás una inmersión total 
+                  Una experiencia transformadora de dos días donde vivirás una inmersión total 
                   en el Eneagrama con meditación, talleres y sesiones individuales.
                 </p>
                 
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm">
                     <Calendar className="h-4 w-4 text-[#D4AF37]" />
-                    <span>15-19 de Agosto, 2024</span>
+                    <span>por definir</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <MapPin className="h-4 w-4 text-[#D4AF37]" />
-                    <span>Pucón, Chile</span>
+                    <span>Chile</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Clock className="h-4 w-4 text-[#D4AF37]" />
-                    <span>5 días / 4 noches</span>
+                    <span>2 días / 1 noche</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Users className="h-4 w-4 text-[#D4AF37]" />
-                    <span>Máximo 15 participantes</span>
+                    <span>Cantidad de participantes</span>
                   </div>
                 </div>
 
                 <div className="pt-2">
-                  <div className="text-2xl font-bold text-[#D4AF37]">$189.990 CLP</div>
+                  <div className="text-2xl font-bold text-[#D4AF37]">$300.000 CLP</div>
                   <p className="text-xs text-gray-500">Todo incluido + sesión individual</p>
                 </div>
               </div>
@@ -132,38 +132,37 @@ export function RetreatSection() {
               <div className="rounded-full bg-[#F5E6C3] p-3 w-fit dark:bg-[#8B6B2E]">
                 <Users className="h-6 w-6 text-[#D4AF37] dark:text-[#F5E6C3]" />
               </div>
-              <CardTitle>Retiro Virtual</CardTitle>
-              <CardDescription>Conecta desde Casa</CardDescription>
+              <CardTitle>Acceso a la comunidad</CardTitle>
+              <CardDescription></CardDescription>
             </CardHeader>
             <CardContent className="flex-1">
               <div className="space-y-4">
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Participa en un retiro online interactivo de un día completo, 
-                  perfecto para quienes no pueden viajar pero buscan la experiencia grupal.
+
                 </p>
                 
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm">
                     <Calendar className="h-4 w-4 text-[#D4AF37]" />
-                    <span>Sábado 10 de Agosto, 2024</span>
+                    <span>por definir</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <MapPin className="h-4 w-4 text-[#D4AF37]" />
-                    <span>Plataforma Zoom</span>
+                    <span>Chile</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Clock className="h-4 w-4 text-[#D4AF37]" />
-                    <span>8 horas (9:00 - 17:00)</span>
+                    <span>-</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Users className="h-4 w-4 text-[#D4AF37]" />
-                    <span>Máximo 25 participantes</span>
+                    <span>Cantidad de participantes</span>
                   </div>
                 </div>
 
                 <div className="pt-2">
-                  <div className="text-2xl font-bold text-[#D4AF37]">$29.990 CLP</div>
-                  <p className="text-xs text-gray-500">Incluye material digital</p>
+                  <div className="text-2xl font-bold text-[#D4AF37]">$0 CLP</div>
+                  <p className="text-xs text-gray-500">Incluído con el curso</p>
                 </div>
               </div>
             </CardContent>
