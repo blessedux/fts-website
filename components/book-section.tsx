@@ -71,7 +71,7 @@ export function BookSection() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span>Guía para relaciones interpersonales</span>
+                <span>guía para relaciones interpersonales</span>
               </li>
               <li className="flex items-center gap-2">
                 <div className="rounded-full bg-green-100 p-1 dark:bg-green-800">
