@@ -2,18 +2,21 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import Link from "next/link"
 
+
 export function BookSection() {
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-gray-950">
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div className="flex justify-center">
-            <div className="relative h-[400px] w-[300px] overflow-hidden rounded-lg shadow-xl">
+            <div className="relative h-[500px] w-[375px] overflow-hidden rounded-lg shadow-xl">
               <Image
-                src="/placeholder.svg?height=600&width=400"
+                src="/imgs/Torres Silva_FannyED2 August 2024_20559_TAPA_2024-09-17 (2).webp"
                 alt="Libro de Eneagrama por Fanny Torres Da Silva"
                 fill
-                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 375px"
+                priority
+                className="object-fill"
               />
             </div>
           </div>
@@ -68,7 +71,7 @@ export function BookSection() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span>Guía para relaciones interpersonales</span>
+                <span>guía para relaciones interpersonales</span>
               </li>
               <li className="flex items-center gap-2">
                 <div className="rounded-full bg-green-100 p-1 dark:bg-green-800">
