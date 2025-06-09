@@ -4,11 +4,11 @@ import Image from "next/image"
 
 export function HeroSection() {
   return (
-    <section className="relative w-full py-12 md:py-24 lg:py-32">
+    <section className="relative w-full h-[100vh] overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0 h-[800px]">
+      <div className="absolute inset-0">
         <Image
-          src="/fts-background.png"
+          src="/imgs/fts_hero_background.png"
           alt="Background"
           fill
           sizes="100vw"
@@ -16,20 +16,17 @@ export function HeroSection() {
           className="object-cover"
           priority
         />
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/40" />
       </div>
       
-      <div className="container relative z-10 px-4 md:px-6">
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+      <div className="container relative z-10 h-full px-4 md:px-6">
+        <div className="grid h-full items-center gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16">
           <div className="flex flex-col justify-center space-y-4">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
-                Descubre el Poder del Eneagrama
+                'Descubre el Poder del Eneagrama'
               </h1>
               <p className="max-w-[600px] text-gray-200 md:text-xl">
-                Transforma tu vida comprendiendo tu personalidad y la de quienes te rodean. Aprende con Fanny Torres Da
-                Silva, experta en Eneagrama.
+                Transforma tu vida aprendiedo de tu personalidad <br></br> y la de quienes te rodean. 
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -45,15 +42,15 @@ export function HeroSection() {
               </Link>
             </div>
           </div>
-          <div className="flex items-center justify-center">
-            <div className="relative h-[350px] w-[350px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px] rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
+          <div className="relative h-full">
+            <div className="absolute bottom-0 right-0 w-[600px] sm:w-[700px] lg:w-[900px] h-[110%]">
               <Image
-                src="/placeholder-user.jpg"
+                src="/imgs/fts_hero_top.png"
                 alt="Fanny Torres Da Silva"
                 fill
-                sizes="(max-width: 768px) 350px, (max-width: 1200px) 400px, 500px"
+                sizes="(max-width: 768px) 600px, (max-width: 1200px) 700px, 900px"
                 quality={90}
-                className="object-cover"
+                className="object-contain object-bottom"
                 priority
               />
             </div>

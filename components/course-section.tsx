@@ -26,6 +26,10 @@ export function CourseSection() {
               <ul className="space-y-2 text-sm">
                 <li className="flex items-center">
                   <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
+                  <span>Test de identificación</span>
+                </li>
+                <li className="flex items-center">
+                  <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
                   <span>Historia y orígenes</span>
                 </li>
                 <li className="flex items-center">
@@ -36,17 +40,14 @@ export function CourseSection() {
                   <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
                   <span>Estructura del Eneagrama</span>
                 </li>
-                <li className="flex items-center">
-                  <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-                  <span>Test de identificación</span>
-                </li>
+               
               </ul>
             </CardContent>
           </Card>
           <Card className="flex flex-col">
             <CardHeader>
               <CardTitle>Módulo 2</CardTitle>
-              <CardDescription>Profundización en los Tipos</CardDescription>
+              <CardDescription>Profundización en los Eneatipos</CardDescription>
             </CardHeader>
             <CardContent className="flex-1">
               <ul className="space-y-2 text-sm">
@@ -72,17 +73,17 @@ export function CourseSection() {
           <Card className="flex flex-col">
             <CardHeader>
               <CardTitle>Módulo 3</CardTitle>
-              <CardDescription>Aplicación y Transformación</CardDescription>
+              <CardDescription>Mejorando Relaciones</CardDescription>
             </CardHeader>
             <CardContent className="flex-1">
               <ul className="space-y-2 text-sm">
                 <li className="flex items-center">
                   <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-                  <span>Relaciones interpersonales</span>
+                  <span>Relaciones por Eneatipo</span>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-                  <span>Crecimiento personal</span>
+                  <span>Desarrollo personal por Eneatipo</span>
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
@@ -90,7 +91,7 @@ export function CourseSection() {
                 </li>
                 <li className="flex items-center">
                   <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-                  <span>Plan de desarrollo</span>
+                  <span>Plan de desarrollo y propósitos</span>
                 </li>
               </ul>
             </CardContent>

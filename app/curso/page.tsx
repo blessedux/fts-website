@@ -24,13 +24,18 @@ export default function CoursePage() {
                   </h1>
                   <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
                     Descubre tu tipo de personalidad y transforma tu vida con nuestro curso autoguiado, diseñado por
-                    Fanny Torres Da Silva.
+                    Fanny Torres Silva.
                   </p>
                 </div>
                 <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Button size="lg" className="bg-rose-600 hover:bg-rose-700">
+                  <a
+                    href="https://wa.me/+56997392515"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center rounded-md bg-[#D4AF37] px-6 py-3 text-base font-medium text-white shadow transition-colors hover:bg-[#8B6B2E] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D4AF37] disabled:pointer-events-none disabled:opacity-50"
+                  >
                     Inscribirme Ahora
-                  </Button>
+                  </a>
                   <Button size="lg" variant="outline">
                     Ver Programa Completo
                   </Button>
@@ -42,7 +47,7 @@ export default function CoursePage() {
                   </div>
                   <div className="flex items-center">
                     <BookOpen className="mr-1 h-4 w-4 text-gray-500" />
-                    <span>9 módulos</span>
+                    <span>6 módulos</span>
                   </div>
                   <div className="flex items-center">
                     <Award className="mr-1 h-4 w-4 text-gray-500" />
@@ -213,9 +218,7 @@ export default function CoursePage() {
                 </CardContent>
               </Card>
             </div>
-            <div className="flex justify-center mt-8">
-              <Button variant="outline">Ver Todos los Módulos</Button>
-            </div>
+       
           </div>
         </section>
 
@@ -234,7 +237,7 @@ export default function CoursePage() {
                 <CardHeader>
                   <CardTitle>Plan Básico</CardTitle>
                   <CardDescription>Acceso al curso completo</CardDescription>
-                  <div className="mt-4 text-4xl font-bold">$89.990 CLP</div>
+                  <div className="mt-4 text-4xl font-bold">$200.000 CLP</div>
                   <p className="text-sm text-gray-500">Pago único</p>
                 </CardHeader>
                 <CardContent className="flex-1">
@@ -268,7 +271,7 @@ export default function CoursePage() {
                   </div>
                   <CardTitle className="mt-4">Plan Premium</CardTitle>
                   <CardDescription>Curso + Sesiones grupales</CardDescription>
-                  <div className="mt-4 text-4xl font-bold">$129.990 CLP</div>
+                  <div className="mt-4 text-4xl font-bold">$300.000 CLP</div>
                   <p className="text-sm text-gray-500">Pago único</p>
                 </CardHeader>
                 <CardContent className="flex-1">
@@ -279,7 +282,7 @@ export default function CoursePage() {
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-                      <span>2 sesiones grupales con Fanny</span>
+                      <span>4 sesiones grupales con Fanny</span>
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
@@ -299,7 +302,7 @@ export default function CoursePage() {
                 <CardHeader>
                   <CardTitle>Plan VIP</CardTitle>
                   <CardDescription>Experiencia personalizada</CardDescription>
-                  <div className="mt-4 text-4xl font-bold">$199.990 CLP</div>
+                  <div className="mt-4 text-4xl font-bold">$500.000 CLP</div>
                   <p className="text-sm text-gray-500">Pago único</p>
                 </CardHeader>
                 <CardContent className="flex-1">
@@ -314,7 +317,7 @@ export default function CoursePage() {
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-green-500" />
-                      <span>Análisis personalizado de tu tipo</span>
+                      <span>Análisis personalizado de tu Eneatipo</span>
                     </li>
                     <li className="flex items-center">
                       <CheckCircle className="mr-2 h-4 w-4 text-green-500" />

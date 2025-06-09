@@ -23,10 +23,10 @@ export function BookSection() {
           <div className="flex flex-col justify-center space-y-4">
             <div className="space-y-2">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                El Libro Oficial del Eneagrama
+                El Libro Oficial de Eneagrama
               </h2>
               <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-                Lleva contigo todos los conocimientos del Eneagrama en este completo libro escrito por Fanny Torres Da
+                Lleva contigo todos los conocimientos del Eneagrama en este completo libro escrito por Fanny Torres
                 Silva.
               </p>
             </div>
@@ -43,7 +43,7 @@ export function BookSection() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span>Explicación detallada de los 9 tipos</span>
+                <span>Historia y orígenes de los 9 Eneatipos</span>
               </li>
               <li className="flex items-center gap-2">
                 <div className="rounded-full bg-green-100 p-1 dark:bg-green-800">
@@ -57,7 +57,7 @@ export function BookSection() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span>Ejercicios prácticos y reflexiones</span>
+                <span>Qué es el Eneagrama?</span>
               </li>
               <li className="flex items-center gap-2">
                 <div className="rounded-full bg-green-100 p-1 dark:bg-green-800">
@@ -71,7 +71,7 @@ export function BookSection() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span>guía para relaciones interpersonales</span>
+                <span>Eneatipos de la personalidad</span>
               </li>
               <li className="flex items-center gap-2">
                 <div className="rounded-full bg-green-100 p-1 dark:bg-green-800">
@@ -85,7 +85,7 @@ export function BookSection() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
                   </svg>
                 </div>
-                <span>Envío a todo Chile</span>
+                <span>Envíos a todo el mundo</span>
               </li>
             </ul>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">

@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Calendar, MapPin, Clock, Users, Mountain, Heart } from "lucide-react"
+import { Calendar, MapPin, Clock, Users, Mountain, Heart, CheckCircle } from "lucide-react"
 import Link from "next/link"
 
 export function RetreatSection() {
@@ -9,15 +9,12 @@ export function RetreatSection() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <div className="inline-block rounded-lg bg-[#F5E6C3] px-3 py-1 text-sm dark:bg-[#8B6B2E]">
-              Experiencias Transformadoras
-            </div>
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">
-              Retiros de Eneagrama
+            Experiencias Transformadoras
             </h2>
             <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
               Sumérgete en experiencias inmersivas donde podrás conectar profundamente contigo mismo y con otros 
-              buscadores del crecimiento personal a través del Eneagrama.
+              buscadores del desarrollo personal a través del Eneagrama.
             </p>
           </div>
         </div>
@@ -46,7 +43,7 @@ export function RetreatSection() {
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <MapPin className="h-4 w-4 text-[#D4AF37]" />
-                    <span>Chile</span>
+                    <span>Online por Zoom</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Clock className="h-4 w-4 text-[#D4AF37]" />
@@ -65,11 +62,14 @@ export function RetreatSection() {
               </div>
             </CardContent>
             <div className="p-6 pt-0">
-              <Link href="/retiros/fin-de-semana">
-                <Button className="w-full bg-[#D4AF37] hover:bg-[#BFA030] text-black font-semibold">
-                  Reservar Lugar
-                </Button>
-              </Link>
+              <a
+                href="https://wa.me/+56997392515?text=Hola,%20me%20interesa%20el%20Curso%20Introductorio%20de%20Eneagrama"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full items-center justify-center rounded-md bg-[#D4AF37] px-4 py-2 text-sm font-medium text-black shadow transition-colors hover:bg-[#BFA030] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D4AF37] disabled:pointer-events-none disabled:opacity-50"
+              >
+                Reservar Lugar
+              </a>
             </div>
           </Card>
 
@@ -82,20 +82,20 @@ export function RetreatSection() {
               <div className="rounded-full bg-[#F5E6C3] p-3 w-fit dark:bg-[#8B6B2E] mt-4">
                 <Heart className="h-6 w-6 text-[#D4AF37] dark:text-[#F5E6C3]" />
               </div>
-              <CardTitle>Retiro Intensivo de 2 Días</CardTitle>
+              <CardTitle>Retiro Intensivo de 3 Días</CardTitle>
               <CardDescription>Inmersión Completa en el Eneagrama</CardDescription>
             </CardHeader>
             <CardContent className="flex-1">
               <div className="space-y-4">
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-                  Una experiencia transformadora de dos días donde vivirás una inmersión total 
-                  en el Eneagrama con meditación, talleres y sesiones individuales.
+                  Una experiencia transformadora de tres días donde vivirás una inmersión profunda 
+                  en el Eneagrama con talleres y sesiones grupales.
                 </p>
                 
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm">
                     <Calendar className="h-4 w-4 text-[#D4AF37]" />
-                    <span>por definir</span>
+                    <span>Próxima fecha: 15-17 de Agosto</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <MapPin className="h-4 w-4 text-[#D4AF37]" />
@@ -103,75 +103,82 @@ export function RetreatSection() {
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Clock className="h-4 w-4 text-[#D4AF37]" />
-                    <span>2 días / 1 noche</span>
+                    <span>3 días / 2 noche</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Users className="h-4 w-4 text-[#D4AF37]" />
-                    <span>Cantidad de participantes</span>
+                    <span>Cupo: 20 max</span>
                   </div>
                 </div>
 
                 <div className="pt-2">
-                  <div className="text-2xl font-bold text-[#D4AF37]">$300.000 CLP</div>
-                  <p className="text-xs text-gray-500">Todo incluido + sesión individual</p>
+                  <div className="text-2xl font-bold text-[#D4AF37]">$350.000 CLP</div>
+                  <p className="text-xs text-gray-500">Incluye alojamiento, alimentación y talleres</p>
                 </div>
               </div>
             </CardContent>
             <div className="p-6 pt-0">
-              <Link href="/retiros/intensivo">
-                <Button className="w-full bg-[#D4AF37] hover:bg-[#BFA030] text-black font-semibold">
-                  Reservar Lugar
-                </Button>
-              </Link>
+              <a
+                href="https://wa.me/+56997392515?text=Hola,%20me%20interesa%20el%20Retiro%20Intensivo%20de%203%20D%C3%ADas"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full items-center justify-center rounded-md bg-[#D4AF37] px-4 py-2 text-sm font-medium text-black shadow transition-colors hover:bg-[#BFA030] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D4AF37] disabled:pointer-events-none disabled:opacity-50"
+              >
+                Reservar Lugar
+              </a>
             </div>
           </Card>
 
-          {/* Retiro Online */}
+          {/* Taller Buenos Aires */}
           <Card className="flex flex-col h-full">
             <CardHeader>
               <div className="rounded-full bg-[#F5E6C3] p-3 w-fit dark:bg-[#8B6B2E]">
-                <Users className="h-6 w-6 text-[#D4AF37] dark:text-[#F5E6C3]" />
+                <Heart className="h-6 w-6 text-[#D4AF37] dark:text-[#F5E6C3]" />
               </div>
-              <CardTitle>Acceso a la comunidad</CardTitle>
-              <CardDescription></CardDescription>
+              <CardTitle>Taller Presencial</CardTitle>
+              <CardDescription>3 de Julio, 2024</CardDescription>
             </CardHeader>
             <CardContent className="flex-1">
               <div className="space-y-4">
                 <p className="text-sm text-gray-600 dark:text-gray-400">
-
+                  Una experiencia práctica y personalizada para profundizar en el Eneagrama 
+                  en un ambiente íntimo y colaborativo.
                 </p>
                 
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-sm">
                     <Calendar className="h-4 w-4 text-[#D4AF37]" />
-                    <span>por definir</span>
+                    <span>3 de Julio, 2024</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <MapPin className="h-4 w-4 text-[#D4AF37]" />
-                    <span>Chile</span>
+                    <span>Buenos Aires, Argentina</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Clock className="h-4 w-4 text-[#D4AF37]" />
-                    <span>-</span>
+                    <span>1 sesión</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm">
                     <Users className="h-4 w-4 text-[#D4AF37]" />
-                    <span>Cantidad de participantes</span>
+                    <span>Máximo 10 personas</span>
                   </div>
                 </div>
 
                 <div className="pt-2">
-                  <div className="text-2xl font-bold text-[#D4AF37]">$0 CLP</div>
-                  <p className="text-xs text-gray-500">Incluído con el curso</p>
+                  <div className="text-2xl font-bold text-[#D4AF37]">$25.000 ARS</div>
+                  <p className="text-xs text-gray-500">Incluye merienda</p>
                 </div>
               </div>
             </CardContent>
             <div className="p-6 pt-0">
-              <Link href="/retiros/virtual">
-                <Button className="w-full bg-[#D4AF37] hover:bg-[#BFA030] text-black font-semibold">
-                  Reservar Lugar
-                </Button>
-              </Link>
+              <a
+                href="https://wa.me/+56997392515?text=Hola,%20me%20interesa%20el%20Taller%20Presencial%20en%20Buenos%20Aires"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full items-center justify-center rounded-md bg-[#D4AF37] px-4 py-2 text-sm font-medium text-black shadow transition-colors hover:bg-[#BFA030] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D4AF37] disabled:pointer-events-none disabled:opacity-50"
+              >
+                Inscribirme
+              </a>
             </div>
           </Card>
         </div>
@@ -184,7 +191,7 @@ export function RetreatSection() {
               <div className="rounded-full bg-[#F5E6C3] p-3 dark:bg-[#8B6B2E]">
                 <Heart className="h-6 w-6 text-[#D4AF37] dark:text-[#F5E6C3]" />
               </div>
-              <h4 className="font-semibold">Sesiones Personalizadas</h4>
+              <h4 className="font-semibold">Alojamiento y alimentación</h4>
               <p className="text-sm text-gray-500 text-center">
                 Trabajo individual adaptado a tu tipo de personalidad
               </p>
@@ -222,7 +229,7 @@ export function RetreatSection() {
         <div className="flex justify-center mt-12">
           <Link href="/retiros">
             <Button size="lg" variant="outline" className="border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-black">
-              Ver Todos los Retiros
+              Ver Retiros pasados
             </Button>
           </Link>
         </div>
