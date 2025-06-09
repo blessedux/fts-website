@@ -8,15 +8,20 @@ export function BookSection() {
     <section className="w-full py-12 md:py-24 lg:py-32 bg-white dark:bg-gray-950">
       <div className="container px-4 md:px-6">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16">
-          <div className="flex justify-center">
-            <div className="relative h-[500px] w-[375px] overflow-hidden rounded-lg shadow-xl">
+          <div className="flex justify-center items-center w-full">
+            <div className="relative w-full max-w-[375px] h-[500px] overflow-hidden rounded-lg shadow-xl">
               <Image
                 src="/imgs/portada_libro_final.png"
                 alt="Libro de Eneagrama por Fanny Torres Da Silva"
                 fill
                 sizes="(max-width: 768px) 100vw, 375px"
                 priority
-                className="object-contain"
+                className="object-cover"
+                style={{ 
+                  objectPosition: 'center',
+                  width: '100%',
+                  height: '100%'
+                }}
               />
             </div>
           </div>
