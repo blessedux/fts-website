@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import Image from "next/image"
@@ -20,7 +22,7 @@ export function RadioProgramSection() {
       <div className="container relative px-4 md:px-6">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">Déjame Ver</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">Dejáme Ver</h2>
             <p className="mx-auto max-w-[700px] text-gray-200 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               ECOMEDIOS AM 1220 · VIERNES 22 A 24 HS
             </p>
@@ -30,7 +32,7 @@ export function RadioProgramSection() {
           <Card className="bg-white/10 backdrop-blur-sm border-white/20">
             <CardHeader>
               <CardTitle className="text-white">Programa Semanal</CardTitle>
-              <CardDescription className="text-gray-200">Todos los Viernes 22hs</CardDescription>
+              <CardDescription className="text-gray-200">Todos los Viernes a las 22hs</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-300">
@@ -45,14 +47,14 @@ export function RadioProgramSection() {
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-300">
-                Entrevistas exclusivas con líderes y expertos de la industria
+                Entrevistas exclusivas con líderes y expertos en desarrollo personal
               </p>
             </CardContent>
           </Card>
           <Card className="bg-white/10 backdrop-blur-sm border-white/20">
             <CardHeader>
               <CardTitle className="text-white">Preguntas y Respuestas</CardTitle>
-              <CardDescription className="text-gray-200">Sesiones Quincenales</CardDescription>
+              <CardDescription className="text-gray-200">Todos los episodios</CardDescription>
             </CardHeader>
             <CardContent>
               <p className="text-sm text-gray-300">
@@ -61,7 +63,7 @@ export function RadioProgramSection() {
             </CardContent>
           </Card>
         </div>
-        <div className="flex justify-center mt-12">
+        <div className="flex flex-col items-center space-y-4 mt-12">
           <a 
             href="https://www.youtube.com/live/WBuQkJ1Co50?si=UyPuHPhy-nj5h9L7"
             target="_blank"
@@ -74,6 +76,13 @@ export function RadioProgramSection() {
               Ver Programa en Vivo
             </Button>
           </a>
+          <Button 
+            size="lg"
+            className="bg-gray-600 hover:bg-gray-700 text-white font-semibold px-8 py-6 text-lg"
+            onClick={() => window.open('https://www.youtube.com/@ecomedios4035/search?query=dejame%20ver', '_blank')}
+          >
+            Ver Programas Anteriores
+          </Button>
         </div>
       </div>
     </section>
