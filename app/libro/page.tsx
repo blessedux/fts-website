@@ -17,12 +17,15 @@ export default function BookPage() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 xl:gap-16">
               <div className="flex justify-center">
-                <div className="relative h-[500px] w-[350px] overflow-hidden rounded-lg shadow-xl">
+                <div className="relative h-[500px] w-[350px] overflow-hidden rounded-lg shadow-xl bg-white">
                   <Image
-                    src="/placeholder.svg?height=700&width=500"
+                    src="/imgs/portada_libro_final.png"
                     alt="Libro de Eneagrama por Fanny Torres Da Silva"
-                    fill
-                    className="object-cover"
+                    width={350}
+                    height={500}
+                    className="object-contain"
+                    priority
+                    quality={100}
                   />
                 </div>
               </div>

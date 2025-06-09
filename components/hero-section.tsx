@@ -48,7 +48,7 @@ export function HeroSection() {
           <div className="flex items-center justify-center">
             <div className="relative h-[350px] w-[350px] sm:h-[400px] sm:w-[400px] lg:h-[500px] lg:w-[500px] rounded-full overflow-hidden border-4 border-white/20 shadow-2xl">
               <Image
-                src="/fanny-profile.jpg"
+                src="/placeholder-user.jpg"
                 alt="Fanny Torres Da Silva"
                 fill
                 sizes="(max-width: 768px) 350px, (max-width: 1200px) 400px, 500px"

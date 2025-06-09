@@ -11,12 +11,12 @@ export function BookSection() {
           <div className="flex justify-center">
             <div className="relative h-[500px] w-[375px] overflow-hidden rounded-lg shadow-xl">
               <Image
-                src="/imgs/Torres Silva_FannyED2 August 2024_20559_TAPA_2024-09-17 (2).webp"
+                src="/imgs/portada_libro_final.png"
                 alt="Libro de Eneagrama por Fanny Torres Da Silva"
                 fill
                 sizes="(max-width: 768px) 100vw, 375px"
                 priority
-                className="object-fill"
+                className="object-contain"
               />
             </div>
           </div>
