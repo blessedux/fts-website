@@ -17,13 +17,18 @@ export function TestimonialSection() {
           <Card>
             <CardHeader className="pb-0">
               <div className="flex items-center gap-4">
-                <Image
-                  src="/placeholder.svg?height=100&width=100"
-                  alt="Avatar"
-                  width={40}
-                  height={40}
-                  className="rounded-full"
-                />
+                <div className="relative w-10 h-10 overflow-hidden rounded-full">
+                  <Image
+                    src="/imgs/test1.png"
+                    alt="Avatar"
+                    fill
+                    className="object-cover"
+                    style={{ 
+                      objectPosition: 'center 20%',
+                      transform: 'scale(1.2)'
+                    }}
+                  />
+                </div>
                 <div>
                   <p className="text-sm font-medium">Carolina Mendoza</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400">Tipo 2</p>
@@ -64,13 +69,14 @@ export function TestimonialSection() {
           <Card>
             <CardHeader className="pb-0">
               <div className="flex items-center gap-4">
-                <Image
-                  src="/placeholder.svg?height=100&width=100"
-                  alt="Avatar"
-                  width={40}
-                  height={40}
-                  className="rounded-full"
-                />
+                <div className="relative w-10 h-10 overflow-hidden rounded-full">
+                  <Image
+                    src="/imgs/test3.png"
+                    alt="Avatar"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <div>
                   <p className="text-sm font-medium">Valentina Rojas</p>
                   <p className="text-sm text-gray-500 dark:text-gray-400">Tipo 4</p>
