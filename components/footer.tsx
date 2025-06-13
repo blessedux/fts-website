@@ -12,7 +12,7 @@ export function Footer() {
           
           <div className="flex space-x-4">
             <Link 
-              href="https://instagram.com/fanny.torres.silva" 
+              href="https://instagram.com/fannytorresilva/" 
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -20,7 +20,7 @@ export function Footer() {
               Instagram
             </Link>
             <Link 
-              href="https://linkedin.com/in/fanny-torres-silva" 
+              href="https://linkedin.com/in/fanny-torres-silva-55314312/" 
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
