@@ -10,7 +10,7 @@ export function RadioProgramSection() {
       <div 
         className="fixed top-0 left-0 w-full h-full -z-10"
         style={{
-          backgroundImage: 'url(/imgs/dejame-ver.jpg)',
+          backgroundImage: 'url(/imgs/dejamever.webp)',
           backgroundAttachment: 'fixed',
           backgroundPosition: 'center',
           backgroundSize: 'cover',

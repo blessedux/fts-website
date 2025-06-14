@@ -13,74 +13,140 @@ export function TestimonialSection() {
             </p>
           </div>
         </div>
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-3 lg:gap-12 mt-12">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-4 lg:gap-8 mt-12">
           <Card>
             <CardHeader className="pb-0">
               <div className="flex items-center gap-4">
-                <Image
-                  src="/placeholder.svg?height=100&width=100"
-                  alt="Avatar"
-                  width={40}
-                  height={40}
-                  className="rounded-full"
-                />
-                <div>
-                  <p className="text-sm font-medium">Carolina Mendoza</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Tipo 2</p>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent className="pt-4">
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                "El curso de Fanny transformó mi forma de relacionarme con los demás. Ahora entiendo por qué actúo como
-                lo hago y cómo puedo mejorar mis relaciones personales y profesionales."
-              </p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="pb-0">
-              <div className="flex items-center gap-4">
-                <div className="relative w-10 h-10 overflow-hidden rounded-full">
+                <div className="relative w-12 h-12 overflow-hidden rounded-full">
                   <Image
-                    src="/imgs/union7.png"
+                    src="/imgs/test1.webp"
                     alt="Avatar"
                     fill
                     className="object-cover"
+                    style={{ 
+                      objectPosition: 'center',
+                      objectFit: 'cover'
+                    }}
                   />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Rodrigo Valenzuela</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Tipo 8</p>
+                  <p className="text-sm font-medium">Betty</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Eneatipo 2</p>
                 </div>
               </div>
             </CardHeader>
             <CardContent className="pt-4">
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                "Como líder de equipo, el Eneagrama me ha dado herramientas invaluables para entender las motivaciones
-                de cada miembro y potenciar sus fortalezas. El enfoque de Fanny es práctico y transformador."
+                "Hola   les comento 
+                que entré al mundo del Eneagrama (desconocido para mí)   
+                felizmente de la mano Fanny..con la cual descubrí y fui 
+                conociendo una gran herramienta para autoevaluarnos /
+                conocernos..nosotros y el prójimo..y así mejorar el 
+                transcurrir por esta vida..Siempre muy agradecida a Fanny 
+                que trasmite tan generosa y cálidamente su saber."
               </p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader className="pb-0">
               <div className="flex items-center gap-4">
-                <Image
-                  src="/placeholder.svg?height=100&width=100"
-                  alt="Avatar"
-                  width={40}
-                  height={40}
-                  className="rounded-full"
-                />
+                <div className="relative w-12 h-12 overflow-hidden rounded-full">
+                  <Image
+                    src="/imgs/test2.webp"
+                    alt="Avatar"
+                    fill
+                    className="object-cover"
+                    style={{ 
+                      objectPosition: 'center',
+                      objectFit: 'cover'
+                    }}
+                  />
+                </div>
                 <div>
-                  <p className="text-sm font-medium">Valentina Rojas</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Tipo 4</p>
+                  <p className="text-sm font-medium">Angélica Pizarro</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Eneatipo 6</p>
                 </div>
               </div>
             </CardHeader>
             <CardContent className="pt-4">
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                "El libro y el curso online se complementan perfectamente. He podido profundizar en mi autoconocimiento
-                a mi propio ritmo y aplicar lo aprendido en mi día a día. Totalmente recomendado."
+                "Para mí el 
+                eneagrama ha sido en  mi vida un antes y un después...
+                Antes vivía en automático sin dimensionar lo que realizaba 
+                día a día, vivía en son de darle el gusto a todos..
+                Cuando conocí el eneagrama me di cuenta que número 
+                soy,   cómo pienso, cómo vivo y cómo actuo ante las 
+                diferentes situaciones de la vida...
+                Hoy con lo que he ido conociéndome y aprendiendo a 
+                soltar y darme permiso a cumplir mis sueños, voy paso a 
+                paso a mi ritmo y cada día me siento más feliz y libre de 
+                hacer lo que pienso y deseo hacer dando el gusto a mi."
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="pb-0">
+              <div className="flex items-center gap-4">
+                <div className="relative w-12 h-12 overflow-hidden rounded-full">
+                  <Image
+                    src="/imgs/test3.webp"
+                    alt="Avatar"
+                    fill
+                    className="object-cover"
+                    style={{ 
+                      objectPosition: 'center',
+                      objectFit: 'cover'
+                    }}
+                  />
+                </div>
+                <div>
+                  <p className="text-sm font-medium">Pamela Santander Robles</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Eneatipo 4</p>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="pt-4">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                "En algún momento, 
+                en algún Lugar, había un oráculo que afirmaba "Conócete 
+                a ti y conocerás al Universo…". Cuánta razón tenía y qué 
+                hermosa experiencia hacerlo con Fanny a través del 
+                Eneagrama. Todos quieren estar 
+                en la página, qué lindo."
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="pb-0">
+              <div className="flex items-center gap-4">
+                <div className="relative w-12 h-12 overflow-hidden rounded-full">
+                  <Image
+                    src="/imgs/test4.webp"
+                    alt="Avatar"
+                    fill
+                    className="object-cover"
+                    style={{ 
+                      objectPosition: 'center',
+                      objectFit: 'cover'
+                    }}
+                  />
+                </div>
+                <div>
+                  <p className="text-sm font-medium">Diego Gonzales</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Eneatipo 9</p>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="pt-4">
+              <p className="text-sm text-gray-500 dark:text-gray-400">
+                "Estudiar eneagrama 
+                ha significado para mí tener una conexión, entre mi mundo 
+                interior y el resto de las personas. Tener conciencia y 
+                claridad de quién soy y qué es lo que quiero para mí, me 
+                ha permitido entenderme y entender a los que me rodean 
+                con mayor libertad. Sin culpas y con 
+                una tribu que nos acompañamos desde otra dimensión. 
+                Con cariño y confianza."
               </p>
             </CardContent>
           </Card>
