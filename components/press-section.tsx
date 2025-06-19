@@ -149,7 +149,7 @@ export function PressSection() {
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Prensa y Medios</h2>
             <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-              Descubre las últimas apariciones en medios y cobertura de prensa de Fanny Torres Da Silva
+              Descubre las últimas apariciones en medios y cobertura de prensa de Fanny Torres Silva
             </p>
           </div>
         </div>
@@ -211,7 +211,7 @@ export function PressSection() {
           {/* Texto adicional */}
           <div className="mt-12 text-center">
             <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-              Fanny Torres Da Silva ha sido reconocida en diversos medios de comunicación por su expertise en Eneagrama 
+              Fanny Torres Silva ha sido reconocida en diversos medios de comunicación por su expertise en Eneagrama 
               y su contribución al desarrollo personal en Chile y Latinoamérica.
             </p>
           </div>
