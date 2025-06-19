@@ -152,6 +152,20 @@ export default function BookPage() {
                   </div>
                 </div>
               </div>
+
+              {/* PDF Previewer */}
+              <div className="mt-12">
+                <h2 className="text-2xl font-bold mb-4">Previsualiza el libro</h2>
+                <div className="w-full h-[600px] rounded-lg overflow-hidden border shadow">
+                  <iframe
+                    src="/imgs/Torres%20Silva_Fanny%2022-12-23%20tapa.pdf"
+                    title="Previsualización del libro Eneagrama"
+                    width="100%"
+                    height="100%"
+                    className="w-full h-full"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
