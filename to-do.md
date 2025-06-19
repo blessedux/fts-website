@@ -17,7 +17,7 @@ Tareas
 { Añadir galeria a prensa en lugar de cards }
 
 - Agregar previsualizador PDF en página del libro
-- Borrar el "DA" en sección prensa y medios. Es Fanny Torres Silva
+- Borrar el "DA" en sección prensa y medios. Es Fanny Torres Silva X
 - Centrar botones CTA en cada tarjeta de la sección FeatureSection
 - Crear página /retiros con estos links en tarjetas, cada video embedded de YouTube:
   - https://www.youtube.com/watch?v=zusCHPjHj0Q&ab_channel=FannyTorresSilva
