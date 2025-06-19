@@ -19,10 +19,10 @@ Tareas
 - Agregar previsualizador PDF en página del libro X
 - Borrar el "DA" en sección prensa y medios. Es Fanny Torres Silva X
 - Centrar botones CTA en cada tarjeta de la sección FeatureSection X
-- Crear página /retiros con estos links en tarjetas, cada video embedded de YouTube:
+- Crear página /retiros con estos links en tarjetas, cada video embedded de YouTube: X
   - https://www.youtube.com/watch?v=zusCHPjHj0Q&ab_channel=FannyTorresSilva
   - https://www.youtube.com/watch?v=cxFPlW3_wEY&ab_channel=FannyTorresSilva
   - https://www.youtube.com/watch?v=MfYuX4hveJ4&ab_channel=FannyTorresSilva
   - https://www.youtube.com/watch?v=abvDCGdGQWk&ab_channel=FannyTorresSilva
-- Actualizar wa.me link en el footer a +56997392515
-- Actualizar links de LinkedIn y de Instagram 
+- Actualizar wa.me link en el footer a +56997392515 X
+- Actualizar links de LinkedIn y de Instagram X

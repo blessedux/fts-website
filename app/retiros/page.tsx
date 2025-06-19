@@ -3,19 +3,19 @@ import React from "react";
 const videos = [
   {
     url: "https://www.youtube.com/embed/zusCHPjHj0Q",
-    title: "Retiro 1"
+    title: "Retiro Parque Nacional Conguillio 24'"
   },
   {
     url: "https://www.youtube.com/embed/cxFPlW3_wEY",
-    title: "Retiro 2"
+    title: "Retiro Amor Propio 24'"
   },
   {
     url: "https://www.youtube.com/embed/MfYuX4hveJ4",
-    title: "Retiro 3"
+    title: "Testimonio 24'"
   },
   {
     url: "https://www.youtube.com/embed/abvDCGdGQWk",
-    title: "Retiro 4"
+    title: "Retiro en el Mar 24'"
   }
 ];
 
