@@ -11,3 +11,18 @@ Tareas
 { Radio seccion colocar nombre del programa, un background image con parallox del programa, hacer un CTA y el link al programa de radio }
 { Añadir galeria a prensa en lugar de cards }
 
+# Lista de tareas (To-Do)
+
+{ Radio seccion colocar nombre del programa, un background image con parallox del programa, hacer un CTA y el link al programa de radio }
+{ Añadir galeria a prensa en lugar de cards }
+
+- Agregar previsualizador PDF en página del libro
+- Borrar el "DA" en sección prensa y medios. Es Fanny Torres Silva
+- Centrar botones CTA en cada tarjeta de la sección FeatureSection
+- Crear página /retiros con estos links en tarjetas, cada video embedded de YouTube:
+  - https://www.youtube.com/watch?v=zusCHPjHj0Q&ab_channel=FannyTorresSilva
+  - https://www.youtube.com/watch?v=cxFPlW3_wEY&ab_channel=FannyTorresSilva
+  - https://www.youtube.com/watch?v=MfYuX4hveJ4&ab_channel=FannyTorresSilva
+  - https://www.youtube.com/watch?v=abvDCGdGQWk&ab_channel=FannyTorresSilva
+- Actualizar wa.me link en el footer a +56997392515
+- Actualizar links de LinkedIn y de Instagram 
