@@ -34,7 +34,7 @@ export default function BookPage() {
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
                     El Libro Oficial del Eneagrama
                   </h1>
-                  <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">Por Fanny Torres Da Silva</p>
+                  <p className="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">Por Fanny Torres Silva</p>
                 </div>
                 <div className="flex items-center space-x-2 text-sm">
                   <div className="flex items-center">
@@ -78,7 +78,7 @@ export default function BookPage() {
                 <div className="mt-4 space-y-4">
                   <p>
                     Este libro es una guía completa para comprender y aplicar el Eneagrama en tu vida diaria. Escrito
-                    por Fanny Torres Da Silva, experta en Eneagrama con más de 15 años de experiencia, este libro te
+                    por Fanny Torres Silva, experta en Eneagrama con más de 15 años de experiencia, este libro te
                     llevará en un viaje de autodescubrimiento y transformación personal.
                   </p>
                   <p>
@@ -123,7 +123,7 @@ export default function BookPage() {
                 </ul>
               </div>
 
-              <div>
+              <div className="mb-20">
                 <h2 className="text-2xl font-bold">Detalles del Producto</h2>
                 <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
@@ -150,6 +150,20 @@ export default function BookPage() {
                     <h3 className="font-semibold">Año de publicación</h3>
                     <p className="text-gray-500 dark:text-gray-400">2023</p>
                   </div>
+                </div>
+              </div>
+
+              {/* PDF Previewer */}
+              <div className="mt-32">
+                <h2 className="text-2xl font-bold mb-4 mt-32">Previsualiza el libro</h2>
+                <div className="w-full h-[600px] rounded-lg overflow-hidden border shadow">
+                  <iframe
+                    src="/imgs/Torres%20Silva_Fanny%2022-12-23%20tapa.pdf"
+                    title="Previsualización del libro Eneagrama"
+                    width="100%"
+                    height="100%"
+                    className="w-full h-full"
+                  />
                 </div>
               </div>
             </div>
