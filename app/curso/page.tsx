@@ -7,7 +7,18 @@ import Image from "next/image"
 
 export default function CoursePage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col relative">
+      {/* Overlay en desarrollo */}
+      <div className="fixed inset-0 z-50 bg-black/30 flex flex-col items-center justify-center pointer-events-auto">
+        <div className="flex flex-col items-center justify-center h-full w-full">
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-8 drop-shadow-lg">Curso en desarrollo, disponible próximamente</h2>
+          <a href="/" className="mt-4">
+            <button className="px-8 py-4 rounded-lg bg-[#D4AF37] text-black font-semibold text-lg shadow hover:bg-[#BFA030] transition-colors">
+              Volver al sitio
+            </button>
+          </a>
+        </div>
+      </div>
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center">
           <MainNav />
