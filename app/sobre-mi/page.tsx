@@ -7,6 +7,7 @@ import { Card } from '@/components/ui/card'
 import { AnimatedHighlight } from '@/components/ui/animated-highlight'
 import { motion, AnimatePresence } from 'framer-motion'
 
+
 export default function BioPage() {
   return (
     <div className="min-h-screen bg-background">

@@ -28,7 +28,7 @@ export function FeatureSection() {
                 Sesiones en vivo vía Zoom.
               </p>
             </div>
-            <div className="mt-auto pt-6">
+            <div className="mt-auto pt-6 flex justify-center">
               <a
                 href="https://wa.me/+56997392515"
                 target="_blank"
@@ -61,7 +61,7 @@ export function FeatureSection() {
                 <li>Talleres de crecimiento</li>
               </ul>
             </div>
-            <div className="mt-auto pt-6">
+            <div className="mt-auto pt-6 flex justify-center">
               <a
                 href="https://wa.me/+56997392515"
                 target="_blank"
@@ -92,7 +92,7 @@ export function FeatureSection() {
                 Experiencias inmersivas para conectar profundamente con tu tipo de personalidad.
               </p>
             </div>
-            <div className="mt-auto pt-6">
+            <div className="mt-auto pt-6 flex justify-center">
               <a
                 href="https://wa.me/+56997392515"
                 target="_blank"
@@ -123,7 +123,7 @@ export function FeatureSection() {
                 Adquiere el libro físico con todos los fundamentos del Eneagrama.
               </p>
             </div>
-            <div className="mt-auto pt-6">
+            <div className="mt-auto pt-6 flex justify-center">
               <a
                 href="/libro"
                 className="inline-flex items-center justify-center rounded-md bg-[#F5E6C3] px-4 py-2 text-sm font-medium text-[#8B6B2E] shadow transition-colors hover:bg-[#8B6B2E] hover:text-[#F5E6C3] focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#F5E6C3] disabled:pointer-events-none disabled:opacity-50"

@@ -1,5 +1,6 @@
 import { MainNav } from '@/components/main-nav'
 import { Footer } from '@/components/footer'
+import { BackArrow } from "@/components/BackArrow";
 
 export default function BioLayout({
   children,
@@ -13,6 +14,7 @@ export default function BioLayout({
           <MainNav />
         </div>
       </header>
+      <BackArrow href="/" />
       <main className="flex-1">
         {children}
       </main>
