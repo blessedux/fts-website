@@ -8,7 +8,7 @@ export function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/imgs/fts_hero_background.png"
+          src="/imgs/fts_hero_bg_2.webp"
           alt="Background"
           fill
           sizes="100vw"
@@ -23,10 +23,10 @@ export function HeroSection() {
           <div className="flex flex-col justify-center space-y-4">
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-white">
-                'Descubre el Poder del Eneagrama'
+                "Descubre el Poder del Eneagrama"
               </h1>
               <p className="max-w-[600px] text-gray-200 md:text-xl">
-                Transforma tu vida aprendiedo de tu personalidad <br></br> y la de quienes te rodean. 
+                Transforma tu vida aprendiendo de tu personalidad <br></br> y la de quienes te rodean. 
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
@@ -40,19 +40,6 @@ export function HeroSection() {
                   Conocer a Fanny
                 </Button>
               </Link>
-            </div>
-          </div>
-          <div className="relative h-full">
-            <div className="absolute bottom-0 right-0 w-[600px] sm:w-[700px] lg:w-[900px] h-[110%]">
-              <Image
-                src="/imgs/fts_hero_top.png"
-                alt="Fanny Torres Da Silva"
-                fill
-                sizes="(max-width: 768px) 600px, (max-width: 1200px) 700px, 900px"
-                quality={90}
-                className="object-contain object-bottom"
-                priority
-              />
             </div>
           </div>
         </div>

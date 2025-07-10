@@ -24,7 +24,7 @@ export function RadioProgramSection() {
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-white">Dejáme Ver</h2>
             <p className="mx-auto max-w-[700px] text-gray-200 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              ECOMEDIOS AM 1220 · VIERNES 22 A 24 HS
+              Programa de radio de Fanny Torres Silva
             </p>
           </div>
         </div>
@@ -69,19 +69,13 @@ export function RadioProgramSection() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button 
-              size="lg"
-              className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-6 text-lg"
-            >
-              Ver Programa en Vivo
-            </Button>
           </a>
           <Button 
             size="lg"
             className="bg-gray-600 hover:bg-gray-700 text-white font-semibold px-8 py-6 text-lg"
-            onClick={() => window.open('https://www.youtube.com/@ecomedios4035/search?query=dejame%20ver', '_blank')}
+            onClick={() => window.open('https://www.youtube.com/watch?v=e0tC2ic5JtI', '_blank')}
           >
-            Ver Programas Anteriores
+            Ver Programas
           </Button>
         </div>
       </div>

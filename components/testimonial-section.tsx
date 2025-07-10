@@ -30,8 +30,8 @@ export function TestimonialSection() {
                   />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Betty</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Eneatipo 2</p>
+                  <p className="text-sm font-medium">Angelica Pizarro</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Eneatipo 6</p>
                 </div>
               </div>
             </CardHeader>
@@ -63,8 +63,8 @@ export function TestimonialSection() {
                   />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Angélica Pizarro</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Eneatipo 6</p>
+                  <p className="text-sm font-medium">Pamela Santander</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Eneatipo 9</p>
                 </div>
               </div>
             </CardHeader>
@@ -74,13 +74,13 @@ export function TestimonialSection() {
                 eneagrama ha sido en  mi vida un antes y un después...
                 Antes vivía en automático sin dimensionar lo que realizaba 
                 día a día, vivía en son de darle el gusto a todos..
-                Cuando conocí el eneagrama me di cuenta que número 
-                soy,   cómo pienso, cómo vivo y cómo actuo ante las 
+                Cuando conocí el Eneagrama me di cuenta que número 
+                soy,   cómo pienso, cómo vivo y cómo actúo ante las 
                 diferentes situaciones de la vida...
                 Hoy con lo que he ido conociéndome y aprendiendo a 
                 soltar y darme permiso a cumplir mis sueños, voy paso a 
                 paso a mi ritmo y cada día me siento más feliz y libre de 
-                hacer lo que pienso y deseo hacer dando el gusto a mi."
+                hacer lo que pienso y deseo hacer dándome el gusto."
               </p>
             </CardContent>
           </Card>
@@ -100,8 +100,8 @@ export function TestimonialSection() {
                   />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Pamela Santander Robles</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Eneatipo 4</p>
+                  <p className="text-sm font-medium">Ramiro Brañes</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Eneatipo 1</p>
                 </div>
               </div>
             </CardHeader>
@@ -111,8 +111,7 @@ export function TestimonialSection() {
                 en algún Lugar, había un oráculo que afirmaba "Conócete 
                 a ti y conocerás al Universo…". Cuánta razón tenía y qué 
                 hermosa experiencia hacerlo con Fanny a través del 
-                Eneagrama. Todos quieren estar 
-                en la página, qué lindo."
+                Eneagrama."
               </p>
             </CardContent>
           </Card>
@@ -132,14 +131,14 @@ export function TestimonialSection() {
                   />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Diego Gonzales</p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">Eneatipo 9</p>
+                  <p className="text-sm font-medium">Melina Gambin</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">Eneatipo 7</p>
                 </div>
               </div>
             </CardHeader>
             <CardContent className="pt-4">
               <p className="text-sm text-gray-500 dark:text-gray-400">
-                "Estudiar eneagrama 
+                "Estudiar Eneagrama 
                 ha significado para mí tener una conexión, entre mi mundo 
                 interior y el resto de las personas. Tener conciencia y 
                 claridad de quién soy y qué es lo que quiero para mí, me 

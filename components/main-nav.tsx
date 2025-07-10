@@ -13,9 +13,9 @@ export function MainNav() {
 
   return (
     <>
-      <div className="mr-4 hidden md:flex">
+      <div className="mr-2 hidden md:flex">
         <Link href="/" className="mr-6 flex items-center space-x-2">
-          <div className="relative h-12 w-[300px]">
+          <div className="relative h-12 w-[100px]">
             <Image
               src="/imgs/enean_logo.svg"
               alt="Eneagrama | Fanny Torres Da Silva"
@@ -29,8 +29,8 @@ export function MainNav() {
       <div className="flex flex-1 items-center justify-between md:justify-end space-x-2 md:space-x-4">
         {isMobile && (
           <>
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="relative h-10 w-[200px]">
+            <Link href="/" className="flex items-center">
+              <div className="relative h-10 w-[100px]">
                 <Image
                   src="/imgs/enean_logo.svg"
                   alt="Eneagrama | Fanny Torres Da Silva"
@@ -59,25 +59,17 @@ export function MainNav() {
                   </div>
                 </Link>
                 <nav className="flex flex-col space-y-4">
-                  <Link href="/curso" className="text-lg font-medium">
-                    Curso Completo
-                  </Link>
-                  <Link href="/login" className="text-lg font-medium">
-                    Iniciar Sesión
-                  </Link>
+                 
                 </nav>
               </SheetContent>
             </Sheet>
           </>
         )}
         <div className="hidden md:flex">
-          <Link href="/curso">
+          <Link target="_blank" href="https://www.youtube.com/@FannyTorresdasilva">
             <Button variant="default" className="mr-2">
-              Comprar Curso
+              Aprender más
             </Button>
-          </Link>
-          <Link href="/login">
-            <Button variant="outline">Iniciar Sesión</Button>
           </Link>
         </div>
       </div>

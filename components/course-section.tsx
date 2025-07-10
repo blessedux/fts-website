@@ -11,7 +11,7 @@ export function CourseSection() {
           <div className="space-y-2">
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight">Curso Completo de Eneagrama</h2>
             <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-              Aprende a tu ritmo con nuestro curso autoguiado, diseñado para transformar tu comprensión de ti mismo y de
+              Aprende a tu ritmo con nuestro curso autoguiado, diseñado para transformar la comprensión de ti mismo y de
               los demás.
             </p>
           </div>
