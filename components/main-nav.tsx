@@ -4,7 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Menu } from "lucide-react"
+import { Menu, Book } from "lucide-react"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { useMobile } from "@/hooks/use-mobile"
 
@@ -29,7 +29,7 @@ export function MainNav() {
       <div className="flex flex-1 items-center justify-between md:justify-end space-x-2 md:space-x-4">
         {isMobile && (
           <>
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center -ml-4">
               <div className="relative h-10 w-[100px]">
                 <Image
                   src="/imgs/enean_logo.svg"
@@ -65,10 +65,14 @@ export function MainNav() {
             </Sheet>
           </>
         )}
-        <div className="hidden md:flex">
+        <div className="flex items-center">
           <Link target="_blank" href="https://www.youtube.com/@FannyTorresdasilva">
-            <Button variant="default" className="mr-2">
-              Aprender más
+            <Button variant="default" className="mr-2" size={isMobile ? "icon" : "default"}>
+              {isMobile ? (
+                <Book className="h-4 w-4" />
+              ) : (
+                "Aprender más"
+              )}
             </Button>
           </Link>
         </div>

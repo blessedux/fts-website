@@ -10,7 +10,7 @@ export default function BioLayout({
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center">
+        <div className="container flex h-16 items-center px-2 md:px-4">
           <MainNav />
         </div>
       </header>

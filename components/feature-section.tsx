@@ -7,7 +7,7 @@ export function FeatureSection() {
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">
             <div className="inline-block rounded-lg bg-[#F5E6C3] px-3 py-1 text-sm dark:bg-[#8B6B2E]">
-              Metodología Única
+              Metodología
             </div>
             <h2 className="text-3xl font-bold tracking-tighter md:text-4xl/tight"> Nuestra plataforma</h2>
             <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
