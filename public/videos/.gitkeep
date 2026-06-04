@@ -1,0 +1,3 @@
+# Video del hero (coloca uno de estos archivos):
+#   hero-observatory.mp4  (por defecto)
+# O define: NEXT_PUBLIC_HERO_VIDEO=/videos/tu-archivo.mp4

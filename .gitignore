@@ -25,3 +25,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# consultas (datos locales de desarrollo)
+/data/bookings.json

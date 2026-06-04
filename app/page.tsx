@@ -1,34 +1,16 @@
-import { MainNav } from "@/components/main-nav"
-import { HeroSection } from "@/components/hero-section"
-import { FeatureSection } from "@/components/feature-section"
-import { CourseSection } from "@/components/course-section"
-import { BookSection } from "@/components/book-section"
-import { RetreatSection } from "@/components/retreat-section"
-import { TestimonialSection } from "@/components/testimonial-section"
-import { PressSection } from "@/components/press-section"
-import { RadioProgramSection } from "@/components/radio-program-section"
-import { Footer } from "@/components/footer"
+import type { Metadata } from "next"
+import { LandingPageV2 } from "@/components/landing-v2/landing-page"
+import { SITE_TAGLINE } from "@/lib/landing-v2/constants"
 
+export const metadata: Metadata = {
+  title: "Fanny Torres Da Silva | Psicoanálisis y autoconocimiento",
+  description: SITE_TAGLINE,
+  openGraph: {
+    title: "Fanny Torres Da Silva — El viaje hacia el inconsciente",
+    description: SITE_TAGLINE,
+  },
+}
 
 export default function Home() {
-  return (
-    <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center px-2 md:px-4">
-          <MainNav />
-        </div>
-      </header>
-      <main className="flex-1">
-        <HeroSection />
-        <FeatureSection />
-        <CourseSection />
-        <BookSection />
-        <RetreatSection />
-        <PressSection />
-        <RadioProgramSection />
-        <TestimonialSection />
-      </main>
-      <Footer />
-    </div>
-  )
+  return <LandingPageV2 />
 }

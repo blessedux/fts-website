@@ -28,12 +28,12 @@ const ebGaramond = EB_Garamond({
 })
 
 export const metadata: Metadata = {
-  title: "Sobre Fanny Torres Silva | Psicoanálisis y autoconocimiento",
+  title: "El libro oficial de eneagrama | Fanny Torres Da Silva",
   description:
-    "Recorrido profesional de Fanny Torres Silva: psicoanálisis, eneagrama, formación internacional y trabajo con el desarrollo humano.",
+    "Guía completa del eneagrama por Fanny Torres Da Silva. Historia, nueve tipos, relaciones y caminos de crecimiento personal.",
 }
 
-export default function BioLayout({ children }: { children: React.ReactNode }) {
+export default function BookLayout({ children }: { children: React.ReactNode }) {
   return (
     <div
       className={`landing-v2 min-h-screen ${dmSans.variable} ${cormorant.variable} ${ebGaramond.variable}`}
