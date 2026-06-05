@@ -23,10 +23,13 @@ export function LandingEneagrama() {
           />
         </div>
 
-        <div className="lv2-eneagrama-content absolute inset-0 z-10 flex min-h-0 items-center px-6 py-14 md:px-10 md:py-16">
-          <div className="mx-auto grid w-full max-w-6xl gap-12 md:grid-cols-2 md:items-center md:gap-16">
-            <div className="flex justify-center [&_svg]:overflow-visible">
-              <EneagramaMap className="w-full max-w-[360px] text-[var(--lv2-espresso)]" />
+        <div className="lv2-eneagrama-content absolute inset-0 z-10 flex min-h-0 items-center px-6 py-10 md:px-10 md:py-16">
+          <div className="mx-auto grid w-full max-w-6xl gap-8 md:grid-cols-2 md:items-center md:gap-16">
+            <div className="lv2-eneagrama-map-wrap flex justify-center [&_svg]:overflow-visible">
+              <EneagramaMap
+                tone="light"
+                className="w-full max-w-[min(72vw,280px)] md:max-w-[360px]"
+              />
             </div>
             <div className="lv2-eneagrama-copy relative">
               <div className="lv2-eneagrama-text-veil" aria-hidden />
@@ -36,7 +39,7 @@ export function LandingEneagrama() {
               </h2>
               <div className="lv2-gold-line my-8 max-w-[120px]" />
               <p className="lv2-body text-lg">
-                No una personalidad cerrada. Un lenguaje para observar patrones automáticos,
+                Un lenguaje para observar patrones automáticos,
                 mecanismos de defensa y potenciales caminos de crecimiento.
               </p>
               <p className="lv2-body mt-6 text-base italic text-[var(--lv2-taupe)]">

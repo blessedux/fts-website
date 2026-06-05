@@ -7,10 +7,18 @@ import { OFFERINGS } from "@/lib/landing-v2/constants"
 const GROUP_SELECTOR = "[data-lv2-bridge]"
 const CAMINOS_HOST_VH = 42
 const SLIDE_VH_RATIO = 0.28
+const MOBILE_MQ = "(max-width: 767px)"
+/** Scroll distance while biombo scales on mobile */
+const MOBILE_BIOMBO_RUNWAY_VH = 2.5
+const MOBILE_BIOMBO_SCALE_MIN = 0.78
 
 function getSlideMax() {
   if (typeof window === "undefined") return 0
   return window.innerHeight * SLIDE_VH_RATIO
+}
+
+function isMobileViewport() {
+  return typeof window !== "undefined" && window.matchMedia(MOBILE_MQ).matches
 }
 
 export function LandingOfferings() {
@@ -29,11 +37,17 @@ export function LandingOfferings() {
     }
 
     const measureBiomboShift = () => {
+      const mobile = isMobileViewport()
+      const vh = window.innerHeight
+
+      if (mobile) {
+        return vh * MOBILE_BIOMBO_RUNWAY_VH
+      }
+
       const media = document.querySelector(
         "#eneagrama .lv2-eneagrama-media"
       ) as HTMLElement | null
       if (!media) return 0
-      const vh = window.innerHeight
       const imageHeight = media.getBoundingClientRect().height
       return Math.max(0, imageHeight - vh)
     }
@@ -52,6 +66,7 @@ export function LandingOfferings() {
       const caminosHost = caminosHostRef.current
       if (!biomboRunway || !caminosHost) return
 
+      const mobile = isMobileViewport()
       const vh = window.innerHeight
       const slideMax = vh * SLIDE_VH_RATIO
       const biomboShift = biomboShiftRef.current
@@ -60,14 +75,25 @@ export function LandingOfferings() {
       const hostTop = caminosHost.getBoundingClientRect().top
 
       let biomboY = 0
+      let biomboScale = 1
       let panelY = slideMax
 
       if (runwayTop <= vh + 1) {
         if (biomboShift > 0 && runwayTop > vh - biomboShift) {
           const biomboProgress = (vh - runwayTop) / biomboShift
-          biomboY = -biomboProgress * biomboShift
+
+          if (mobile) {
+            biomboScale =
+              1 - biomboProgress * (1 - MOBILE_BIOMBO_SCALE_MIN)
+          } else {
+            biomboY = -biomboProgress * biomboShift
+          }
         } else {
-          biomboY = -biomboShift
+          if (mobile) {
+            biomboScale = MOBILE_BIOMBO_SCALE_MIN
+          } else {
+            biomboY = -biomboShift
+          }
 
           if (hostTop <= vh + 1) {
             const caminosProgress = Math.min(
@@ -80,6 +106,8 @@ export function LandingOfferings() {
       }
 
       group?.style.setProperty("--lv2-biombo-y", `${biomboY}px`)
+      group?.style.setProperty("--lv2-biombo-x", "0px")
+      group?.style.setProperty("--lv2-biombo-scale", String(biomboScale))
       setPanelOffset(panelY)
     }
 
@@ -132,10 +160,10 @@ export function LandingOfferings() {
             <div className="mx-auto max-w-2xl text-center">
               <p className="lv2-section-label mb-4">Dos caminos de trabajo</p>
               <h2 className="lv2-display text-3xl text-[var(--lv2-ivory)] md:text-4xl text-balance">
-                Terapia individual y eneagrama en organizaciones
+                Consulta psicoanalítica y Eneagrama para organizaciones
               </h2>
               <p className="lv2-body mt-6 text-lg">
-                Un mismo marco de comprensión profunda, aplicado al trabajo interior personal o al
+                Un mismo marco de comprensión profunda, aplicado al trabajo interior o al
                 lenguaje de equipos, liderazgo y cultura.
               </p>
             </div>

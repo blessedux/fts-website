@@ -14,10 +14,22 @@ const CONSULTATION_IMAGE = {
 const RUNWAY_VH = 0.88
 const BLUR_ZONE_VH = 0.42
 const MAX_BLUR_PX = 16
+/** Extra scroll (beyond runway) used to finish the horizontal pan on mobile */
+const MOBILE_PAN_EXTRA_VH = 0.42
+/** Stop horizontal pan at this fraction of the image width (0–1) */
+const MOBILE_PAN_WIDTH_RATIO = 0.8
 
-/** Fade starts when the title enters the viewport; full opacity after a short scroll */
-const BOOKING_TITLE_ENTER_VH = 1
-const BOOKING_TITLE_FULL_VH = 0.96
+function mobileImageWidth(vh: number, img: HTMLImageElement | null) {
+  if (img) {
+    const measured = img.getBoundingClientRect().width
+    if (measured > 0) return measured
+  }
+  return vh * (CONSULTATION_IMAGE.width / CONSULTATION_IMAGE.height)
+}
+
+/** Fade starts as soon as the booking block nears the viewport */
+const BOOKING_TITLE_ENTER_VH = 1.38
+const BOOKING_TITLE_FULL_VH = 1.08
 
 function bookingTitleFade(rect: DOMRect, vh: number) {
   if (rect.bottom <= 0 || rect.top >= vh) return 0
@@ -31,11 +43,23 @@ function bookingTitleFade(rect: DOMRect, vh: number) {
   return Math.min(Math.max((enterY - rect.top) / span, 0), 1)
 }
 
+function sectionEntryFade(sectionTop: number, vh: number) {
+  const enterY = vh * 1.15
+  const fullY = vh * 0.62
+  const span = enterY - fullY
+  if (span <= 0) return 1
+  if (sectionTop <= fullY) return 1
+  if (sectionTop >= enterY) return 0
+  return Math.min(Math.max((enterY - sectionTop) / span, 0), 1)
+}
+
 export function LandingConsultaParallax() {
   const sectionRef = useRef<HTMLElement>(null)
   const runwayRef = useRef<HTMLDivElement>(null)
   const overlayRef = useRef<HTMLDivElement>(null)
   const bookingTitleRef = useRef<HTMLParagraphElement>(null)
+  const bgImgRef = useRef<HTMLImageElement>(null)
+  const updateScrollRef = useRef<() => void>(() => undefined)
   const [blurPx, setBlurPx] = useState(0)
   const [scrimOpacity, setScrimOpacity] = useState(0)
   const [introOpacity, setIntroOpacity] = useState(0)
@@ -44,11 +68,18 @@ export function LandingConsultaParallax() {
   const [bookingTitleY, setBookingTitleY] = useState(16)
   const [bookingPanelOpacity, setBookingPanelOpacity] = useState(0)
   const [bookingPanelY, setBookingPanelY] = useState(20)
+  const [bgPanX, setBgPanX] = useState(0)
   const [motionEnabled, setMotionEnabled] = useState(true)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const mobileMq = window.matchMedia("(max-width: 767px)")
     setMotionEnabled(!reduced)
+
+    const syncMobile = () => setIsMobile(mobileMq.matches)
+    syncMobile()
+    mobileMq.addEventListener("change", syncMobile)
 
     const update = () => {
       const section = sectionRef.current
@@ -62,23 +93,45 @@ export function LandingConsultaParallax() {
       const sectionTop = sectionRect.top
       const sectionInView = sectionRect.top < vh && sectionRect.bottom > 0
 
-      /** Pixels scrolled since section top aligned with viewport top */
       const scrollIntoSection = Math.max(0, -sectionTop)
 
-      /** Sharp through full runway; blur only after runway bottom is reached */
+      const mobile = mobileMq.matches
+
       const blurProgress =
-        sectionInView && scrollIntoSection > runwayPx
+        !mobile &&
+        sectionInView &&
+        scrollIntoSection > runwayPx
           ? Math.min((scrollIntoSection - runwayPx) / blurZonePx, 1)
           : 0
 
+      let nextBgPanX = 0
+      if (mobile && sectionInView) {
+        const renderedW = mobileImageWidth(vh, bgImgRef.current)
+        const maxPan = Math.max(
+          0,
+          renderedW * MOBILE_PAN_WIDTH_RATIO - window.innerWidth
+        )
+        const panRange = runwayPx + vh * MOBILE_PAN_EXTRA_VH
+        const panProgress = Math.min(Math.max(scrollIntoSection / panRange, 0), 1)
+        nextBgPanX = -panProgress * maxPan
+      }
+
       const titleRect = bookingTitleRef.current?.getBoundingClientRect()
       const titleFade = titleRect ? bookingTitleFade(titleRect, vh) : 0
+      const entryFade = sectionEntryFade(sectionTop, vh)
 
-      const introFade = Math.min(blurProgress / 0.5, 1)
-      const panelFade = Math.min(Math.max(blurProgress - 0.06, 0) / 0.42, 1)
+      const introFade = Math.max(
+        Math.min(blurProgress / 0.5, 1),
+        entryFade * 0.85
+      )
+      const panelFade = Math.max(
+        titleFade,
+        Math.min(Math.max(entryFade - 0.08, 0) / 0.55, 1)
+      )
 
       if (reduced) {
         setBlurPx(0)
+        setBgPanX(0)
         setScrimOpacity(0.35)
         setIntroOpacity(1)
         setIntroY(0)
@@ -89,6 +142,7 @@ export function LandingConsultaParallax() {
         return
       }
 
+      setBgPanX(nextBgPanX)
       setBlurPx(blurProgress * MAX_BLUR_PX)
       setScrimOpacity(blurProgress * 0.48 + titleFade * 0.22 + panelFade * 0.12)
       setIntroOpacity(introFade)
@@ -99,15 +153,35 @@ export function LandingConsultaParallax() {
       setBookingPanelY((1 - panelFade) * 20)
     }
 
+    updateScrollRef.current = update
     update()
     window.addEventListener("scroll", update, { passive: true })
     window.addEventListener("resize", update)
 
+    const img = bgImgRef.current
+    const ro = new ResizeObserver(update)
+    if (img) ro.observe(img)
+
     return () => {
+      ro.disconnect()
+      mobileMq.removeEventListener("change", syncMobile)
       window.removeEventListener("scroll", update)
       window.removeEventListener("resize", update)
     }
   }, [])
+
+  const desktopBgScale =
+    motionEnabled && !isMobile && blurPx > 0 ? 1 + blurPx * 0.0025 : undefined
+
+  const layerTransform =
+    motionEnabled && isMobile && bgPanX !== 0
+      ? `translate3d(${bgPanX}px, 0, 0)`
+      : undefined
+
+  const imageTransform =
+    motionEnabled && desktopBgScale
+      ? `scale(${desktopBgScale})`
+      : undefined
 
   return (
     <section
@@ -116,23 +190,35 @@ export function LandingConsultaParallax() {
       className="lv2-consulta-parallax relative bg-[var(--lv2-ink)]"
     >
       <div className="lv2-consulta-bg-pin pointer-events-none" aria-hidden>
-        <Image
-          src={CONSULTATION_IMAGE.src}
-          alt="Espacio de exploración interior"
-          width={CONSULTATION_IMAGE.width}
-          height={CONSULTATION_IMAGE.height}
-          className="lv2-consulta-bg-img"
+        <div
+          className="lv2-consulta-bg-layer"
           style={
-            motionEnabled
-              ? {
-                  filter: blurPx > 0 ? `blur(${blurPx}px)` : "none",
-                  transform: blurPx > 0 ? `scale(${1 + blurPx * 0.0025})` : "none",
-                }
+            layerTransform
+              ? { transform: layerTransform, willChange: "transform" }
               : undefined
           }
-          sizes="100vw"
-          priority={false}
-        />
+        >
+          <Image
+            ref={bgImgRef}
+            src={CONSULTATION_IMAGE.src}
+            alt="Espacio de exploración interior"
+            width={CONSULTATION_IMAGE.width}
+            height={CONSULTATION_IMAGE.height}
+            className="lv2-consulta-bg-img"
+            style={
+              motionEnabled
+                ? {
+                    filter: blurPx > 0 ? `blur(${blurPx}px)` : "none",
+                    transform: imageTransform,
+                    transformOrigin: isMobile ? "left center" : "center 72%",
+                  }
+                : undefined
+            }
+            sizes="100vw"
+            priority={false}
+            onLoad={() => updateScrollRef.current()}
+          />
+        </div>
         <div
           className="lv2-consulta-bg-scrim absolute inset-0"
           style={{ opacity: scrimOpacity }}

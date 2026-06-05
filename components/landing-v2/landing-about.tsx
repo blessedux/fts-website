@@ -3,10 +3,9 @@ import Link from "next/link"
 
 const HIGHLIGHTS = [
   "Formación en psicoanálisis y desarrollo humano",
-  "Experiencia clínica en procesos de largo plazo",
-  "Enfoque terapéutico integrador y simbólico",
-  "Trabajo profundo con el eneagrama como mapa interior",
-  "Visión del desarrollo como comprensión, no solo alivio",
+  "Profesora de literatura y escritora",
+  "Enfoque integrador y simbólico",
+  "Trabajo profundo con el Eneagrama como mapa interior"
 ] as const
 
 export function LandingAbout() {
@@ -20,8 +19,8 @@ export function LandingAbout() {
           </h2>
           <div className="lv2-gold-line my-8 max-w-[120px]" />
           <p className="lv2-body text-lg mb-8">
-            Psicoanálisis, eneagrama y acompañamiento para quienes buscan comprender profundamente
-            su historia, sus patrones y su propósito — no solo sentirse mejor, sino entender quién son.
+            Psicoanálisis y eneagrama para quienes buscan comprender profundamente
+            su historia, sus patrones y su propósito, no solo sentirse mejor, sino entender quién son.
           </p>
           <ul className="space-y-3">
             {HIGHLIGHTS.map((item) => (
@@ -34,8 +33,7 @@ export function LandingAbout() {
             ))}
           </ul>
           <p className="lv2-body mt-8 text-base">
-            Formación en Chile, Londres y Buenos Aires. Integra psicoanálisis, PNL, mitología y una
-            mirada simbólica del desarrollo humano.
+            Formación en Chile, Londres y Buenos Aires. Integra psicoanálisis y Eneagrama como una mirada simbolica del desarrollo huamno.
           </p>
           <Link
             href="/sobre-mi"

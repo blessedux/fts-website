@@ -1,47 +1,54 @@
 "use client"
 
-import { useCallback, useEffect, useState } from "react"
-import { format } from "date-fns"
+import { useCallback, useEffect, useRef, useState } from "react"
+import { format, addMonths, subMonths, startOfMonth, endOfMonth } from "date-fns"
 import { es } from "date-fns/locale"
 import { DayPicker } from "react-day-picker"
 import "react-day-picker/style.css"
 import { cn } from "@/lib/utils"
-import { isBookableDate } from "@/lib/booking/slots"
-import { formatBookingDateLabel } from "@/lib/booking/slots"
-import type { ConsultationModality, TimeSlot } from "@/lib/booking/types"
+import { isBookableDate, formatBookingDateLabel } from "@/lib/booking/slots"
+import type { ConsultationModality } from "@/lib/booking/types"
 
 type Step = "date" | "time" | "details" | "done"
 
-type RevealStyle = {
-  opacity: number
-  translateY: number
+type AvailabilityResponse = {
+  source: string
+  availableSlotsByDate: Record<string, string[]>
+  timezone: string
+  databaseConfigured: boolean
 }
 
-type ConsultationBookingProps = {
-  labelsReveal?: RevealStyle
-  panelReveal?: RevealStyle
+type BookSuccess = {
+  ok: true
+  bookingId?: string
+  status?: "pending" | "confirmed"
+  guestEmailSent?: boolean
 }
 
-function revealStyle(reveal?: RevealStyle) {
-  if (!reveal) return undefined
-  return {
-    opacity: reveal.opacity,
-    transform: `translate3d(0, ${reveal.translateY}px, 0)`,
-    willChange: "opacity, transform" as const,
-  }
+function pad2(n: number) {
+  return String(n).padStart(2, "0")
 }
 
-export function ConsultationBooking({
-  labelsReveal,
-  panelReveal,
-}: ConsultationBookingProps = {}) {
+function ymdFromDate(d: Date): string {
+  return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`
+}
+
+function monthRange(d: Date): { from: string; to: string } {
+  const first = startOfMonth(d)
+  const last = endOfMonth(d)
+  return { from: ymdFromDate(first), to: ymdFromDate(last) }
+}
+
+export function ConsultationBooking() {
   const [step, setStep] = useState<Step>("date")
+  const [currentMonth, setCurrentMonth] = useState<Date>(new Date())
   const [selectedDate, setSelectedDate] = useState<Date | undefined>()
   const [selectedTime, setSelectedTime] = useState<string | null>(null)
-  const [slots, setSlots] = useState<TimeSlot[]>([])
-  const [loadingSlots, setLoadingSlots] = useState(false)
+  const [availability, setAvailability] = useState<AvailabilityResponse | null>(null)
+  const [loadingAvail, setLoadingAvail] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [bookSuccess, setBookSuccess] = useState<BookSuccess | null>(null)
 
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -49,29 +56,67 @@ export function ConsultationBooking({
   const [modality, setModality] = useState<ConsultationModality>("online")
   const [notes, setNotes] = useState("")
 
-  const dateStr = selectedDate ? format(selectedDate, "yyyy-MM-dd") : null
+  const pollRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
-  const fetchSlots = useCallback(async (date: string) => {
-    setLoadingSlots(true)
-    setError(null)
+  const dateStr = selectedDate ? ymdFromDate(selectedDate) : null
+
+  const fetchAvailability = useCallback(async (month: Date) => {
+    const { from, to } = monthRange(month)
+    setLoadingAvail(true)
     try {
-      const res = await fetch(`/api/bookings?date=${date}`)
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error ?? "No se pudieron cargar los horarios")
-      setSlots(data.slots)
+      const res = await fetch(
+        `/api/booking-availability?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`,
+        { cache: "no-store" },
+      )
+      if (!res.ok) throw new Error("No se pudo cargar la disponibilidad")
+      const data: AvailabilityResponse = await res.json()
+      setAvailability(data)
     } catch (e) {
-      setError(e instanceof Error ? e.message : "Error de conexión")
-      setSlots([])
+      console.error("[ConsultationBooking] availability fetch:", e)
     } finally {
-      setLoadingSlots(false)
+      setLoadingAvail(false)
     }
   }, [])
 
+  // Fetch on mount and whenever the visible month changes
   useEffect(() => {
-    if (dateStr && step === "time") {
-      fetchSlots(dateStr)
+    fetchAvailability(currentMonth)
+  }, [currentMonth, fetchAvailability])
+
+  // 60-second poll + refetch on focus/visibility so slot list stays current
+  useEffect(() => {
+    const refetch = () => fetchAvailability(currentMonth)
+    pollRef.current = setInterval(refetch, 60_000)
+    window.addEventListener("focus", refetch)
+    document.addEventListener("visibilitychange", refetch)
+    return () => {
+      if (pollRef.current) clearInterval(pollRef.current)
+      window.removeEventListener("focus", refetch)
+      document.removeEventListener("visibilitychange", refetch)
     }
-  }, [dateStr, step, fetchSlots])
+  }, [currentMonth, fetchAvailability])
+
+  // Refetch when a booking is completed so picker reflects the now-taken slot
+  useEffect(() => {
+    function onBookingChanged() {
+      fetchAvailability(currentMonth)
+    }
+    window.addEventListener("fts-bookings-changed", onBookingChanged)
+    return () => window.removeEventListener("fts-bookings-changed", onBookingChanged)
+  }, [currentMonth, fetchAvailability])
+
+  const availableSlots: string[] = dateStr
+    ? (availability?.availableSlotsByDate[dateStr] ?? [])
+    : []
+
+  /** A date is selectable when it has at least one available slot in the fetched month. */
+  function isDayDisabled(date: Date): boolean {
+    if (!isBookableDate(date)) return true
+    if (!availability) return false // optimistic while loading
+    const ymd = ymdFromDate(date)
+    const slots = availability.availableSlotsByDate[ymd]
+    return !slots || slots.length === 0
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -81,7 +126,7 @@ export function ConsultationBooking({
     setError(null)
 
     try {
-      const res = await fetch("/api/bookings", {
+      const res = await fetch("/api/book-consultation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -96,7 +141,9 @@ export function ConsultationBooking({
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error ?? "No se pudo completar la reserva")
+      setBookSuccess(data as BookSuccess)
       setStep("done")
+      window.dispatchEvent(new CustomEvent("fts-bookings-changed"))
     } catch (e) {
       setError(e instanceof Error ? e.message : "Error al reservar")
     } finally {
@@ -113,30 +160,40 @@ export function ConsultationBooking({
     setPhone("")
     setNotes("")
     setError(null)
+    setBookSuccess(null)
   }
 
   if (step === "done" && dateStr && selectedTime) {
     return (
       <div className="lv2-booking-panel text-center">
-        <div style={revealStyle(labelsReveal)}>
-          <p className="lv2-section-label mb-3">Reserva confirmada</p>
-          <h3 className="lv2-display text-2xl text-[var(--lv2-ivory)] mb-4">
-            Tu camino ha comenzado
-          </h3>
-        </div>
-        <div style={revealStyle(panelReveal)}>
-          <p className="lv2-body text-base mb-6">
-            {formatBookingDateLabel(dateStr)} · {selectedTime}
-            <br />
-            {modality === "online" ? "Consulta online" : "Consulta presencial"}
-          </p>
-          <p className="lv2-body text-sm mb-8">
-            Recibirás un correo de confirmación en <span className="text-[var(--lv2-taupe)]">{email}</span>.
-          </p>
-          <button type="button" onClick={reset} className="lv2-btn-outline">
-            Reservar otra fecha
-          </button>
-        </div>
+        <p className="lv2-section-label mb-3">Solicitud enviada</p>
+        <h3 className="lv2-display text-2xl text-[var(--lv2-ivory)] mb-4">
+          Hemos recibido tu solicitud
+        </h3>
+        <p className="lv2-body text-base mb-6">
+          {formatBookingDateLabel(dateStr)} · {selectedTime}
+          <br />
+          {modality === "online" ? "Consulta online" : "Consulta presencial"}
+        </p>
+        <p className="lv2-body text-sm mb-8">
+          {bookSuccess?.guestEmailSent ? (
+            <>
+              Te enviamos un correo a{" "}
+              <span className="text-[var(--lv2-taupe)]">{email}</span> confirmando
+              que recibimos tu solicitud. Te avisaremos cuando quede confirmada la
+              cita.
+            </>
+          ) : (
+            <>
+              Tu solicitud fue registrada. Te contactaremos por correo cuando
+              quede confirmada la cita.
+            </>
+          )}
+        </p>
+
+        <button type="button" onClick={reset} className="lv2-btn-outline">
+          Reservar otra fecha
+        </button>
       </div>
     )
   }
@@ -145,25 +202,22 @@ export function ConsultationBooking({
     <div className="lv2-booking-panel">
       {step === "date" && (
         <div>
-          <p
-            className="lv2-section-label mb-4 text-center"
-            style={revealStyle(labelsReveal)}
-          >
-            Paso 1 — Elige una fecha
-          </p>
-          <div style={revealStyle(panelReveal)}>
+          <p className="lv2-section-label mb-4 text-center">Paso 1 — Elige una fecha</p>
+          {loadingAvail && !availability && (
+            <p className="lv2-body text-center text-sm mb-4 opacity-60">Cargando disponibilidad…</p>
+          )}
           <DayPicker
             mode="single"
             selected={selectedDate}
+            month={currentMonth}
+            onMonthChange={setCurrentMonth}
             onSelect={(d) => {
               setSelectedDate(d)
               setSelectedTime(null)
-              if (d) {
-                setStep("time")
-              }
+              if (d) setStep("time")
             }}
             locale={es}
-            disabled={(date) => !isBookableDate(date)}
+            disabled={isDayDisabled}
             className="lv2-day-picker mx-auto"
             modifiersClassNames={{
               selected: "lv2-day-selected",
@@ -171,13 +225,11 @@ export function ConsultationBooking({
               disabled: "lv2-day-disabled",
             }}
           />
-          </div>
         </div>
       )}
 
       {step === "time" && dateStr && (
         <div>
-          <div style={revealStyle(labelsReveal)}>
           <button
             type="button"
             onClick={() => setStep("date")}
@@ -189,24 +241,22 @@ export function ConsultationBooking({
           <p className="lv2-display text-xl text-[var(--lv2-ivory)] mb-6 capitalize">
             {formatBookingDateLabel(dateStr)}
           </p>
-          </div>
-          <div style={revealStyle(panelReveal)}>
-          {loadingSlots ? (
-            <p className="lv2-body text-center py-8">Cargando horarios…</p>
+          {availableSlots.length === 0 ? (
+            <p className="lv2-body text-center py-8 text-sm">
+              No hay horarios disponibles este día. Elige otra fecha.
+            </p>
           ) : (
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-              {slots.map(({ time, available }) => (
+              {availableSlots.map((time) => (
                 <button
                   key={time}
                   type="button"
-                  disabled={!available}
                   onClick={() => {
                     setSelectedTime(time)
                     setStep("details")
                   }}
                   className={cn(
                     "lv2-slot-btn",
-                    !available && "lv2-slot-btn--disabled",
                     selectedTime === time && "lv2-slot-btn--active"
                   )}
                 >
@@ -215,18 +265,11 @@ export function ConsultationBooking({
               ))}
             </div>
           )}
-          {slots.length > 0 && slots.every((s) => !s.available) && (
-            <p className="lv2-body mt-4 text-center text-sm">
-              No hay horarios disponibles este día. Elige otra fecha.
-            </p>
-          )}
-          </div>
         </div>
       )}
 
       {step === "details" && dateStr && selectedTime && (
         <form onSubmit={handleSubmit} className="space-y-5">
-          <div style={revealStyle(labelsReveal)}>
           <button
             type="button"
             onClick={() => setStep("time")}
@@ -238,9 +281,8 @@ export function ConsultationBooking({
           <p className="lv2-body text-sm capitalize">
             {formatBookingDateLabel(dateStr)} · {selectedTime}
           </p>
-          </div>
 
-          <div className="space-y-4" style={revealStyle(panelReveal)}>
+          <div className="space-y-4">
             <label className="block">
               <span className="lv2-form-label">Nombre completo</span>
               <input
@@ -303,18 +345,13 @@ export function ConsultationBooking({
           </div>
 
           {error && (
-            <p className="text-sm text-red-300/90" role="alert" style={revealStyle(panelReveal)}>
+            <p className="text-sm text-red-300/90" role="alert">
               {error}
             </p>
           )}
 
-          <button
-            type="submit"
-            disabled={submitting}
-            className="lv2-btn-gold w-full"
-            style={revealStyle(panelReveal)}
-          >
-            {submitting ? "Reservando…" : "Confirmar consulta inicial"}
+          <button type="submit" disabled={submitting} className="lv2-btn-gold w-full">
+            {submitting ? "Enviando solicitud…" : "Solicitar consulta inicial"}
           </button>
         </form>
       )}

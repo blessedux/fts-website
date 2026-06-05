@@ -207,13 +207,14 @@
   height: 100%;
   object-fit: cover;
   object-position: top center;
+  will-change: filter, transform;
 }
 
 .lv2-hero-video-vignette {
   background:
     linear-gradient(
       to bottom,
-      rgba(37, 17, 5, 0.12) 0%,
+      rgba(37, 17, 5, 0) 0%,
       transparent 22%,
       transparent 42%,
       rgba(37, 17, 5, 0.35) 68%,
@@ -225,6 +226,10 @@
 .lv2-hero-scroll-content {
   position: relative;
   z-index: 10;
+  pointer-events: none;
+}
+
+.lv2-hero-scroll-content > * {
   pointer-events: none;
 }
 
@@ -255,7 +260,9 @@
 .lv2-particle-veil--hero-scroll {
   background: linear-gradient(
     to bottom,
-    rgba(37, 17, 5, 0.52) 0%,
+    rgba(37, 17, 5, 0) 0%,
+    rgba(37, 17, 5, 0) 12%,
+    rgba(37, 17, 5, 0.52) 20%,
     rgba(37, 17, 5, 0.72) 32%,
     rgba(37, 17, 5, 0.9) 58%,
     var(--lv2-void) 82%,
@@ -276,6 +283,37 @@
   }
 }
 
+.lv2-symptoms-closing {
+  font-family: var(--font-eb-garamond), Georgia, serif;
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+.lv2-symptoms-closing-line {
+  display: inline-block;
+  margin-top: 0.35rem;
+  font-size: 1.375rem;
+  line-height: 1.45;
+  color: var(--lv2-ivory);
+}
+
+.lv2-symptoms-closing-accent {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+  .lv2-symptoms-closing {
+    font-size: 1.25rem;
+  }
+
+  .lv2-symptoms-closing-line {
+    font-size: 1.625rem;
+  }
+}
+
 .lv2-symptoms-text {
   margin-top: 0;
   padding-top: 0;
@@ -287,7 +325,7 @@
   }
 }
 
-@keyframes lv2-symptoms-fade-up {
+@keyframes lv2-scroll-fade-up {
   from {
     opacity: 0;
     transform: translate3d(0, 1.25rem, 0);
@@ -299,60 +337,20 @@
   }
 }
 
-.lv2-symptoms-fade {
+.lv2-scroll-fade {
   opacity: 0;
 }
 
-.lv2-symptoms-panel--visible .lv2-symptoms-fade {
-  animation: lv2-symptoms-fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.lv2-symptoms-panel--visible .lv2-symptoms-fade--1 {
-  animation-delay: 0.05s;
-}
-
-.lv2-symptoms-panel--visible .lv2-symptoms-fade--2 {
-  animation-delay: 0.12s;
-}
-
-.lv2-symptoms-panel--visible .lv2-symptoms-fade--3 {
-  animation-delay: 0.18s;
-}
-
-.lv2-symptoms-panel--visible .lv2-symptoms-fade--4 {
-  animation-delay: 0.26s;
-}
-
-.lv2-symptoms-panel--visible .lv2-symptoms-fade--5 {
-  animation-delay: 0.34s;
-}
-
-.lv2-symptoms-panel--visible .lv2-symptoms-fade--6 {
-  animation-delay: 0.42s;
-}
-
-.lv2-symptoms-panel--visible .lv2-symptoms-fade--7 {
-  animation-delay: 0.5s;
-}
-
-.lv2-symptoms-panel--visible .lv2-symptoms-fade--8 {
-  animation-delay: 0.58s;
-}
-
-.lv2-symptoms-panel--visible .lv2-symptoms-fade--9 {
-  animation-delay: 0.66s;
-}
-
-.lv2-symptoms-panel--visible .lv2-symptoms-fade--10 {
-  animation-delay: 0.74s;
+.lv2-scroll-fade--visible {
+  animation: lv2-scroll-fade-up 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .lv2-symptoms-fade {
+  .lv2-scroll-fade {
     opacity: 1;
   }
 
-  .lv2-symptoms-panel--visible .lv2-symptoms-fade {
+  .lv2-scroll-fade--visible {
     animation: none;
   }
 }
@@ -381,10 +379,38 @@
   pointer-events: none;
 }
 
+/* Nav passes pointer events through to hero reveal, except on links/buttons */
+.lv2-nav {
+  pointer-events: none;
+}
+
+.lv2-nav a,
+.lv2-nav button {
+  pointer-events: auto;
+}
+
+.lv2-nav-char {
+  transition: opacity 0.12s linear;
+}
+
+.lv2-nav-cta {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .lv2-nav-cta {
+    display: inline-flex;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.75rem;
+  }
+}
+
 /* Biombo fijo → scroll completo del arte → “Dos caminos” sube sin saltos */
 .lv2-eneagram-caminos-group {
   position: relative;
+  --lv2-biombo-x: 0px;
   --lv2-biombo-y: 0px;
+  --lv2-biombo-scale: 1;
 }
 
 .lv2-eneagrama-pin {
@@ -396,7 +422,9 @@
 
 .lv2-eneagrama-bg-layer {
   will-change: transform;
-  transform: translate3d(0, var(--lv2-biombo-y), 0);
+  transform: translate3d(var(--lv2-biombo-x), var(--lv2-biombo-y), 0)
+    scale(var(--lv2-biombo-scale));
+  transform-origin: center center;
 }
 
 .lv2-biombo-runway {
@@ -433,6 +461,15 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .lv2-nav-char {
+    opacity: 1 !important;
+  }
+
+  .lv2-hero-video-el {
+    filter: none !important;
+    transform: none !important;
+  }
+
   .lv2-eneagrama-bg-layer {
     transform: none !important;
   }
@@ -464,6 +501,67 @@
   width: 100%;
   height: auto;
   vertical-align: top;
+}
+
+@media (max-width: 767px) {
+  .lv2-eneagrama-pin {
+    height: 100svh;
+    overflow-x: hidden;
+    overflow-y: visible;
+  }
+
+  .lv2-eneagrama-media {
+    height: 100svh;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .lv2-eneagrama-bg-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform-origin: center center;
+  }
+
+  .lv2-eneagrama-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .lv2-eneagrama-content {
+    align-items: flex-start;
+    overflow: visible;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .lv2-eneagrama-map-wrap {
+    width: 100%;
+    padding-top: 0.25rem;
+  }
+
+  .lv2-eneagrama-map-wrap svg {
+    max-height: 38svh;
+    width: auto;
+    max-width: 100%;
+    margin-inline: auto;
+  }
+
+  .lv2-eneagrama-copy {
+    padding: 0.85rem 1rem 1rem;
+  }
+
+  .lv2-eneagrama-copy .lv2-display {
+    font-size: 1.65rem;
+  }
+
+  .lv2-eneagrama-copy .lv2-body {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
 }
 
 .lv2-eneagrama-content {
@@ -982,6 +1080,12 @@
   background: var(--lv2-ink);
 }
 
+.lv2-consulta-bg-layer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
 .lv2-consulta-bg-img {
   display: block;
   width: 100%;
@@ -989,6 +1093,28 @@
   object-fit: contain;
   object-position: center 72%;
   will-change: filter, transform;
+}
+
+@media (max-width: 767px) {
+  .lv2-consulta-bg-pin {
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .lv2-consulta-bg-layer {
+    height: 100%;
+    width: max-content;
+    flex-shrink: 0;
+    will-change: transform;
+  }
+
+  .lv2-consulta-bg-img {
+    width: auto !important;
+    height: 100% !important;
+    max-width: none;
+    object-fit: none;
+    object-position: left center;
+  }
 }
 
 .lv2-consulta-bg-scrim {
@@ -1074,6 +1200,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .lv2-consulta-bg-layer {
+    transform: none !important;
+  }
+
   .lv2-consulta-bg-img {
     transform: none !important;
     filter: none !important;

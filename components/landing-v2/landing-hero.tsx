@@ -4,7 +4,7 @@ export function LandingHeroPanel() {
   return (
     <div className="lv2-hero-panel mx-auto max-w-6xl px-6 pb-14 md:px-10 md:pb-16">
       <p className="lv2-section-label mb-3 max-w-xl">
-        Psicoanálisis · Eneagrama · Acompañamiento terapéutico
+        Psicoanálisis · Eneagrama
       </p>
 
       <h1 className="lv2-hero-title max-w-4xl">
@@ -17,7 +17,7 @@ export function LandingHeroPanel() {
       </h1>
 
       <p className="lv2-body mt-8 max-w-2xl text-lg md:text-xl">
-        Psicoanálisis, eneagrama y acompañamiento terapéutico para quienes desean comprender su
+        Psicoanálisisy y Eneagrama para quienes desean comprender su
         historia, transformar patrones profundos y construir una vida más consciente.
       </p>
 

@@ -1,5 +1,14 @@
+type EneagramaMapProps = {
+  className?: string
+  /** `light` — ivory lines on dark backgrounds; `dark` — brown lines on light backgrounds */
+  tone?: "light" | "dark"
+}
+
 /** Eneagrama como mapa — sin trazos claros que lean como borde blanco */
-export function EneagramaMap({ className = "" }: { className?: string }) {
+export function EneagramaMap({
+  className = "",
+  tone = "dark",
+}: EneagramaMapProps) {
   const points = Array.from({ length: 9 }, (_, i) => {
     const angle = (i * 40 - 90) * (Math.PI / 180)
     const cx = 200 + 120 * Math.cos(angle)
@@ -22,9 +31,22 @@ export function EneagramaMap({ className = "" }: { className?: string }) {
     [4, 8],
   ]
 
-  const lineColor = "#3d2316"
-  const nodeFill = "rgba(37, 17, 5, 0.88)"
-  const nodeText = "#967e66"
+  const palette =
+    tone === "light"
+      ? {
+          line: "#f2ebe3",
+          nodeFill: "rgba(242, 235, 227, 0.14)",
+          nodeStroke: "#f2ebe3",
+          nodeText: "#6a4128",
+          label: "rgba(242, 235, 227, 0.7)",
+        }
+      : {
+          line: "#3d2316",
+          nodeFill: "rgba(37, 17, 5, 0.88)",
+          nodeStroke: "none",
+          nodeText: "#967e66",
+          label: "#6a4128",
+        }
 
   return (
     <svg
@@ -40,20 +62,20 @@ export function EneagramaMap({ className = "" }: { className?: string }) {
         cx="200"
         cy="200"
         r="140"
-        stroke={lineColor}
+        stroke={palette.line}
         strokeWidth="0.6"
         strokeDasharray="3 7"
         fill="none"
-        opacity="0.35"
+        opacity={tone === "light" ? 0.55 : 0.35}
       />
       <circle
         cx="200"
         cy="200"
         r="90"
-        stroke={lineColor}
+        stroke={palette.line}
         strokeWidth="0.5"
         fill="none"
-        opacity="0.25"
+        opacity={tone === "light" ? 0.4 : 0.25}
       />
       {lines.map(([a, b], i) => (
         <line
@@ -62,21 +84,29 @@ export function EneagramaMap({ className = "" }: { className?: string }) {
           y1={points[a].cy}
           x2={points[b].cx}
           y2={points[b].cy}
-          stroke={lineColor}
+          stroke={palette.line}
           strokeWidth="0.6"
-          opacity="0.45"
+          opacity={tone === "light" ? 0.7 : 0.45}
         />
       ))}
       {points.map(({ cx, cy, n }) => (
         <g key={n}>
-          <circle cx={cx} cy={cy} r="14" stroke="none" fill={nodeFill} />
+          <circle
+            cx={cx}
+            cy={cy}
+            r="14"
+            stroke={palette.nodeStroke}
+            strokeWidth={tone === "light" ? 0.75 : 0}
+            fill={palette.nodeFill}
+          />
           <text
             x={cx}
             y={cy + 4}
             textAnchor="middle"
-            fill={nodeText}
+            fill={palette.nodeText}
             fontSize="11"
             fontFamily="Georgia, serif"
+            fontWeight={tone === "light" ? 600 : 400}
           >
             {n}
           </text>
@@ -86,10 +116,10 @@ export function EneagramaMap({ className = "" }: { className?: string }) {
         x="200"
         y="385"
         textAnchor="middle"
-        fill="#6a4128"
+        fill={palette.label}
         fontSize="10"
         letterSpacing="4"
-        opacity="0.55"
+        opacity={tone === "light" ? 0.85 : 0.55}
       >
         MAPA
       </text>

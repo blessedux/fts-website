@@ -13,7 +13,7 @@ export const HERO_CAMPAIGN = {
   badge: "Esta semana",
   title: "Consulta inicial gratuita — 30 min",
   detail:
-    "Agenda sin costo tu primera conversación de orientación. Presencial en CABA u online desde Chile.",
+    "Agenda sin costo tu primera conversación de orientación online.",
   /** Solo para el toast — el CTA del hero no menciona gratuita */
   ctaLabel: "Agendar consulta gratuita",
   /** Aparece 2 s después de cargar la landing */
@@ -32,6 +32,8 @@ export const FOOTER_SOCIAL = {
 export const FOOTER_NAV = [
   { label: "Eneagrama", href: "/#eneagrama" },
   { label: "Arquetipos", href: "/#arquetipos" },
+  { label: "Organizaciones", href: "/organizaciones" },
+  { label: "Prensa", href: "/prensa" },
   { label: "Sobre mí", href: "/sobre-mi" },
   { label: "Libro", href: "/libro" },
   { label: "Reservar consulta", href: `/${CONSULTA_SECTION_ID}` },
@@ -85,23 +87,22 @@ export const OFFERINGS = [
       "Psicoanálisis y acompañamiento para quienes buscan un espacio regular de exploración interior — comprender patrones, historia y transformación en el tiempo.",
     locations: [
       { place: "CABA", mode: "Presencial" },
-      { place: "Chile", mode: "Online" },
+      { place: "Internacional", mode: "Online" },
     ],
     ctaLabel: "Reservar consulta",
     ctaHref: CONSULTA_SECTION_ID,
   },
   {
     id: "empresas",
-    label: "Organizaciones",
-    title: "Charlas de eneagrama para empresas",
+    label: "Eneagrama",
+    title: "Charlas para organizaciones empresariales y docentes. ",
     description:
       "Talleres y conferencias sobre equipo, liderazgo y cultura organizacional. El eneagrama como mapa para leer dinámicas colectivas, no como etiqueta.",
     locations: [
-      { place: "CABA", mode: null },
-      { place: "Chile", mode: null },
-      { place: "Internacional", mode: null },
+      { place: "CABA", mode: "Presencial" },
+      { place: "Internacional", mode: "Online" },
     ],
     ctaLabel: "Consultar charlas",
-    ctaHref: `mailto:${ENTERPRISE_INQUIRY_EMAIL}?subject=Charlas%20de%20eneagrama%20para%20empresas`,
+    ctaHref: "/organizaciones",
   },
 ] as const
