@@ -85,7 +85,7 @@ export const OFFERINGS = [
     label: "Psicoanálisis",
     title: "Sesiones con continuidad semanal",
     description:
-      "Psicoanálisis y acompañamiento para quienes buscan un espacio regular de exploración interior — comprender patrones, historia y transformación en el tiempo.",
+      "Análisis personal para quienes buscan un espacio regular de exploración interior, explorando el inconsciente.",
     locations: [
       { place: "CABA", mode: "Presencial" },
       { place: "Internacional", mode: "Online" },
@@ -98,7 +98,7 @@ export const OFFERINGS = [
     label: "Eneagrama",
     title: "Charlas para organizaciones empresariales y docentes. ",
     description:
-      "Talleres y conferencias sobre equipo, liderazgo y cultura organizacional. El eneagrama como mapa para leer dinámicas colectivas, no como etiqueta.",
+      "Talleres y conferencias para equipos, líderes y cultura organizacional.",
     locations: [
       { place: "CABA", mode: "Presencial" },
       { place: "Internacional", mode: "Online" },
