@@ -2,7 +2,8 @@ export const LANDING_HERO_VIDEO =
   process.env.NEXT_PUBLIC_HERO_VIDEO ??
   "/videos/kling_20260604_VIDEO_Image1A_su_5310_0_1920.webm"
 
-export const CONSULTA_SECTION_ID = "#consulta"
+/** Legacy outer-section anchor — kept so back-compat hash links still resolve */
+export const CONSULTA_SECTION_ID = "#reserva-consulta"
 
 /** Calendario de reserva (widget de agendamiento) */
 export const BOOKING_SECTION_ID = "#reserva-consulta"

@@ -20,7 +20,7 @@ function wasDismissed() {
 function scrollToBooking() {
   document.querySelector(BOOKING_SECTION_ID)?.scrollIntoView({
     behavior: "smooth",
-    block: "start",
+    block: "center",
   })
 }
 

@@ -256,7 +256,7 @@ export function LandingConsultaParallax() {
 
           <div
             id="reserva-consulta"
-            className="lv2-consulta-booking mx-auto w-full max-w-lg scroll-mt-28"
+            className="lv2-consulta-booking mx-auto w-full max-w-lg scroll-mt-40"
             aria-label="Calendario para reservar consulta"
           >
             <p
