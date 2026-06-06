@@ -70,10 +70,10 @@ export const ARCHETYPE_CARDS = [
 ] as const
 
 export const SYMPTOMS = [
-  "La ansiedad.",
-  "Los conflictos recurrentes.",
-  "Las relaciones que se repiten.",
-  "Las decisiones que parecen bloquearse.",
+  "Ansiedad.",
+  "Conflictos recurrentes.",
+  "Repeticiones.",
+  "Decisiones que se bloquean.",
 ] as const
 
 export const ENTERPRISE_INQUIRY_EMAIL =
@@ -82,7 +82,7 @@ export const ENTERPRISE_INQUIRY_EMAIL =
 export const OFFERINGS = [
   {
     id: "terapia",
-    label: "Proceso terapéutico",
+    label: "Psicoanálisis",
     title: "Sesiones con continuidad semanal",
     description:
       "Psicoanálisis y acompañamiento para quienes buscan un espacio regular de exploración interior — comprender patrones, historia y transformación en el tiempo.",
