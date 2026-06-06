@@ -13,7 +13,7 @@ export function LandingAbout() {
     <section id="guia" className="relative border-t border-[#b8954a]/15 py-24 md:py-32">
       <div className="mx-auto grid max-w-6xl gap-16 px-6 md:grid-cols-2 md:items-center md:gap-20 md:px-10">
         <div className="order-2 md:order-1">
-          <p className="lv2-section-label mb-4">Sobre Fanny Torres</p>
+          <p className="lv2-section-label mb-4">Sobre Fanny Torres Silva</p>
           <h2 className="lv2-display text-3xl text-[#f4efe4] md:text-4xl">
             Una guía para el trabajo interior
           </h2>
