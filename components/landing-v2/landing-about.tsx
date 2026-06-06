@@ -19,7 +19,7 @@ export function LandingAbout() {
           </h2>
           <div className="lv2-gold-line my-8 max-w-[120px]" />
           <p className="lv2-body text-lg mb-8">
-            Psicoanálisis y eneagrama para quienes buscan comprender profundamente
+            Psicoanálisis y Eneagrama para quienes buscan comprender profundamente
             su historia, sus patrones y su propósito, no solo sentirse mejor, sino entender quién son.
           </p>
           <ul className="space-y-3">

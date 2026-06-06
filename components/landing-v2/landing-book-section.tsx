@@ -40,12 +40,12 @@ export function LandingBookSection({
         <div>
           <p className="lv2-section-label mb-4">Publicación</p>
           <Title className="lv2-display text-3xl text-[var(--lv2-ivory)] md:text-4xl md:text-5xl">
-            El libro oficial de eneagrama
+            El libro oficial de Eneagrama
           </Title>
           <p className="lv2-body mt-3 text-base text-[var(--lv2-taupe)]">Por Fanny Torres Silva</p>
           <div className="lv2-gold-line my-8 max-w-[120px]" />
           <p className="lv2-body text-lg">
-            Lleva contigo los conocimientos del eneagrama en este libro completo — una guía para leer
+            Lleva contigo los conocimientos del Eneagrama en este libro completo — una guía para leer
             patrones, historia y transformación personal.
           </p>
 

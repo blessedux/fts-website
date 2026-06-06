@@ -5,7 +5,7 @@ export function LandingArchetypes() {
     <section id="arquetipos" className="relative py-24 md:py-32 lv2-paper-texture">
       <div className="mx-auto max-w-6xl px-6 md:px-10">
         <div className="max-w-2xl">
-          <p className="lv2-section-label mb-4">Arquetipos · Jung</p>
+          <p className="lv2-section-label mb-4">Arquetipos</p>
           <h2 className="lv2-display text-3xl text-[var(--lv2-ivory)] md:text-5xl">
             Las figuras que habitan en ti
           </h2>

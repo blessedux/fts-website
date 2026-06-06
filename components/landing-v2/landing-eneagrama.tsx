@@ -33,7 +33,7 @@ export function LandingEneagrama() {
             </div>
             <div className="lv2-eneagrama-copy relative">
               <div className="lv2-eneagrama-text-veil" aria-hidden />
-              <p className="lv2-section-label mb-4">El eneagrama</p>
+              <p className="lv2-section-label mb-4">El Eneagrama</p>
               <h2 className="lv2-display text-3xl text-[var(--lv2-ivory)] md:text-4xl">
                 Un mapa, no una etiqueta
               </h2>
@@ -43,7 +43,7 @@ export function LandingEneagrama() {
                 mecanismos de defensa y potenciales caminos de crecimiento.
               </p>
               <p className="lv2-body mt-6 text-base italic text-[var(--lv2-taupe)]">
-                El eneagrama no te define. Te orienta hacia lo que aún no has podido ver con
+                El Eneagrama no te define. Te orienta hacia lo que aún no has podido ver con
                 claridad.
               </p>
             </div>

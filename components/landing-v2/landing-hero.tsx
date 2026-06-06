@@ -17,7 +17,7 @@ export function LandingHeroPanel() {
       </h1>
 
       <p className="lv2-body mt-8 max-w-2xl text-lg md:text-xl">
-        Psicoanálisisy y Eneagrama para quienes desean comprender su
+        Psicoanálisis y Eneagrama para quienes desean comprender su
         historia, transformar patrones profundos y construir una vida más consciente.
       </p>
 
