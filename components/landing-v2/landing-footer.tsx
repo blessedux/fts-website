@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Instagram, MessageCircle, Youtube } from "lucide-react"
+import { Instagram, Mail, MessageCircle, Youtube } from "lucide-react"
 import {
   FOOTER_NAV,
   FOOTER_SOCIAL,
@@ -21,6 +21,11 @@ const SOCIAL_LINKS = [
     label: "Instagram",
     href: FOOTER_SOCIAL.instagram,
     Icon: Instagram,
+  },
+  {
+    label: "Email",
+    href: "mailto:info@consultoradejavu.cl",
+    Icon: Mail,
   },
 ] as const
 

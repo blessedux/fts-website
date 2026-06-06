@@ -318,19 +318,26 @@ export function ConsultationBooking() {
             <fieldset>
               <legend className="lv2-form-label mb-2">Modalidad</legend>
               <div className="flex gap-3">
-                {(["online", "presencial"] as const).map((m) => (
-                  <button
-                    key={m}
-                    type="button"
-                    onClick={() => setModality(m)}
-                    className={cn(
-                      "lv2-modality-btn flex-1",
-                      modality === m && "lv2-modality-btn--active"
-                    )}
-                  >
-                    {m === "online" ? "Online" : "Presencial"}
-                  </button>
-                ))}
+                <button
+                  type="button"
+                  onClick={() => setModality("online")}
+                  className={cn(
+                    "lv2-modality-btn flex-1",
+                    modality === "online" && "lv2-modality-btn--active"
+                  )}
+                >
+                  Online
+                </button>
+                <button
+                  type="button"
+                  disabled
+                  aria-disabled="true"
+                  title="Presencial — próximamente disponible"
+                  className="lv2-modality-btn flex-1 flex flex-col items-center gap-0.5"
+                >
+                  <span>Presencial</span>
+                  <span className="text-[10px] tracking-wider opacity-60">próximamente</span>
+                </button>
               </div>
             </fieldset>
             <label className="block">
