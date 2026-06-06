@@ -24,7 +24,7 @@ function confirmPageHtml(opts: {
 </head>
 <body style="margin:0;padding:32px 20px;background:#251105;color:#f2ebe3;font-family:Georgia,serif;">
   <div style="max-width:520px;margin:0 auto;background:#f2ebe3;color:#251105;border:1px solid ${accent};border-radius:16px;padding:32px 28px;">
-    <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#967e66;font-family:sans-serif;">Fanny Torres da Silva</p>
+    <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:#967e66;font-family:sans-serif;">Fanny Torres Silva</p>
     <h1 style="margin:0 0 16px;font-size:24px;line-height:1.3;color:#251105;">${opts.title}</h1>
     <p style="margin:0;font-size:16px;line-height:1.65;color:#3d2316;">${opts.message}</p>
   </div>

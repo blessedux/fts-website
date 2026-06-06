@@ -24,7 +24,7 @@ export default function BookPage() {
           <div className="lv2-body space-y-6 text-lg">
             <p>
               Este libro es una guía completa para comprender y aplicar el eneagrama en la vida
-              cotidiana. Escrito por Fanny Torres Da Silva, recorre nueve tipos de personalidad, sus
+              cotidiana. Escrito por Fanny Torres Silva, recorre nueve tipos de personalidad, sus
               motivaciones, miedos, deseos y patrones de comportamiento.
             </p>
             <p>

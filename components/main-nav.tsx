@@ -18,7 +18,7 @@ export function MainNav() {
           <div className="relative h-12 w-[100px]">
             <Image
               src="/imgs/enean_logo.svg"
-              alt="Eneagrama | Fanny Torres Da Silva"
+              alt="Eneagrama | Fanny Torres Silva"
               fill
               className="object-contain"
               priority
@@ -33,7 +33,7 @@ export function MainNav() {
               <div className="relative h-10 w-[100px]">
                 <Image
                   src="/imgs/enean_logo.svg"
-                  alt="Eneagrama | Fanny Torres Da Silva"
+                  alt="Eneagrama | Fanny Torres Silva"
                   fill
                   className="object-contain"
                   priority
@@ -51,7 +51,7 @@ export function MainNav() {
                   <div className="relative h-12 w-[300px]">
                     <Image
                       src="/imgs/enean_logo.svg"
-                      alt="Eneagrama | Fanny Torres Da Silva"
+                      alt="Eneagrama | Fanny Torres Silva"
                       fill
                       className="object-contain"
                       priority

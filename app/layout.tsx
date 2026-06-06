@@ -7,9 +7,9 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Eneagrama - Fanny Torres Da Silva",
+  title: "Eneagrama - Fanny Torres Silva",
   description:
-    "Descubre el poder del Eneagrama con Fanny Torres Da Silva. Cursos, certificaciones y recursos para tu desarrollo personal.",
+    "Descubre el poder del Eneagrama con Fanny Torres Silva. Cursos, certificaciones y recursos para tu desarrollo personal.",
   generator: 'v0.dev',
   icons: {
     icon: [

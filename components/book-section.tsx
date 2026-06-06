@@ -12,7 +12,7 @@ export function BookSection() {
             <div className="relative h-[500px] w-[375px] overflow-hidden rounded-lg shadow-xl">
               <Image
                 src="/imgs/portada_libro_final.png"
-                alt="Libro de Eneagrama por Fanny Torres Da Silva"
+                alt="Libro de Eneagrama por Fanny Torres Silva"
                 fill
                 sizes="(max-width: 768px) 100vw, 375px"
                 priority

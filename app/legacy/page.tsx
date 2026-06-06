@@ -10,7 +10,7 @@ import { RadioProgramSection } from "@/components/radio-program-section"
 import { Footer } from "@/components/footer"
 
 export const metadata = {
-  title: "Eneagrama — Landing anterior | Fanny Torres Da Silva",
+  title: "Eneagrama — Landing anterior | Fanny Torres Silva",
   robots: { index: false, follow: false },
 }
 

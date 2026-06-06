@@ -30,7 +30,7 @@ export function LandingBookSection({
         <div className="relative mx-auto h-[420px] w-full max-w-[320px] sm:max-w-[375px] lg:mx-0 lg:ml-auto">
           <Image
             src="/imgs/portada_libro_final.png"
-            alt="Libro de Eneagrama por Fanny Torres Da Silva"
+            alt="Libro de Eneagrama por Fanny Torres Silva"
             fill
             sizes="(max-width: 768px) 90vw, 375px"
             className="object-contain"
@@ -42,7 +42,7 @@ export function LandingBookSection({
           <Title className="lv2-display text-3xl text-[var(--lv2-ivory)] md:text-4xl md:text-5xl">
             El libro oficial de eneagrama
           </Title>
-          <p className="lv2-body mt-3 text-base text-[var(--lv2-taupe)]">Por Fanny Torres Da Silva</p>
+          <p className="lv2-body mt-3 text-base text-[var(--lv2-taupe)]">Por Fanny Torres Silva</p>
           <div className="lv2-gold-line my-8 max-w-[120px]" />
           <p className="lv2-body text-lg">
             Lleva contigo los conocimientos del eneagrama en este libro completo — una guía para leer

@@ -86,7 +86,7 @@ export default function CheckoutPage() {
                         </div>
                         <div>
                           <h3 className="font-semibold">Libro Oficial del Eneagrama</h3>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">Por Fanny Torres Da Silva</p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">Por Fanny Torres Silva</p>
                         </div>
                         <div className="ml-auto font-semibold">$24.990 CLP</div>
                       </div>

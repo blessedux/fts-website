@@ -1,5 +1,5 @@
 /**
- * Booking configuration for FTS (Fanny Torres da Silva).
+ * Booking configuration for FTS (Fanny Torres Silva).
  *
  * ## Supabase Postgres
  * `DATABASE_URL` — Transaction pooler URI (port 6543) from Supabase → Project Settings → Database.

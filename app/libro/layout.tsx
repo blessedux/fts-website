@@ -28,9 +28,9 @@ const ebGaramond = EB_Garamond({
 })
 
 export const metadata: Metadata = {
-  title: "El libro oficial de eneagrama | Fanny Torres Da Silva",
+  title: "El libro oficial de eneagrama | Fanny Torres Silva",
   description:
-    "Guía completa del eneagrama por Fanny Torres Da Silva. Historia, nueve tipos, relaciones y caminos de crecimiento personal.",
+    "Guía completa del eneagrama por Fanny Torres Silva. Historia, nueve tipos, relaciones y caminos de crecimiento personal.",
 }
 
 export default function BookLayout({ children }: { children: React.ReactNode }) {

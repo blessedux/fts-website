@@ -46,7 +46,7 @@ export function LandingAbout() {
         <div className="relative order-1 aspect-[4/5] w-full max-w-md mx-auto overflow-hidden border border-[var(--lv2-taupe)]/30 md:order-2 md:mx-0 md:ml-auto">
           <Image
             src="/imgs/DSC_0198.jpg"
-            alt="Fanny Torres Da Silva — retrato editorial"
+            alt="Fanny Torres Silva — retrato editorial"
             fill
             className="object-cover object-top grayscale-[20%] contrast-[1.05]"
             sizes="(max-width: 768px) 100vw, 50vw"
