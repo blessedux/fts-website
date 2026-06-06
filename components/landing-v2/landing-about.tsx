@@ -2,10 +2,11 @@ import Image from "next/image"
 import Link from "next/link"
 
 const HIGHLIGHTS = [
-  "Formación en psicoanálisis y desarrollo humano",
-  "Profesora de literatura y escritora",
+  "Formación en Psicoanálisis.",
+  "Profesora de literatura",
   "Enfoque integrador y simbólico",
-  "Trabajo profundo con el Eneagrama como mapa interior"
+  "Trabajo profundo con el Eneagrama como mapa interior",
+  "Escritora"
 ] as const
 
 export function LandingAbout() {
@@ -19,7 +20,7 @@ export function LandingAbout() {
           </h2>
           <div className="lv2-gold-line my-8 max-w-[120px]" />
           <p className="lv2-body text-lg mb-8">
-            Psicoanálisis y Eneagrama para quienes buscan comprender profundamente
+            Psicoanálisis y Eneagrama para quienes buscan explorar profundamente
             su historia, sus patrones y su propósito, no solo sentirse mejor, sino entender quién son.
           </p>
           <ul className="space-y-3">
