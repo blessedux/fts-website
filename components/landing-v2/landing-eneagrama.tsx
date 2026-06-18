@@ -80,7 +80,7 @@ const ENEATIPO_INFO: Record<number, EneatipoContent> = {
 
 const DEFAULT_INFO: EneatipoContent = {
   title: "Un mapa, no una etiqueta",
-  description: " Un lenguaje para observar patrones automáticos, mecanismos de defensa y potenciales caminos de crecimiento.",
+  description: "Un lenguaje para observar patrones automáticos, mecanismos de defensa y potenciales caminos de crecimiento.",
   quote: "El Eneagrama no te define. Te orienta hacia lo que aún no has podido ver con claridad."
 }
 
@@ -95,7 +95,10 @@ function TypewriterText({ text, speed = 15 }: { text: string; speed?: number }) 
 
     const interval = setInterval(() => {
       if (isCancelled) return
-      setDisplayedText((prev) => prev + text.charAt(index))
+      
+      const char = text.charAt(index)
+      setDisplayedText((prev) => prev + char)
+      
       index++
       if (index >= text.length) {
         clearInterval(interval)

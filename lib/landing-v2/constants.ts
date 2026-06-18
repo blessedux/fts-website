@@ -32,7 +32,7 @@ export const FOOTER_SOCIAL = {
 
 export const FOOTER_NAV = [
   { label: "Eneagrama", href: "/#eneagrama" },
-  { label: "Arquetipos", href: "/#arquetipos" },
+  { label: "Eneatipos", href: "/#arquetipos" },
   { label: "Organizaciones", href: "/organizaciones" },
   { label: "Prensa", href: "/prensa" },
   { label: "Sobre mí", href: "/sobre-mi" },
@@ -85,7 +85,7 @@ export const OFFERINGS = [
     label: "Psicoanálisis",
     title: "Sesiones con continuidad semanal",
     description:
-      "Análisis personal para quienes buscan un espacio regular de exploración interior, explorando el inconsciente.",
+      "Análisis personal para quienes buscan un espacio regular de exploración interior, trabajando desde el inconsciente.",
     locations: [
       { place: "CABA", mode: "Presencial" },
       { place: "Internacional", mode: "Online" },
@@ -101,7 +101,7 @@ export const OFFERINGS = [
       "Talleres y conferencias para equipos, líderes y cultura organizacional.",
     locations: [
       { place: "CABA", mode: "Presencial" },
-      { place: "Internacional", mode: "Online" },
+      { place: "Internacional", mode: "Presencial" },
     ],
     ctaLabel: "Consultar charlas",
     ctaHref: "/organizaciones",

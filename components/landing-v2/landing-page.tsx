@@ -1,6 +1,5 @@
 import { Cormorant_Garamond, DM_Sans, EB_Garamond } from "next/font/google"
 import "@/styles/landing-v2.css"
-import { HeroCampaignToast } from "@/components/landing-v2/hero-campaign-toast"
 import { LandingNav } from "@/components/landing-v2/landing-nav"
 import { HeroVideoRevealBlock } from "@/components/landing-v2/hero-video-reveal-block"
 import { LandingEneagrama } from "@/components/landing-v2/landing-eneagrama"
@@ -38,7 +37,6 @@ export function LandingPageV2() {
       className={`landing-v2 min-h-screen ${dmSans.variable} ${cormorant.variable} ${ebGaramond.variable}`}
     >
       <LandingNav />
-      <HeroCampaignToast />
       <main>
         <HeroVideoRevealBlock />
         <div className="lv2-eneagram-caminos-group" data-lv2-bridge>
