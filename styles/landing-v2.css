@@ -390,7 +390,35 @@
 }
 
 .lv2-nav-char {
-  transition: opacity 0.12s linear;
+  display: inline-block;
+  transition: max-width 0.45s cubic-bezier(0.25, 1, 0.33, 1),
+              opacity 0.4s ease,
+              letter-spacing 0.45s cubic-bezier(0.25, 1, 0.33, 1);
+  opacity: 1;
+  max-width: 1.5ch;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: bottom;
+}
+
+.lv2-logo-fade-space {
+  max-width: 1ch;
+}
+
+/* Collapsed Logo Initials: fade out others and slide together */
+.lv2-logo-collapsed .lv2-logo-fade-letter,
+.lv2-logo-collapsed .lv2-logo-fade-space {
+  opacity: 0 !important;
+  max-width: 0px;
+}
+
+.lv2-logo-initial {
+  opacity: 1 !important;
+  max-width: 1.5ch;
+}
+
+.lv2-logo-collapsed .lv2-logo-initial {
+  letter-spacing: 0.08em;
 }
 
 .lv2-nav-cta {
@@ -578,6 +606,7 @@
   z-index: 1;
   padding: 1.35rem 1.25rem 1.5rem;
   text-shadow: 0 1px 12px rgba(37, 17, 5, 0.5);
+  margin-bottom: 2.5rem;
 }
 
 .lv2-eneagrama-text-veil {
@@ -586,9 +615,7 @@
   z-index: -1;
   border-radius: 6px;
   pointer-events: none;
-  backdrop-filter: blur(28px) saturate(1.15);
-  -webkit-backdrop-filter: blur(28px) saturate(1.15);
-  background: rgba(37, 17, 5, 0.58);
+  background: var(--lv2-espresso); /* Solid espresso background color */
   border: 1px solid rgba(150, 126, 102, 0.28);
   box-shadow:
     0 12px 40px rgba(0, 0, 0, 0.35),
@@ -1357,3 +1384,267 @@
 .lv2-day-picker .rdp-chevron {
   fill: var(--lv2-taupe);
 }
+
+/* ==========================================================================
+   CSS Enneagram Diagram
+   ========================================================================== */
+#css-eneagrama {
+  --w: 400px;
+  --h: 400px;
+  
+  --w2: calc(var(--w) / 2);
+  --h2: calc(var(--h) / 2);
+
+  /* (cos, sin) table */
+  --t9-x:  0.00; --t9-y:  1.00;
+  --t1-x:  0.64; --t1-y:  0.77;
+  --t2-x:  0.98; --t2-y:  0.17;
+  --t3-x:  0.87; --t3-y: -0.50;
+  --t4-x:  0.34; --t4-y: -0.94;
+  --t5-x: -0.34; --t5-y: -0.94;
+  --t6-x: -0.87; --t6-y: -0.50;
+  --t7-x: -0.98; --t7-y:  0.17;
+  --t8-x: -0.64; --t8-y:  0.77;
+  
+  --xa: 7px;
+  --ya: 7px;
+
+  --t9-xa: calc(var(--t9-x) * var(--w2) + var(--w2) - var(--xa)); --t9-ya: calc(var(--t9-y) * var(--h2) + var(--h2) - var(--ya));
+  --t1-xa: calc(var(--t1-x) * var(--w2) + var(--w2) - var(--xa)); --t1-ya: calc(var(--t1-y) * var(--h2) + var(--h2) - var(--ya));
+  --t2-xa: calc(var(--t2-x) * var(--w2) + var(--w2) - var(--xa)); --t2-ya: calc(var(--t2-y) * var(--h2) + var(--h2) - var(--ya));
+  --t3-xa: calc(var(--t3-x) * var(--w2) + var(--w2) - var(--xa)); --t3-ya: calc(var(--t3-y) * var(--h2) + var(--h2) - var(--ya));
+  --t4-xa: calc(var(--t4-x) * var(--w2) + var(--w2) - var(--xa)); --t4-ya: calc(var(--t4-y) * var(--h2) + var(--h2) - var(--ya));
+  --t5-xa: calc(var(--t5-x) * var(--w2) + var(--w2) - var(--xa)); --t5-ya: calc(var(--t5-y) * var(--h2) + var(--h2) - var(--ya));
+  --t6-xa: calc(var(--t6-x) * var(--w2) + var(--w2) - var(--xa)); --t6-ya: calc(var(--t6-y) * var(--h2) + var(--h2) - var(--ya));
+  --t7-xa: calc(var(--t7-x) * var(--w2) + var(--w2) - var(--xa)); --t7-ya: calc(var(--t7-y) * var(--h2) + var(--h2) - var(--ya));
+  --t8-xa: calc(var(--t8-x) * var(--w2) + var(--w2) - var(--xa)); --t8-ya: calc(var(--t8-y) * var(--h2) + var(--h2) - var(--ya));
+
+  width: var(--w);
+  height: var(--h);
+  border: 1px dashed rgba(242, 235, 227, 0.25);
+  border-radius: 50%;
+  position: relative;
+  margin: 3em auto;
+  font-family: var(--font-eb-garamond), Georgia, serif;
+  font-size: 11.5pt;
+  pointer-events: auto;
+}
+
+#css-eneagrama .max {
+  background-color: var(--lv2-taupe) !important;
+  border-color: var(--lv2-ivory) !important;
+  box-shadow: 0 0 8px rgba(150, 126, 102, 0.4);
+}
+
+#css-eneagrama .asa {
+  background-color: var(--lv2-brown) !important;
+  border-color: var(--lv2-taupe) !important;
+}
+
+#css-eneagrama #v1, #css-eneagrama #v2, #css-eneagrama #v3, #css-eneagrama #v4, #css-eneagrama #v5, #css-eneagrama #v6, #css-eneagrama #v7, #css-eneagrama #v8, #css-eneagrama #v9 {
+  position: absolute;
+  background-color: var(--lv2-espresso);
+  border: 1.5px solid var(--lv2-taupe);
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  z-index: 5;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, opacity 0.3s ease;
+  cursor: pointer;
+}
+
+/* Hover/Active states for vertices */
+#css-eneagrama #v1:hover, #css-eneagrama #v2:hover, #css-eneagrama #v3:hover, #css-eneagrama #v4:hover, #css-eneagrama #v5:hover, #css-eneagrama #v6:hover, #css-eneagrama #v7:hover, #css-eneagrama #v8:hover, #css-eneagrama #v9:hover,
+#css-eneagrama [id^="v"].lv2-active {
+  transform: scale(1.45);
+  border-color: var(--lv2-ivory) !important;
+  box-shadow: 0 0 12px rgba(242, 235, 227, 0.7);
+  background-color: var(--lv2-taupe) !important;
+  z-index: 10;
+}
+
+/* Dimmed state for vertices */
+#css-eneagrama [id^="v"].lv2-dimmed {
+  opacity: 0.25;
+}
+
+#css-eneagrama #v9 { left: var(--t9-xa); bottom: var(--t9-ya); }
+#css-eneagrama #v1 { left: var(--t1-xa); bottom: var(--t1-ya); }
+#css-eneagrama #v2 { left: var(--t2-xa); bottom: var(--t2-ya); }
+#css-eneagrama #v3 { left: var(--t3-xa); bottom: var(--t3-ya); }
+#css-eneagrama #v4 { left: var(--t4-xa); bottom: var(--t4-ya); }
+#css-eneagrama #v5 { left: var(--t5-xa); bottom: var(--t5-ya); }
+#css-eneagrama #v6 { left: var(--t6-xa); bottom: var(--t6-ya); }
+#css-eneagrama #v7 { left: var(--t7-xa); bottom: var(--t7-ya); }
+#css-eneagrama #v8 { left: var(--t8-xa); bottom: var(--t8-ya); }
+
+#css-eneagrama #t1, #css-eneagrama #t2, #css-eneagrama #t3, #css-eneagrama #t4, #css-eneagrama #t5, #css-eneagrama #t6, #css-eneagrama #t7, #css-eneagrama #t8, #css-eneagrama #t9 {
+  position: absolute;
+  padding: 0.1em 0.5em;
+  width: 140px;
+  z-index: 2;
+  color: var(--lv2-ivory-muted);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-style: italic;
+  font-size: 11pt;
+  pointer-events: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease;
+}
+
+#css-eneagrama #t9 { left: calc(var(--t9-xa) - 53px); bottom: calc(var(--t9-ya) + 2.2em); text-align: center; width: 120px; }
+#css-eneagrama #t1 { left: calc(var(--t1-xa) + 1.8em); bottom: calc(var(--t1-ya) + 0.8em); text-align: left; }
+#css-eneagrama #t2 { left: calc(var(--t2-xa) + 1.8em); bottom: calc(var(--t2-ya) + 0.2em); text-align: left; }
+#css-eneagrama #t3 { left: calc(var(--t3-xa) + 1.8em); bottom: calc(var(--t3-ya) - 0.4em); text-align: left; }
+#css-eneagrama #t4 { left: calc(var(--t4-xa) + 1.0em); bottom: calc(var(--t4-ya) - 1.5em); text-align: left; }
+#css-eneagrama #t5 { left: calc(var(--t5-xa) - 130px); bottom: calc(var(--t5-ya) - 1.5em); text-align: right; }
+#css-eneagrama #t6 { left: calc(var(--t6-xa) - 130px); bottom: calc(var(--t6-ya) - 0.4em); text-align: right; }
+#css-eneagrama #t7 { left: calc(var(--t7-xa) - 130px); bottom: calc(var(--t7-ya) + 0.2em); text-align: right; }
+#css-eneagrama #t8 { left: calc(var(--t8-xa) - 130px); bottom: calc(var(--t8-ya) + 0.8em); text-align: right; }
+
+/* Dynamic Label Hover Highlights */
+#css-eneagrama [id^="t"].lv2-active {
+  color: var(--lv2-ivory) !important;
+  text-shadow: 0 0 8px rgba(242, 235, 227, 0.4);
+  opacity: 1;
+}
+#css-eneagrama #t1.lv2-active { transform: translateX(4px); }
+#css-eneagrama #t2.lv2-active { transform: translateX(4px); }
+#css-eneagrama #t3.lv2-active { transform: translateX(4px); }
+#css-eneagrama #t4.lv2-active { transform: translateX(4px); }
+#css-eneagrama #t5.lv2-active { transform: translateX(-4px); }
+#css-eneagrama #t6.lv2-active { transform: translateX(-4px); }
+#css-eneagrama #t7.lv2-active { transform: translateX(-4px); }
+#css-eneagrama #t8.lv2-active { transform: translateX(-4px); }
+#css-eneagrama #t9.lv2-active { transform: translateY(-4px); }
+
+/* Dimmed state for labels */
+#css-eneagrama [id^="t"].lv2-dimmed {
+  opacity: 0.25;
+}
+
+#css-eneagrama #l36, #css-eneagrama #l69, #css-eneagrama #l93, #css-eneagrama #l17, #css-eneagrama #l75, #css-eneagrama #l58, #css-eneagrama #l82, #css-eneagrama #l24, #css-eneagrama #l41 {
+  position: absolute;
+  height: 2px;
+  background-color: rgba(242, 235, 227, 0.25);
+  z-index: 1;
+  transition: opacity 0.35s ease, background-color 0.35s ease, height 0.35s ease;
+}
+
+/* Active and Dimmed states for connecting lines */
+#css-eneagrama [id^="l"].lv2-active {
+  opacity: 0.95;
+  background-color: rgba(242, 235, 227, 0.85) !important;
+  height: 3.5px;
+  box-shadow: 0 0 6px rgba(242, 235, 227, 0.4);
+}
+
+#css-eneagrama [id^="l"].lv2-dimmed {
+  opacity: 0.05;
+}
+
+#css-eneagrama #l36 {
+  width: calc(var(--t3-xa) - var(--t6-xa));
+  left: calc(var(--t6-xa) + var(--xa));
+  bottom: calc(var(--t6-ya) + var(--ya));
+}
+
+#css-eneagrama #l69 {
+  width: calc(var(--t3-xa) - var(--t6-xa));
+  left: calc(var(--t6-xa) + var(--xa));
+  bottom: calc(var(--t6-ya) + var(--ya));
+  transform: rotate(-60deg);
+  transform-origin: 0 0;
+}
+
+#css-eneagrama #l93 {
+  width: calc(var(--t3-xa) - var(--t6-xa));
+  left: calc(var(--t3-xa) + var(--xa));
+  bottom: calc(var(--t3-ya) + var(--ya));
+  transform: rotate(240deg);
+  transform-origin: 0 0;
+}
+
+#css-eneagrama #l17 {
+  width: calc(var(--w) * 0.86);
+  left: calc(var(--t7-xa) + var(--xa));
+  bottom: calc(var(--t7-ya) + var(--ya));
+  transform: rotate(-20deg);
+  transform-origin: 0 0;
+}
+
+#css-eneagrama #l75 {
+  width: calc(var(--w) * 0.64);
+  left: calc(var(--t7-xa) + var(--xa));
+  bottom: calc(var(--t7-ya) + var(--ya));
+  transform: rotate(60deg);
+  transform-origin: 0 0;
+}
+
+#css-eneagrama #l58 {
+  width: calc(var(--w) * 0.86);
+  left: calc(var(--t5-xa) + var(--xa));
+  bottom: calc(var(--t5-ya) + var(--ya));
+  transform: rotate(260deg);
+  transform-origin: 0 0;
+}
+
+#css-eneagrama #l82 {
+  width: calc(var(--w) * 0.86);
+  left: calc(var(--t2-xa) + var(--xa));
+  bottom: calc(var(--t2-ya) + var(--ya));
+  transform: rotate(200deg);
+  transform-origin: 0 0;
+}
+
+#css-eneagrama #l24 {
+  width: calc(var(--w) * 0.64);
+  left: calc(var(--t2-xa) + var(--xa));
+  bottom: calc(var(--t2-ya) + var(--ya));
+  transform: rotate(120deg);
+  transform-origin: 0 0;
+}
+
+#css-eneagrama #l41 {
+  width: calc(var(--w) * 0.86);
+  left: calc(var(--t4-xa) + var(--xa));
+  bottom: calc(var(--t4-ya) + var(--ya));
+  transform: rotate(280deg);
+  transform-origin: 0 0;
+}
+
+/* Responsiveness for diagram sizing */
+@media (max-width: 767px) {
+  #css-eneagrama {
+    --w: 300px;
+    --h: 300px;
+    font-size: 9.5pt;
+  }
+  #css-eneagrama #t9 { left: calc(var(--t9-xa) - 38px); width: 96px; }
+  #css-eneagrama #t1 { left: calc(var(--t1-xa) + 1.8em); }
+  #css-eneagrama #t2 { left: calc(var(--t2-xa) + 2.0em); }
+  #css-eneagrama #t3 { left: calc(var(--t3-xa) + 2.0em); }
+  #css-eneagrama #t4 { left: calc(var(--t4-xa) + 1.0em); }
+  #css-eneagrama #t5 { left: calc(var(--t5-xa) - 110px); }
+  #css-eneagrama #t6 { left: calc(var(--t6-xa) - 120px); }
+  #css-eneagrama #t7 { left: calc(var(--t7-xa) - 120px); }
+  #css-eneagrama #t8 { left: calc(var(--t8-xa) - 110px); }
+}
+
+@media (max-width: 560px) {
+  #css-eneagrama {
+    --w: 240px;
+    --h: 240px;
+    font-size: 8.5pt;
+  }
+  #css-eneagrama #t9 { left: calc(var(--t9-xa) - 30px); width: 90px; }
+  #css-eneagrama #t1 { left: calc(var(--t1-xa) + 1.8em); }
+  #css-eneagrama #t2 { left: calc(var(--t2-xa) + 2.0em); }
+  #css-eneagrama #t3 { left: calc(var(--t3-xa) + 2.0em); }
+  #css-eneagrama #t4 { left: calc(var(--t4-xa) + 1.0em); }
+  #css-eneagrama #t5 { left: calc(var(--t5-xa) - 100px); }
+  #css-eneagrama #t6 { left: calc(var(--t6-xa) - 110px); }
+  #css-eneagrama #t7 { left: calc(var(--t7-xa) - 110px); }
+  #css-eneagrama #t8 { left: calc(var(--t8-xa) - 100px); }
+}
+
+
