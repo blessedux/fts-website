@@ -533,6 +533,7 @@
 
 .lv2-eneagrama-media {
   display: block;
+  overflow: hidden; /* Prevent overflow from scaled background image */
 }
 
 .lv2-eneagrama-bg-image {
@@ -540,6 +541,8 @@
   width: 100%;
   height: auto;
   vertical-align: top;
+  transform: scale(1.08); /* Zoomed in so we never see the space around the image */
+  transform-origin: center center;
 }
 
 @media (max-width: 767px) {
@@ -568,6 +571,8 @@
     height: 100%;
     object-fit: cover;
     object-position: center center;
+    transform: scale(1.15); /* Zoomed in more on mobile */
+    transform-origin: center center;
   }
 
   .lv2-eneagrama-content {

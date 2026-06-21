@@ -176,7 +176,7 @@ export default function OrganizacionesPage() {
           </p>
         </div>
 
-        <div className="mt-12">
+        <div className="mt-6 md:mt-12">
           <CardsParallax items={mappedPressItems} />
         </div>
       </section>

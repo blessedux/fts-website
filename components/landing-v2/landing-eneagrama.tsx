@@ -32,47 +32,47 @@ interface EneatipoContent {
 
 const ENEATIPO_INFO: Record<number, EneatipoContent> = {
   1: {
-    title: "Eneatipo 1 · El Reformista",
+    title: "1 · El Reformista",
     description: "Racional, disciplinado y auto-exigente. Busca la perfección, el orden y la rectitud moral, temiendo el error o la imperfección en sí mismo y en su entorno.",
     quote: "Orientado a hacer lo correcto, corregir errores y mejorar continuamente."
   },
   2: {
-    title: "Eneatipo 2 · El Ayudante",
+    title: "2 · El Ayudante",
     description: "Empático, afectuoso y complaciente. Orientado a satisfacer las necesidades ajenas para sentirse apreciado, a veces descuidando su propia autonomía y bienestar.",
-    quote: "Busca conectar sinceramente, ser valorado y sentirse necesitado."
+    quote: "Busca conectar sinceramente, ser valorado y sentirse necesitados."
   },
   3: {
-    title: "Eneatipo 3 · El Realizador",
+    title: "3 · El Realizador",
     description: "Pragmático, eficiente y enfocado en el éxito. Busca estatus y reconocimiento social a través del rendimiento sobresaliente, los logros y una imagen impecable.",
     quote: "Orientado a la productividad, la eficacia y la realización de objetivos."
   },
   4: {
-    title: "Eneatipo 4 · El Individualista",
+    title: "4 · El Individualista",
     description: "Sensible, expresivo y temperamental. Desea ser auténtico, único y fiel a su identidad íntima, viviendo el mundo desde una gran profundidad y melancolía emocional.",
     quote: "Valora la singularidad personal, la expresión artística y la profundidad del alma."
   },
   5: {
-    title: "Eneatipo 5 · El Investigador",
+    title: "5 · El Investigador",
     description: "Observador, analítico y reservado. Busca comprender cómo funciona el mundo en profundidad, acumulando conocimiento y protegiendo celosamente su tiempo y energía mental.",
     quote: "Busca el saber absoluto, la autosuficiencia y la competencia intelectual."
   },
   6: {
-    title: "Eneatipo 6 · El Leal",
+    title: "6 · El Leal",
     description: "Comprometido, cauteloso y orientado a la seguridad. Anticipa escenarios problemáticos y amenazas para protegerse a sí mismo y a su comunidad de los riesgos futuros.",
     quote: "Valora la confianza mutua, el apoyo grupal, el orden y la preparación."
   },
   7: {
-    title: "Eneatipo 7 · El Entusiasta",
+    title: "7 · El Entusiasta",
     description: "Optimista, espontáneo y versátil. Busca estímulos agradables, múltiples opciones abiertas y nuevas experiencias emocionantes para evitar el dolor físico, el aburrimiento o el vacío.",
     quote: "Busca disfrutar de la libertad y mantener siempre un horizonte lleno de posibilidades."
   },
   8: {
-    title: "Eneatipo 8 · El Desafiador",
+    title: "8 · El Desafiador",
     description: "Fuerte, directo y protector. Valora el control sobre su propio destino y su entorno inmediato, defendiendo su autonomía con pasión frente a cualquier asomo de vulnerabilidad.",
     quote: "Busca ser fuerte, tener el control y defender la justicia y a los suyos."
   },
   9: {
-    title: "Eneatipo 9 · El Pacificador",
+    title: "9 · El Pacificador",
     description: "Receptivo, armonizador y conciliador. Evita los conflictos internos y externos a toda costa para mantener la tranquilidad, la conexión con los demás y la paz del espíritu.",
     quote: "Busca la armonía absoluta, la unión integradora y evitar cualquier tipo de fragmentación."
   }

@@ -89,7 +89,7 @@ const Card: FC<iCardProps> = ({
 	);
 
 	return (
-		<div className="h-screen flex items-center justify-center sticky top-0 md:p-0 px-4">
+		<div className="h-[75vh] md:h-screen flex items-center justify-center sticky top-0 md:p-0 px-4">
 			{link ? (
 				<a
 					href={link}
@@ -116,7 +116,7 @@ interface iCardSlideProps {
 
 const CardsParallax: FC<iCardSlideProps> = ({ items }) => {
 	return (
-		<div className="min-h-screen relative pb-[10vh]">
+		<div className="min-h-screen relative pb-4 md:pb-[10vh]">
 			{items.map((project, i) => {
 				return <Card key={`p_${i}`} {...project} i={i} />;
 			})}
