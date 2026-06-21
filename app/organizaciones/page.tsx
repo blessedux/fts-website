@@ -1,8 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowLeft, ArrowRight } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 import { PRESS_ITEMS } from "@/lib/landing-v2/press"
-import { EneagramaMap } from "@/components/landing-v2/svg/eneagrama-map"
+import { CardsParallax } from "@/components/landing-v2/cards-parallax"
 import { ENTERPRISE_INQUIRY_EMAIL } from "@/lib/landing-v2/constants"
 import {
   ORG_ENEAGRAM_POINTS,
@@ -12,7 +12,25 @@ import {
 
 const ENTERPRISE_MAILTO = `mailto:${ENTERPRISE_INQUIRY_EMAIL}?subject=Charlas%20de%20eneagrama%20para%20empresas`
 
+const CARD_BACKGROUNDS = [
+  "#2D231E", // var(--lv2-espresso)
+  "#3A2F28", // warm brown
+  "#151210", // var(--lv2-void)
+  "#44352D", // dark rust/brown
+  "#261F1A", // deep espresso
+]
+
 export default function OrganizacionesPage() {
+  const mappedPressItems = PRESS_ITEMS.map((item, index) => ({
+    title: item.caption || "Cobertura de prensa",
+    description: item.alt,
+    tag: "Prensa",
+    src: item.src,
+    link: item.url || "",
+    color: CARD_BACKGROUNDS[index % CARD_BACKGROUNDS.length],
+    textColor: "#F4EFE4",
+  }))
+
   return (
     <article className="mx-auto max-w-6xl px-6 pb-24 md:px-10 md:pb-32">
       <Link
@@ -121,15 +139,14 @@ export default function OrganizacionesPage() {
       </section>
 
       <section className="mt-20 overflow-hidden border border-[var(--lv2-taupe)]/25 md:grid md:grid-cols-2">
-        <div className="relative min-h-[280px] md:min-h-[360px]">
-          <Image
-            src="/imgs/prensa5.png"
-            alt="Workshop de eneagrama para ejecutivos"
-            fill
-            className="object-cover object-center"
-            sizes="(max-width: 768px) 100vw, 50vw"
+        <div className="relative min-h-[280px] md:min-h-[360px] aspect-video md:aspect-auto">
+          <iframe
+            src="https://www.youtube.com/embed/Uz5Eo33R3hc"
+            title="Experiencia Fanny Torres Silva"
+            className="absolute inset-0 w-full h-full border-0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[var(--lv2-void)]/30 to-transparent md:bg-gradient-to-t md:from-[var(--lv2-void)]/50 md:to-transparent" />
         </div>
         <div className="flex flex-col justify-center bg-[var(--lv2-espresso)]/35 p-8 md:p-10">
           <p className="lv2-section-label mb-4">Experiencia</p>
@@ -156,33 +173,8 @@ export default function OrganizacionesPage() {
           </p>
         </div>
 
-        <div className="mx-auto mt-12 max-w-lg">
-          <article className="lv2-offering-card overflow-hidden p-0">
-            <div className="relative aspect-[16/10] w-full">
-              <Image
-                src={PRESS_ITEMS[0].src}
-                alt={PRESS_ITEMS[0].alt}
-                fill
-                sizes="(max-width: 768px) 100vw, 512px"
-                className="object-cover opacity-90"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--lv2-void)] via-[var(--lv2-void)]/20 to-transparent" />
-            </div>
-            <div className="flex flex-col items-center gap-5 px-8 py-10 text-center">
-              <p className="lv2-body text-base md:text-lg">
-                Más de {PRESS_ITEMS.length} apariciones en radio, televisión,
-                universidades y prensa escrita. Explora la cobertura completa en la
-                galería interactiva.
-              </p>
-              <Link
-                href="/prensa"
-                className="lv2-btn-gold inline-flex items-center gap-2"
-              >
-                Ver página de prensa
-                <ArrowRight className="h-4 w-4" strokeWidth={1.5} aria-hidden />
-              </Link>
-            </div>
-          </article>
+        <div className="mt-12">
+          <CardsParallax items={mappedPressItems} />
         </div>
       </section>
     </article>

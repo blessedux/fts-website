@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Instagram, Mail, MessageCircle, Youtube } from "lucide-react"
 import {
   FOOTER_NAV,
@@ -31,14 +32,26 @@ const SOCIAL_LINKS = [
 
 export function LandingFooter() {
   return (
-    <footer className="lv2-footer border-t border-[var(--lv2-taupe)]/20 pt-12 pb-8 md:pt-14 md:pb-10">
-      <div className="mx-auto max-w-6xl px-6 md:px-10">
+    <footer className="lv2-footer relative pt-20 pb-8 md:pt-24 md:pb-10 overflow-hidden bg-[var(--lv2-void)]">
+      {/* Background Image Layer */}
+      <div className="absolute inset-0 z-0 opacity-40 mix-blend-luminosity pointer-events-none">
+        <Image
+          src="/imgs/footer_bg_fts.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-right-top md:object-top"
+          priority
+        />
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-6xl px-6 md:px-10">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between md:gap-16">
           <div className="min-w-0 flex-1">
             <p className="font-[family-name:var(--font-cormorant)] text-lg text-[var(--lv2-ivory)] tracking-wide">
               Fanny Torres Silva
             </p>
-            <p className="lv2-body mt-3 max-w-xl text-sm">{SITE_TAGLINE}</p>
+            <p className="lv2-body mt-3 max-w-xs text-sm">{SITE_TAGLINE}</p>
 
             <ul className="mt-6 flex items-center gap-4" aria-label="Redes sociales">
               {SOCIAL_LINKS.map(({ label, href, Icon }) => (
@@ -76,9 +89,18 @@ export function LandingFooter() {
 
         <div className="lv2-gold-line mt-10 max-w-full opacity-50" />
 
-        <p className="lv2-footer-copyright lv2-body mt-6 text-center text-xs tracking-wider">
-          © {new Date().getFullYear()} Fanny Torres Silva. Todos los derechos reservados.
-        </p>
+        <div className="mt-8 flex flex-col items-center gap-4">
+          <Image
+            src="/imgs/favicon.ico"
+            alt="Fanny Torres Silva Logo"
+            width={32}
+            height={32}
+            className="opacity-70 hover:opacity-100 transition-opacity duration-300"
+          />
+          <p className="lv2-footer-copyright lv2-body text-center text-xs tracking-wider mt-0">
+            © {new Date().getFullYear()} Fanny Torres Silva. Todos los derechos reservados.
+          </p>
+        </div>
       </div>
     </footer>
   )
