@@ -65,9 +65,9 @@ export function LandingNav() {
           })}
         </Link>
 
-        <a href={CONSULTA_SECTION_ID} className="lv2-nav-cta lv2-btn-gold">
+        <Link href={`/${CONSULTA_SECTION_ID}`} className="lv2-nav-cta lv2-btn-gold">
           Reservar
-        </a>
+        </Link>
       </div>
     </header>
   )

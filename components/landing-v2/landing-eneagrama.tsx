@@ -206,8 +206,8 @@ export function LandingEneagrama() {
         {/* content overlays raised vertically via bottom padding (pb-20 lg:pb-32) */}
         <div className="lv2-eneagrama-content absolute inset-0 z-10 flex min-h-0 items-center px-6 py-10 md:px-10 pb-20 lg:pb-32 pt-10">
           <div className="relative mx-auto w-full max-w-6xl h-full flex flex-col lg:flex-row lg:items-center justify-center overflow-visible">
-            {/* Added margin bottom mb-16 lg:mb-24 to push the enneagram map wrap upwards */}
-            <div className="lv2-eneagrama-map-wrap flex justify-center overflow-visible lg:flex-1 lg:pr-24 mb-16 lg:mb-24">
+            {/* Added margin bottom mb-4 and padding top pt-14 on mobile to push diagram down below header */}
+            <div className="lv2-eneagrama-map-wrap flex justify-center overflow-visible lg:flex-1 lg:pr-24 pt-14 md:pt-0 mb-4 lg:mb-24">
               <div
                 id="css-eneagrama"
                 className="pointer-events-auto"
@@ -252,23 +252,23 @@ export function LandingEneagrama() {
               </div>
             </div>
 
-            <div className="lv2-eneagrama-copy pointer-events-auto relative mt-8 lg:mt-0 lg:absolute lg:top-8 lg:right-0 lg:max-w-[320px] z-20 flex flex-col justify-between">
+            <div className="lv2-eneagrama-copy pointer-events-auto relative mt-4 lg:mt-0 lg:absolute lg:top-8 lg:right-0 lg:max-w-[320px] z-20 flex flex-col justify-between">
               <div className="lv2-eneagrama-text-veil" aria-hidden />
               <div>
-                <p className="lv2-section-label mb-4">El Eneagrama</p>
-                <h2 className="lv2-display text-2xl text-[var(--lv2-ivory)] md:text-3xl min-h-[4rem] flex items-center">
+                <p className="lv2-section-label mb-2 md:mb-4">El Eneagrama</p>
+                <h2 className="lv2-display text-xl md:text-2xl text-[var(--lv2-ivory)] md:text-3xl min-h-[3.2rem] md:min-h-[4rem] flex items-center">
                   {activeContent.title}
                 </h2>
-                <div className="lv2-gold-line my-6 max-w-[100px]" />
-                <p className="lv2-body text-base min-h-[8.5rem] leading-relaxed">
+                <div className="lv2-gold-line my-3 md:my-6 max-w-[100px]" />
+                <p className="lv2-body text-sm md:text-base min-h-[5.5rem] md:min-h-[8.5rem] leading-relaxed">
                   <TypewriterText key={activeDot !== null ? String(activeDot) : "default"} text={activeContent.description} />
                 </p>
-                <p className="lv2-body mt-6 text-sm italic text-[var(--lv2-taupe)] min-h-[3rem]">
+                <p className="lv2-body mt-3 md:mt-6 text-xs md:text-sm italic text-[var(--lv2-taupe)] min-h-[2rem] md:min-h-[3rem]">
                   {activeContent.quote}
                 </p>
               </div>
 
-              <Link href="#caminos" className="lv2-btn-gold mt-6 w-full text-center text-xs tracking-[0.15em] uppercase py-3.5 block transition-all duration-300 hover:shadow-lg hover:-translate-y-[1px]">
+              <Link href="#caminos" className="lv2-btn-gold mt-4 md:mt-6 w-full text-center text-xs tracking-[0.15em] uppercase py-3 block transition-all duration-300 hover:shadow-lg hover:-translate-y-[1px]">
                 Descubre tu eneagrama
               </Link>
             </div>

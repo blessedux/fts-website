@@ -139,7 +139,10 @@ export default function OrganizacionesPage() {
       </section>
 
       <section className="mt-20 overflow-hidden border border-[var(--lv2-taupe)]/25 md:grid md:grid-cols-2">
-        <div className="relative min-h-[280px] md:min-h-[360px] aspect-video md:aspect-auto">
+        <div 
+          className="relative min-h-[280px] md:min-h-[360px] aspect-video md:aspect-auto bg-cover bg-center bg-[var(--lv2-espresso)]"
+          style={{ backgroundImage: "url('/imgs/prensa5.png')" }}
+        >
           <iframe
             src="https://www.youtube.com/embed/Uz5Eo33R3hc"
             title="Experiencia Fanny Torres Silva"

@@ -421,6 +421,17 @@
   letter-spacing: 0.08em;
 }
 
+@media (max-width: 767px) {
+  .lv2-logo-fade-letter,
+  .lv2-logo-fade-space {
+    opacity: 0 !important;
+    max-width: 0px !important;
+  }
+  .lv2-logo-initial {
+    letter-spacing: 0.08em !important;
+  }
+}
+
 .lv2-nav-cta {
   display: none;
 }
@@ -579,16 +590,17 @@
   }
 
   .lv2-eneagrama-copy {
-    padding: 0.85rem 1rem 1rem;
+    padding: 0.65rem 0.85rem 0.85rem;
+    margin-bottom: 0.5rem;
   }
 
   .lv2-eneagrama-copy .lv2-display {
-    font-size: 1.65rem;
+    font-size: 1.25rem;
   }
 
   .lv2-eneagrama-copy .lv2-body {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 0.85rem;
+    line-height: 1.45;
   }
 }
 
