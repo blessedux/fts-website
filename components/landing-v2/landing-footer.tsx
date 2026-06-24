@@ -89,17 +89,51 @@ export function LandingFooter() {
 
         <div className="lv2-gold-line mt-10 max-w-full opacity-50" />
 
-        <div className="mt-8 flex flex-col items-center gap-4">
-          <Image
-            src="/imgs/favicon.ico"
-            alt="Fanny Torres Silva Logo"
-            width={32}
-            height={32}
-            className="opacity-70 hover:opacity-100 transition-opacity duration-300"
-          />
+        <div className="mt-8 flex flex-col items-center gap-4 relative w-full">
+          <div className="flex items-center gap-3">
+            <Image
+              src="/imgs/favicon.ico"
+              alt="Fanny Torres Silva Logo"
+              width={32}
+              height={32}
+              className="opacity-70 hover:opacity-100 transition-opacity duration-300"
+            />
+            <a
+              href="https://mentemaestra.studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="md:hidden flex items-center justify-center w-8 h-8 rounded border border-[#b8954a]/30 bg-black/20 hover:bg-[#b8954a]/10 hover:border-[#b8954a]/60 transition-all duration-300 opacity-70 hover:opacity-100"
+              aria-label="Mente Maestra Design"
+              title="Diseñado por Mente Maestra"
+            >
+              <Image
+                src="/MMLOGO.svg"
+                alt="Mente Maestra Logo"
+                width={16}
+                height={16}
+                className="w-4 h-4 invert opacity-90"
+              />
+            </a>
+          </div>
           <p className="lv2-footer-copyright lv2-body text-center text-xs tracking-wider mt-0">
             © {new Date().getFullYear()} Fanny Torres Silva. Todos los derechos reservados.
           </p>
+          <a
+            href="https://mentemaestra.studio"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden md:flex absolute right-0 bottom-0 items-center justify-center w-8 h-8 rounded border border-[#b8954a]/30 bg-black/20 hover:bg-[#b8954a]/10 hover:border-[#b8954a]/60 transition-all duration-300 opacity-70 hover:opacity-100"
+            aria-label="Mente Maestra Design"
+            title="Diseñado por Mente Maestra"
+          >
+            <Image
+              src="/MMLOGO.svg"
+              alt="Mente Maestra Logo"
+              width={16}
+              height={16}
+              className="w-4 h-4 invert opacity-90"
+            />
+          </a>
         </div>
       </div>
     </footer>

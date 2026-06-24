@@ -80,7 +80,7 @@ export default function OrganizacionesPage() {
             </h2>
             <div className="lv2-gold-line my-8 max-w-[120px]" />
             <p className="lv2-body text-lg text-[#f4efe4]/90">
-              El Eneagrama es una herramienta excepcionalmente potente para las áreas comerciales porque, en su esencia, las ventas no son solo un proceso técnico; son un <em className="italic text-[var(--lv2-taupe)]">proceso relacional y de sintonía emocional</em>.
+              El Eneagrama es una herramienta excepcionalmente potente por ejemplo para áreas comerciales porque, en su esencia, las ventas no son solo un proceso técnico; son un <em className="italic text-[var(--lv2-taupe)]">proceso relacional y de sintonía emocional</em>.
             </p>
             <p className="lv2-body text-lg mt-4 text-[#f4efe4]/90">
               Tradicionalmente, la capacitación en ventas se enfoca en el saber hacer (técnicas de cierre, manejo de objeciones). El Eneagrama interviene en el ser, permitiendo que un vendedor comprenda su propio motor motivacional.

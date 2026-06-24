@@ -433,12 +433,12 @@
 }
 
 .lv2-nav-cta {
-  display: none;
+  display: none !important;
 }
 
 @media (min-width: 768px) {
   .lv2-nav-cta {
-    display: inline-flex;
+    display: inline-flex !important;
     padding: 0.5rem 1.25rem;
     font-size: 0.75rem;
   }

@@ -26,7 +26,7 @@ export const ORG_SERVICES = [
 ] as const
 
 export const ORG_FORMATS = [
-  { place: "CABA", mode: "Presencial" },
-  { place: "Chile", mode: "Presencial u online" },
-  { place: "Internacional", mode: "Online" },
+  { place: "Internacional" },
+  { place: "Presencial" },
+  { place: "Online" },
 ] as const

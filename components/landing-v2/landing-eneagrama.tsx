@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect } from "react"
 import { cn } from "@/lib/utils"
+import { CONSULTA_SECTION_ID } from "@/lib/landing-v2/constants"
 
 const BIOMBO_BG = {
   src: "/imgs/biombo_bg.webp",
@@ -268,8 +269,8 @@ export function LandingEneagrama() {
                 </p>
               </div>
 
-              <Link href="#caminos" className="lv2-btn-gold mt-4 md:mt-6 w-full text-center text-xs tracking-[0.15em] uppercase py-3 block transition-all duration-300 hover:shadow-lg hover:-translate-y-[1px]">
-                Descubre tu eneagrama
+              <Link href={`/${CONSULTA_SECTION_ID}`} className="lv2-btn-gold mt-4 md:mt-6 w-full text-center text-xs tracking-[0.15em] uppercase py-3 block transition-all duration-300 hover:shadow-lg hover:-translate-y-[1px]">
+                Agenda una consulta
               </Link>
             </div>
           </div>

@@ -87,8 +87,9 @@ export const OFFERINGS = [
     description:
       "Análisis personal para quienes buscan un espacio regular de exploración interior, trabajando desde el inconsciente.",
     locations: [
-      { place: "CABA", mode: "Presencial" },
-      { place: "Internacional", mode: "Online" },
+      { place: "Internacional" },
+      { place: "Presencial" },
+      { place: "Online" },
     ],
     ctaLabel: "Reservar consulta",
     ctaHref: CONSULTA_SECTION_ID,
@@ -100,8 +101,9 @@ export const OFFERINGS = [
     description:
       "Talleres y conferencias para equipos, líderes y cultura organizacional.",
     locations: [
-      { place: "CABA", mode: "Presencial" },
-      { place: "Internacional", mode: "Presencial" },
+      { place: "Internacional" },
+      { place: "Presencial" },
+      { place: "Online" },
     ],
     ctaLabel: "Consultar charlas",
     ctaHref: "/organizaciones",
