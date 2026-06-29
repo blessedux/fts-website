@@ -140,28 +140,11 @@ export function LandingNav() {
               Reservar
             </Link>
 
-            {/* Desktop Cart Toggle Button */}
+            {/* Burger Toggle */}
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="relative hidden lg:flex h-10 w-10 items-center justify-center rounded border border-[var(--lv2-taupe)]/30 bg-black/20 hover:bg-[#b8954a]/10 hover:border-[#b8954a]/60 transition-all duration-300 text-[var(--lv2-ivory)]"
-              aria-label="Ver carrito"
-            >
-              <div className="relative">
-                <ShoppingBag className="h-5 w-5" strokeWidth={1.5} />
-                {mounted && totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-[#b8954a] text-[10px] font-bold text-[var(--lv2-void)]">
-                    {totalItems}
-                  </span>
-                )}
-              </div>
-            </button>
-
-            {/* Mobile/Tablet Burger Toggle */}
-            <button
-              type="button"
-              onClick={() => setIsOpen(!isOpen)}
-              className="relative flex h-10 w-10 flex-col items-center justify-center rounded border border-[var(--lv2-taupe)]/30 bg-black/20 hover:bg-[#b8954a]/10 hover:border-[#b8954a]/60 transition-all duration-300 text-[var(--lv2-ivory)] lg:hidden"
+              className="relative flex h-10 w-10 flex-col items-center justify-center rounded border border-[var(--lv2-taupe)]/30 bg-black/20 hover:bg-[#b8954a]/10 hover:border-[#b8954a]/60 transition-all duration-300 text-[var(--lv2-ivory)]"
               aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
             >
               {isOpen ? (
@@ -193,8 +176,8 @@ export function LandingNav() {
           >
             <div className="mx-auto max-w-6xl w-full flex-1 flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16 pt-6 lg:pt-12">
               
-              {/* Left Column: Navigation Links (Mobile & Tablet) */}
-              <div className="w-full lg:w-1/2 flex flex-col lg:hidden">
+              {/* Left Column: Navigation Links */}
+              <div className="w-full lg:w-1/2 flex flex-col">
                 <p className="lv2-section-label mb-6 text-[#b8954a]/85 font-semibold">Navegación</p>
                 <nav className="flex flex-col gap-2">
                   {NAV_LINKS.map((link) => (
@@ -209,18 +192,6 @@ export function LandingNav() {
                     </Link>
                   ))}
                 </nav>
-              </div>
-
-              {/* Left Column Placeholder/Info for Desktop menu view to keep balanced layout */}
-              <div className="hidden lg:flex lg:w-1/2 flex-col pr-8">
-                <p className="lv2-section-label mb-6 text-[#b8954a]/85 font-semibold">Mi Espacio</p>
-                <h3 className="font-[family-name:var(--font-cormorant)] text-3xl lg:text-4xl text-[var(--lv2-ivory)] leading-tight">
-                  La exploración de uno mismo es el inicio de todo camino.
-                </h3>
-                <div className="lv2-gold-line my-8 max-w-[120px]" />
-                <p className="lv2-body text-sm text-[var(--lv2-ivory-muted)] leading-relaxed">
-                  Utiliza las herramientas del Eneagrama y el Psicoanálisis para adentrarte en el estudio de tus motivaciones, miedos y propósitos fundamentales.
-                </p>
               </div>
 
               {/* Right Column: Cart Container */}
