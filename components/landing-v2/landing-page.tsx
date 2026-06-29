@@ -7,6 +7,7 @@ import { LandingOfferings } from "@/components/landing-v2/landing-offerings"
 import { LandingArchetypes } from "@/components/landing-v2/landing-archetypes"
 import { LandingAbout } from "@/components/landing-v2/landing-about"
 import { LandingConsultaParallax } from "@/components/landing-v2/landing-consulta-parallax"
+import { LandingTestimonials } from "@/components/landing-v2/landing-testimonials"
 import { LandingFooter } from "@/components/landing-v2/landing-footer"
 
 const dmSans = DM_Sans({
@@ -48,6 +49,7 @@ export function LandingPageV2() {
         <LandingArchetypes />
         <LandingAbout />
         <LandingConsultaParallax />
+        <LandingTestimonials />
       </main>
       <LandingFooter />
     </div>

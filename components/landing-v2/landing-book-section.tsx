@@ -1,6 +1,9 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { BOOK_FEATURES } from "@/lib/landing-v2/book"
+import { addToCart } from "@/lib/landing-v2/cart"
 
 type LandingBookSectionProps = {
   titleTag?: "h1" | "h2"
@@ -70,7 +73,18 @@ export function LandingBookSection({
                 Comprar ahora
               </Link>
             ) : (
-              <button type="button" className="lv2-btn-gold">
+              <button
+                type="button"
+                className="lv2-btn-gold"
+                onClick={() =>
+                  addToCart({
+                    id: "libro-eneagrama",
+                    name: "El Libro Oficial de Eneagrama",
+                    price: 24990,
+                    image: "/imgs/portada_libro_final.png",
+                  })
+                }
+              >
                 Comprar ahora
               </button>
             )}

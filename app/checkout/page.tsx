@@ -1,218 +1,366 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Separator } from "@/components/ui/separator"
-import { MainNav } from "@/components/main-nav"
-import { Footer } from "@/components/footer"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { CheckCircle, CreditCard, Package } from "lucide-react"
+import { useState, useEffect } from "react"
+import Link from "next/link"
 import Image from "next/image"
+import { Cormorant_Garamond, DM_Sans, EB_Garamond } from "next/font/google"
+import { LandingNav } from "@/components/landing-v2/landing-nav"
+import { LandingFooter } from "@/components/landing-v2/landing-footer"
+import { CheckCircle, CreditCard, Package, Lock, Check } from "lucide-react"
+import { getCartItems, CartItem } from "@/lib/landing-v2/cart"
+import "@/styles/landing-v2.css"
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-hero-sans",
+  display: "swap",
+})
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-cormorant",
+  display: "swap",
+})
+
+const ebGaramond = EB_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  style: ["normal", "italic"],
+  variable: "--font-eb-garamond",
+  display: "swap",
+})
 
 export default function CheckoutPage() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [productType, setProductType] = useState<"course" | "book">("course")
-  const [includeShipping, setIncludeShipping] = useState<boolean>(false)
+  const [isSuccess, setIsSuccess] = useState<boolean>(false)
+  const [mounted, setMounted] = useState<boolean>(false)
+  const [cartItems, setCartItems] = useState<CartItem[]>([])
+  
+  // Form fields
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
+  const [address, setAddress] = useState("")
+  const [region, setRegion] = useState("Metropolitana")
+  const [comuna, setComuna] = useState("")
+
+  useEffect(() => {
+    setMounted(true)
+    const items = getCartItems()
+    if (items.length > 0) {
+      setCartItems(items)
+    } else {
+      // Fallback placeholder item (e.g. the book) if someone loads this directly without any cart items
+      setCartItems([
+        {
+          id: "libro-eneagrama",
+          name: "El Libro Oficial de Eneagrama",
+          price: 24990,
+          image: "/imgs/portada_libro_final.png",
+          quantity: 1,
+        },
+      ])
+    }
+  }, [])
+
+  const hasPhysicalBook = cartItems.some((item) => item.id === "libro-eneagrama")
+  const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
+  const shippingCost = hasPhysicalBook ? 3990 : 0
+  const total = subtotal + shippingCost
 
   async function onSubmit(event: React.FormEvent) {
     event.preventDefault()
     setIsLoading(true)
 
-    // Simulación de procesamiento de pago - aquí iría la integración con Mercado Pago
+    // Simulate SumUp API checkout processing
     setTimeout(() => {
       setIsLoading(false)
-      // Redirección a página de éxito o manejo de errores
+      setIsSuccess(true)
+      // Clear cart
+      localStorage.removeItem("fts-evershop-cart")
+      window.dispatchEvent(new Event("fts-evershop-cart-updated"))
     }, 2000)
   }
 
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-[var(--lv2-void)] flex items-center justify-center text-[var(--lv2-ivory)]">
+        <p className="animate-pulse">Cargando...</p>
+      </div>
+    )
+  }
+
   return (
-    <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-16 items-center px-2 md:px-4">
-          <MainNav />
-        </div>
-      </header>
-      <main className="flex-1 py-12">
-        <div className="container px-4 md:px-6">
-          <div className="mx-auto max-w-4xl">
-            <div className="mb-8 space-y-2">
-              <h1 className="text-3xl font-bold">Finalizar Compra</h1>
-              <p className="text-gray-500 dark:text-gray-400">Completa tu información para procesar tu pedido</p>
+    <div
+      className={`landing-v2 min-h-screen ${dmSans.variable} ${cormorant.variable} ${ebGaramond.variable} flex flex-col bg-[var(--lv2-void)]`}
+    >
+      <LandingNav />
+      
+      <main className="flex-grow pt-24 pb-24 md:pt-32">
+        <div className="mx-auto max-w-4xl px-6 md:px-10">
+          
+          {isSuccess ? (
+            /* Success State */
+            <div className="text-center py-16 px-6 bg-[var(--lv2-ink)]/40 border border-[#b8954a]/25 rounded-lg max-w-xl mx-auto my-12 backdrop-blur-sm">
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-500/10 border border-green-500 mb-6">
+                <Check className="h-8 w-8 text-green-400" />
+              </div>
+              <h1 className="font-[family-name:var(--font-cormorant)] text-3xl text-[var(--lv2-ivory)] mb-4">
+                ¡Pago Recibido Exitosamente!
+              </h1>
+              <p className="lv2-body text-base text-[var(--lv2-ivory-muted)] mb-2">
+                Gracias por tu compra. Hemos procesado tu pago de manera segura.
+              </p>
+              <p className="lv2-body text-sm text-[var(--lv2-taupe)] mb-8">
+                Recibirás un correo electrónico de confirmación con los detalles del despacho y acceso en los próximos minutos.
+              </p>
+              <div className="lv2-gold-line max-w-[120px] mx-auto my-8" />
+              <Link href="/" className="lv2-btn-gold px-8 py-3 inline-block">
+                Volver al Inicio
+              </Link>
             </div>
-
-            <div className="grid gap-8 md:grid-cols-[1fr_350px]">
-              <div className="space-y-8">
-                <Tabs defaultValue="course" onValueChange={(value) => setProductType(value as "course" | "book")}>
-                  <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="course">Curso Online</TabsTrigger>
-                    <TabsTrigger value="book">Libro Físico</TabsTrigger>
-                  </TabsList>
-                  <TabsContent value="course" className="space-y-4 pt-4">
-                    <div className="rounded-lg border p-4">
-                      <div className="flex items-center gap-4">
-                        <div className="relative h-16 w-16 overflow-hidden rounded-md">
-                          <Image
-                            src="/placeholder.svg?height=64&width=64"
-                            alt="Curso de Eneagrama"
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <div>
-                          <h3 className="font-semibold">Curso Completo de Eneagrama</h3>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">Plan Premium</p>
-                        </div>
-                        <div className="ml-auto font-semibold">$129.990 CLP</div>
-                      </div>
-                    </div>
-                  </TabsContent>
-                  <TabsContent value="book" className="space-y-4 pt-4">
-                    <div className="rounded-lg border p-4">
-                      <div className="flex items-center gap-4">
-                        <div className="relative h-16 w-16 overflow-hidden rounded-md">
-                          <Image
-                            src="/placeholder.svg?height=64&width=64"
-                            alt="Libro de Eneagrama"
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <div>
-                          <h3 className="font-semibold">Libro Oficial del Eneagrama</h3>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">Por Fanny Torres Silva</p>
-                        </div>
-                        <div className="ml-auto font-semibold">$24.990 CLP</div>
-                      </div>
-                    </div>
-
-                    <div className="rounded-lg border p-4">
-                      <div className="flex items-center gap-2">
-                        <Package className="h-5 w-5 text-rose-600" />
-                        <h3 className="font-semibold">Información de Envío</h3>
-                      </div>
-                      <div className="mt-4 grid gap-4">
-                        <div className="grid gap-2">
-                          <Label htmlFor="address">Dirección</Label>
-                          <Input id="address" placeholder="Calle, número, depto." required />
-                        </div>
-                        <div className="grid grid-cols-2 gap-4">
-                          <div className="grid gap-2">
-                            <Label htmlFor="region">Región</Label>
-                            <Select>
-                              <SelectTrigger id="region">
-                                <SelectValue placeholder="Seleccionar" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="metropolitana">Metropolitana</SelectItem>
-                                <SelectItem value="valparaiso">Valparaíso</SelectItem>
-                                <SelectItem value="biobio">Biobío</SelectItem>
-                                <SelectItem value="other">Otra</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
-                          <div className="grid gap-2">
-                            <Label htmlFor="comuna">Comuna</Label>
-                            <Input id="comuna" placeholder="Comuna" required />
-                          </div>
-                        </div>
-                        <div className="grid gap-2">
-                          <Label htmlFor="phone">Teléfono de contacto</Label>
-                          <Input id="phone" type="tel" placeholder="+56 9 XXXX XXXX" required />
-                        </div>
-                      </div>
-                    </div>
-                  </TabsContent>
-                </Tabs>
-
-                <div>
-                  <h2 className="mb-4 text-xl font-semibold">Información Personal</h2>
-                  <div className="grid gap-4">
-                    <div className="grid gap-2">
-                      <Label htmlFor="name">Nombre completo</Label>
-                      <Input id="name" placeholder="Nombre y apellidos" required />
-                    </div>
-                    <div className="grid gap-2">
-                      <Label htmlFor="email">Correo electrónico</Label>
-                      <Input id="email" type="email" placeholder="nombre@ejemplo.com" required />
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <h2 className="mb-4 text-xl font-semibold">Método de Pago</h2>
-                  <RadioGroup defaultValue="mercadopago" className="space-y-3">
-                    <div className="flex items-center space-x-2 rounded-lg border p-4">
-                      <RadioGroupItem value="mercadopago" id="mercadopago" />
-                      <Label htmlFor="mercadopago" className="flex items-center gap-2 font-normal">
-                        <Image src="/placeholder.svg?height=32&width=100" alt="Mercado Pago" width={100} height={32} />
-                        <span>Mercado Pago</span>
-                      </Label>
-                    </div>
-                    <div className="flex items-center space-x-2 rounded-lg border p-4">
-                      <RadioGroupItem value="creditcard" id="creditcard" />
-                      <Label htmlFor="creditcard" className="flex items-center gap-2 font-normal">
-                        <CreditCard className="h-5 w-5" />
-                        <span>Tarjeta de Crédito/Débito</span>
-                      </Label>
-                    </div>
-                  </RadioGroup>
-                </div>
+          ) : (
+            /* Checkout Form State */
+            <div>
+              <div className="mb-10 text-center md:text-left">
+                <h1 className="font-[family-name:var(--font-cormorant)] text-3xl md:text-4xl text-[var(--lv2-ivory)]">
+                  Finalizar Compra
+                </h1>
+                <p className="lv2-body text-sm text-[var(--lv2-taupe)] mt-2">
+                  Completa tu información para procesar tu pedido
+                </p>
               </div>
 
-              <div>
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Resumen del Pedido</CardTitle>
-                    <CardDescription>Revisa los detalles de tu compra</CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      <div className="flex justify-between">
-                        <span>Subtotal</span>
-                        <span>{productType === "course" ? "$129.990" : "$24.990"} CLP</span>
+              <div className="grid gap-10 md:grid-cols-[1fr_350px]">
+                
+                {/* Left Column: Forms */}
+                <form onSubmit={onSubmit} className="space-y-8">
+                  
+                  {/* Cart Overview */}
+                  <div className="space-y-4">
+                    <p className="lv2-section-label">Artículos del Pedido</p>
+                    <div className="space-y-3">
+                      {cartItems.map((item) => (
+                        <div
+                          key={item.id}
+                          className="flex items-center gap-4 bg-[var(--lv2-ink)]/30 border border-[var(--lv2-taupe)]/10 p-4 rounded"
+                        >
+                          <div className="relative h-16 w-12 bg-black/25 flex-shrink-0">
+                            <Image
+                              src={item.image}
+                              alt={item.name}
+                              fill
+                              className="object-contain"
+                              sizes="48px"
+                            />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h3 className="font-semibold text-sm text-[var(--lv2-ivory)] truncate">
+                              {item.name}
+                            </h3>
+                            <p className="text-xs text-[var(--lv2-taupe)] mt-1">
+                              Cantidad: {item.quantity} · ${item.price.toLocaleString("es-CL")} CLP
+                            </p>
+                          </div>
+                          <div className="font-bold text-sm text-[var(--lv2-ivory)]">
+                            ${(item.price * item.quantity).toLocaleString("es-CL")} CLP
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Personal Information */}
+                  <div className="space-y-4">
+                    <p className="lv2-section-label">Información Personal</p>
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <div className="sm:col-span-2">
+                        <label className="block">
+                          <span className="lv2-form-label block mb-1">Nombre Completo</span>
+                          <input
+                            type="text"
+                            required
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            className="lv2-input rounded"
+                            placeholder="Nombre y apellidos"
+                          />
+                        </label>
                       </div>
-                      {productType === "book" && (
+                      <div>
+                        <label className="block">
+                          <span className="lv2-form-label block mb-1">Correo Electrónico</span>
+                          <input
+                            type="email"
+                            required
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="lv2-input rounded"
+                            placeholder="nombre@ejemplo.com"
+                          />
+                        </label>
+                      </div>
+                      <div>
+                        <label className="block">
+                          <span className="lv2-form-label block mb-1">Teléfono de Contacto</span>
+                          <input
+                            type="tel"
+                            required
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            className="lv2-input rounded"
+                            placeholder="+56 9 XXXX XXXX"
+                          />
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Shipping Address (Only if cart contains physical book) */}
+                  {hasPhysicalBook && (
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-2">
+                        <Package className="h-4 w-4 text-[#b8954a]" />
+                        <p className="lv2-section-label mb-0">Información de Envío</p>
+                      </div>
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        <div className="sm:col-span-2">
+                          <label className="block">
+                            <span className="lv2-form-label block mb-1">Dirección Completa</span>
+                            <input
+                              type="text"
+                              required
+                              value={address}
+                              onChange={(e) => setAddress(e.target.value)}
+                              className="lv2-input rounded"
+                              placeholder="Calle, número, departamento o block"
+                            />
+                          </label>
+                        </div>
+                        <div>
+                          <label className="block">
+                            <span className="lv2-form-label block mb-1">Región</span>
+                            <select
+                              value={region}
+                              onChange={(e) => setRegion(e.target.value)}
+                              className="lv2-input rounded w-full bg-[#2e1a0e] border border-[var(--lv2-taupe)]/35 text-[var(--lv2-ivory)] px-3 py-2.5"
+                            >
+                              <option value="Metropolitana">Metropolitana</option>
+                              <option value="Valparaiso">Valparaíso</option>
+                              <option value="Biobio">Biobío</option>
+                              <option value="Araucania">Araucanía</option>
+                              <option value="Antofagasta">Antofagasta</option>
+                              <option value="Otro">Otra Región</option>
+                            </select>
+                          </label>
+                        </div>
+                        <div>
+                          <label className="block">
+                            <span className="lv2-form-label block mb-1">Comuna</span>
+                            <input
+                              type="text"
+                              required
+                              value={comuna}
+                              onChange={(e) => setComuna(e.target.value)}
+                              className="lv2-input rounded"
+                              placeholder="Comuna de destino"
+                            />
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Payment Methods */}
+                  <div className="space-y-4">
+                    <p className="lv2-section-label">Método de Pago</p>
+                    <div className="border border-[var(--lv2-taupe)]/20 bg-[var(--lv2-ink)]/40 p-5 rounded flex items-start gap-4">
+                      <div className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-[#b8954a]">
+                        <div className="h-2.5 w-2.5 rounded-full bg-[#b8954a]" />
+                      </div>
+                      <div className="flex-1 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+                        <div>
+                          <h4 className="font-semibold text-sm text-[var(--lv2-ivory)] flex items-center gap-2">
+                            <CreditCard className="h-4 w-4 text-[#0063FF]" />
+                            Pago Seguro
+                          </h4>
+                          <p className="text-xs text-[var(--lv2-taupe)] mt-1">
+                            Paga con tarjeta de crédito, débito o prepago de forma rápida y confiable.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="lv2-btn-gold w-full py-4 text-center flex items-center justify-center gap-2 disabled:opacity-50"
+                  >
+                    {isLoading ? "Procesando pago seguro..." : `Pagar $${total.toLocaleString("es-CL")} CLP`}
+                  </button>
+                </form>
+
+                {/* Right Column: Order Summary Card */}
+                <div className="space-y-6">
+                  <div className="bg-[var(--lv2-ink)]/45 border border-[var(--lv2-taupe)]/20 p-6 rounded-lg backdrop-blur-sm">
+                    <h3 className="font-[family-name:var(--font-cormorant)] text-xl text-[var(--lv2-ivory)] mb-4">
+                      Resumen del Pedido
+                    </h3>
+                    
+                    <div className="space-y-3 text-sm">
+                      <div className="flex justify-between">
+                        <span className="text-[var(--lv2-ivory-muted)]">Subtotal</span>
+                        <span className="text-[var(--lv2-ivory)] font-medium">
+                          ${subtotal.toLocaleString("es-CL")} CLP
+                        </span>
+                      </div>
+                      
+                      {hasPhysicalBook && (
                         <div className="flex justify-between">
-                          <span>Envío</span>
-                          <span>$3.990 CLP</span>
+                          <span className="text-[var(--lv2-ivory-muted)]">Envío</span>
+                          <span className="text-[var(--lv2-ivory)] font-medium">
+                            ${shippingCost.toLocaleString("es-CL")} CLP
+                          </span>
                         </div>
                       )}
-                      <Separator />
-                      <div className="flex justify-between font-semibold">
-                        <span>Total</span>
-                        <span>{productType === "course" ? "$129.990" : "$28.980"} CLP</span>
+                      
+                      <div className="h-[1px] bg-[var(--lv2-taupe)]/15 my-4" />
+                      
+                      <div className="flex justify-between items-center text-base font-bold">
+                        <span className="text-[var(--lv2-ivory)]">Total</span>
+                        <span className="text-lg text-[#f4efe4]">
+                          ${total.toLocaleString("es-CL")} CLP
+                        </span>
                       </div>
                     </div>
-                  </CardContent>
-                  <CardFooter>
-                    <Button className="w-full bg-rose-600 hover:bg-rose-700" disabled={isLoading} onClick={onSubmit}>
-                      {isLoading ? "Procesando..." : "Finalizar Compra"}
-                    </Button>
-                  </CardFooter>
-                </Card>
-
-                <div className="mt-4 rounded-lg border p-4">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="h-5 w-5 text-green-500" />
-                    <span className="text-sm font-medium">Pago 100% Seguro</span>
                   </div>
-                  <p className="mt-2 text-xs text-gray-500 dark:text-gray-400">
-                    Tus datos están protegidos y el proceso de pago es seguro a través de Mercado Pago.
-                  </p>
+
+                  <div className="border border-[var(--lv2-taupe)]/20 bg-black/10 p-4 rounded flex gap-3">
+                    <Lock className="h-5 w-5 text-green-500 shrink-0 mt-0.5" />
+                    <div>
+                      <h4 className="font-semibold text-xs text-[var(--lv2-ivory)]">
+                        Transacción Encriptada
+                      </h4>
+                      <p className="text-[11px] text-[var(--lv2-taupe)] mt-1 leading-normal">
+                        Tus datos personales y bancarios están totalmente protegidos. La transacción se realiza de forma directa a través de pasarelas de pago seguras y encriptadas.
+                      </p>
+                    </div>
+                  </div>
                 </div>
+
               </div>
             </div>
-          </div>
+          )}
+          
         </div>
       </main>
-      <Footer />
+
+      <LandingFooter />
     </div>
   )
 }
