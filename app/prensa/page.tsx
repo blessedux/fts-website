@@ -1,32 +1,52 @@
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
-import { LandingPressInfinite } from "@/components/landing-v2/landing-press-infinite"
+import { PRESS_ITEMS } from "@/lib/landing-v2/press"
+import { CardsParallax } from "@/components/landing-v2/cards-parallax"
+
+const CARD_BACKGROUNDS = [
+  "#2D231E", // var(--lv2-espresso)
+  "#3A2F28", // warm brown
+  "#151210", // var(--lv2-void)
+  "#44352D", // dark rust/brown
+  "#261F1A", // deep espresso
+]
 
 export default function PrensaPage() {
+  const mappedPressItems = PRESS_ITEMS.map((item, index) => ({
+    title: item.caption || "Cobertura de prensa",
+    description: item.alt,
+    tag: "Prensa",
+    src: item.src,
+    link: item.url || "",
+    color: CARD_BACKGROUNDS[index % CARD_BACKGROUNDS.length],
+    textColor: "#F4EFE4",
+  }))
+
   return (
-    <div className="relative">
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 px-6 pt-6 md:px-10 md:pt-8">
-        <Link
-          href="/organizaciones"
-          className="lv2-body pointer-events-auto mb-6 inline-flex items-center gap-2 text-sm tracking-wide text-[var(--lv2-taupe)] transition-colors hover:text-[var(--lv2-ivory)]"
-        >
-          <ArrowLeft className="h-4 w-4" strokeWidth={1.5} aria-hidden />
-          Volver a organizaciones
-        </Link>
+    <article className="mx-auto max-w-6xl px-6 pb-24 md:px-10 md:pb-32">
+      <Link
+        href="/"
+        className="lv2-body mb-12 inline-flex items-center gap-2 text-sm tracking-wide text-[var(--lv2-taupe)] transition-colors hover:text-[var(--lv2-ivory)]"
+      >
+        <ArrowLeft className="h-4 w-4" strokeWidth={1.5} aria-hidden />
+        Volver al inicio
+      </Link>
 
-        <header className="mx-auto max-w-2xl text-center">
-          <p className="lv2-section-label mb-3">Prensa y medios</p>
-          <h1 className="lv2-display text-2xl text-[var(--lv2-ivory)] md:text-4xl">
-            Apariciones y cobertura
-          </h1>
-          <p className="lv2-body mt-4 text-sm md:text-base">
-            Arrastra o desplázate para explorar. Haz clic en una imagen con enlace
-            para leer la nota completa.
-          </p>
-        </header>
+      <header className="max-w-3xl mb-16">
+        <p className="lv2-section-label mb-4">Prensa y medios</p>
+        <h1 className="lv2-display text-3xl text-[var(--lv2-ivory)] md:text-5xl text-balance">
+          Apariciones y cobertura internacional
+        </h1>
+        <div className="lv2-gold-line my-8 max-w-[120px]" />
+        <p className="lv2-body text-lg md:text-xl">
+          Explora la presencia de Fanny Torres Silva en radio, televisión, conferencias y
+          prensa escrita de Chile y Latinoamérica.
+        </p>
+      </header>
+
+      <div className="mt-12">
+        <CardsParallax items={mappedPressItems} />
       </div>
-
-      <LandingPressInfinite />
-    </div>
+    </article>
   )
 }

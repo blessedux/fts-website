@@ -3,6 +3,7 @@ import type React from "react"
 import { Cormorant_Garamond, DM_Sans, EB_Garamond } from "next/font/google"
 import "@/styles/landing-v2.css"
 import { LandingNav } from "@/components/landing-v2/landing-nav"
+import { LandingFooter } from "@/components/landing-v2/landing-footer"
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -42,7 +43,8 @@ export default function PrensaLayout({
       className={`landing-v2 min-h-screen ${dmSans.variable} ${cormorant.variable} ${ebGaramond.variable}`}
     >
       <LandingNav />
-      <main className="relative flex-1 overflow-hidden">{children}</main>
+      <main className="flex-1 pt-20 md:pt-24">{children}</main>
+      <LandingFooter />
     </div>
   )
 }
