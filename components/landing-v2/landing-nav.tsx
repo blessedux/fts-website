@@ -133,19 +133,6 @@ export function LandingNav() {
           </Link>
 
           <div className="flex items-center gap-4 z-50">
-            {/* Desktop Navigation Links */}
-            <nav className="hidden md:flex items-center gap-8 mr-4">
-              {NAV_LINKS.filter(link => link.label !== "Reservar Consulta").map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="font-[family-name:var(--font-hero-sans)] text-xs font-semibold uppercase tracking-[0.16em] text-[var(--lv2-ivory-muted)] hover:text-[var(--lv2-ivory)] transition-colors duration-300"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-
             <Link
               href={`/${CONSULTA_SECTION_ID}`}
               className="lv2-nav-cta lv2-btn-gold hidden sm:inline-flex"
@@ -157,7 +144,7 @@ export function LandingNav() {
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="relative hidden md:flex h-10 w-10 items-center justify-center rounded border border-[var(--lv2-taupe)]/30 bg-black/20 hover:bg-[#b8954a]/10 hover:border-[#b8954a]/60 transition-all duration-300 text-[var(--lv2-ivory)]"
+              className="relative hidden lg:flex h-10 w-10 items-center justify-center rounded border border-[var(--lv2-taupe)]/30 bg-black/20 hover:bg-[#b8954a]/10 hover:border-[#b8954a]/60 transition-all duration-300 text-[var(--lv2-ivory)]"
               aria-label="Ver carrito"
             >
               <div className="relative">
@@ -170,11 +157,11 @@ export function LandingNav() {
               </div>
             </button>
 
-            {/* Mobile Burger/Cart Toggle (Mobile Only) */}
+            {/* Mobile/Tablet Burger Toggle */}
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              className="relative flex h-10 w-10 flex-col items-center justify-center rounded border border-[var(--lv2-taupe)]/30 bg-black/20 hover:bg-[#b8954a]/10 hover:border-[#b8954a]/60 transition-all duration-300 text-[var(--lv2-ivory)] md:hidden"
+              className="relative flex h-10 w-10 flex-col items-center justify-center rounded border border-[var(--lv2-taupe)]/30 bg-black/20 hover:bg-[#b8954a]/10 hover:border-[#b8954a]/60 transition-all duration-300 text-[var(--lv2-ivory)] lg:hidden"
               aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
             >
               {isOpen ? (
@@ -204,17 +191,17 @@ export function LandingNav() {
             transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-40 bg-[#1a0c04]/99 backdrop-blur-md pt-24 pb-12 px-6 overflow-y-auto border-b border-[#b8954a]/15 flex flex-col"
           >
-            <div className="mx-auto max-w-6xl w-full flex-1 flex flex-col md:flex-row justify-between items-start gap-12 md:gap-16 pt-6 md:pt-12">
+            <div className="mx-auto max-w-6xl w-full flex-1 flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-16 pt-6 lg:pt-12">
               
-              {/* Left Column: Navigation Links (Mobile Only) */}
-              <div className="w-full md:w-1/2 flex flex-col md:hidden">
+              {/* Left Column: Navigation Links (Mobile & Tablet) */}
+              <div className="w-full lg:w-1/2 flex flex-col lg:hidden">
                 <p className="lv2-section-label mb-6 text-[#b8954a]/85 font-semibold">Navegación</p>
                 <nav className="flex flex-col gap-2">
                   {NAV_LINKS.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
-                      className="font-[family-name:var(--font-cormorant)] text-2xl sm:text-3xl md:text-4xl tracking-wider text-[var(--lv2-ivory)] hover:text-[#b8954a] transition-all duration-300 py-1 flex items-center group"
+                      className="font-[family-name:var(--font-cormorant)] text-2xl sm:text-3xl lg:text-4xl tracking-wider text-[var(--lv2-ivory)] hover:text-[#b8954a] transition-all duration-300 py-1 flex items-center group"
                       onClick={() => setIsOpen(false)}
                     >
                       <span className="h-[1.5px] w-0 bg-[#b8954a] mr-0 opacity-0 group-hover:w-4 group-hover:mr-3 group-hover:opacity-100 transition-all duration-300" />
@@ -225,9 +212,9 @@ export function LandingNav() {
               </div>
 
               {/* Left Column Placeholder/Info for Desktop menu view to keep balanced layout */}
-              <div className="hidden md:flex md:w-1/2 flex-col pr-8">
+              <div className="hidden lg:flex lg:w-1/2 flex-col pr-8">
                 <p className="lv2-section-label mb-6 text-[#b8954a]/85 font-semibold">Mi Espacio</p>
-                <h3 className="font-[family-name:var(--font-cormorant)] text-3xl md:text-4xl text-[var(--lv2-ivory)] leading-tight">
+                <h3 className="font-[family-name:var(--font-cormorant)] text-3xl lg:text-4xl text-[var(--lv2-ivory)] leading-tight">
                   La exploración de uno mismo es el inicio de todo camino.
                 </h3>
                 <div className="lv2-gold-line my-8 max-w-[120px]" />
@@ -237,7 +224,7 @@ export function LandingNav() {
               </div>
 
               {/* Right Column: Cart Container */}
-              <div className="w-full md:w-1/2 md:max-w-md bg-[var(--lv2-ink)]/50 border border-[var(--lv2-taupe)]/20 p-6 rounded-lg backdrop-blur-sm flex flex-col gap-6">
+              <div className="w-full lg:w-1/2 lg:max-w-md bg-[var(--lv2-ink)]/50 border border-[var(--lv2-taupe)]/20 p-6 rounded-lg backdrop-blur-sm flex flex-col gap-6">
                 <div>
                   <div className="flex items-center gap-2 mb-1">
                     <ShoppingBag className="h-5 w-5 text-[#b8954a]" />
