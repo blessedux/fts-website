@@ -112,6 +112,19 @@ export function AdminSidebar() {
               </SidebarMenuItem>
 
               <SidebarMenuItem>
+                <SidebarMenuButton
+                  asChild
+                  isActive={pathname?.startsWith("/admin/sesiones")}
+                  tooltip="Sesiones"
+                >
+                  <Link href="/admin/sesiones">
+                    <MessageSquare className="h-5 w-5" />
+                    <span>Sesiones</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+
+              <SidebarMenuItem>
                 <SidebarMenuButton asChild isActive={pathname?.startsWith("/admin/mensajes")} tooltip="Mensajes">
                   <Link href="/admin/mensajes">
                     <MessageSquare className="h-5 w-5" />

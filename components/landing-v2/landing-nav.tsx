@@ -14,8 +14,8 @@ import {
   removeFromCart,
   getCartTotal,
   getCartCount,
-  addToCart
 } from "@/lib/landing-v2/cart"
+import { addBookToCart } from "@/lib/landing-v2/book-cart"
 
 const NAV_TITLE = "Fanny Torres Silva"
 
@@ -87,12 +87,7 @@ export function LandingNav() {
   const subtotal = mounted ? getCartTotal() : 0
 
   const handleAddBookQuickly = () => {
-    addToCart({
-      id: "libro-eneagrama",
-      name: "El Libro Oficial de Eneagrama",
-      price: 24990,
-      image: "/imgs/portada_libro_final.png",
-    })
+    addBookToCart("CL")
   }
 
   return (

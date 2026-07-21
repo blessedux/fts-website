@@ -18,6 +18,7 @@ yarn-error.log*
 
 # env files
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -28,3 +29,8 @@ next-env.d.ts
 
 # consultas (datos locales de desarrollo)
 /data/bookings.json
+/data/orders.json
+/data/session-invoices.json
+/data/ar-book-requests.json
+# exponential agent markers
+.exponential/

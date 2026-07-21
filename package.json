@@ -7,7 +7,13 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "booking:availability": "node scripts/print-booking-availability.mjs"
+    "booking:availability": "node scripts/print-booking-availability.mjs",
+    "payments:smoke": "node scripts/mp-sandbox-smoke.mjs",
+    "payments:webhook-selftest": "node scripts/mp-webhook-signature-selftest.mjs",
+    "payments:checkout-smoke": "node scripts/mp-checkout-smoke.mjs",
+    "payments:simulate-paid": "node scripts/mp-simulate-paid.mjs",
+    "payments:session-smoke": "node scripts/mp-session-smoke.mjs",
+    "test:payments": "node --test tests/payments-e2e.mjs"
   },
   "dependencies": {
     "@auth/core": "latest",

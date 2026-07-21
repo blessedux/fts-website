@@ -1,26 +1,64 @@
 import { NextResponse } from "next/server"
+import { z } from "zod"
+import { getDefaultMpCountry } from "@/lib/payments/env"
+import { createCheckoutPreference } from "@/lib/payments/preference"
+import { isMpCountry } from "@/lib/payments/types"
 
+const createSchema = z.object({
+  country: z.enum(["AR", "CL"]).optional(),
+  title: z.string().min(1).max(200),
+  unitPrice: z.number().positive(),
+  quantity: z.number().int().positive().optional(),
+  externalReference: z.string().min(1).max(256).optional(),
+  payerEmail: z.string().email().optional(),
+})
+
+/**
+ * Creates a real Mercado Pago Checkout Pro preference (sandbox or prod
+ * depending on the access token). Replaces the previous mock response.
+ */
 export async function POST(request: Request) {
   try {
-    const body = await request.json()
+    const json = await request.json()
+    const parsed = createSchema.safeParse(json)
 
-    // Just log the payment info (no actual Mercado Pago integration yet)
-    console.log("Payment request:", body)
-
-    // Simulate a network delay
-    await new Promise((resolve) => setTimeout(resolve, 800))
-
-    // Simular respuesta de Mercado Pago
-    const paymentResponse = {
-      id: "payment_" + Math.floor(Math.random() * 1000000),
-      status: "pending",
-      external_reference: body.reference || "ref_" + Date.now(),
-      init_point: "https://www.mercadopago.cl/checkout/v1/redirect?pref_id=123456789",
+    if (!parsed.success) {
+      return NextResponse.json(
+        { error: "invalid_body", details: parsed.error.flatten() },
+        { status: 400 },
+      )
     }
 
-    return NextResponse.json(paymentResponse)
+    const country = parsed.data.country ?? getDefaultMpCountry()
+    if (!isMpCountry(country)) {
+      return NextResponse.json({ error: "invalid_country" }, { status: 400 })
+    }
+
+    const preference = await createCheckoutPreference({
+      country,
+      title: parsed.data.title,
+      unitPrice: parsed.data.unitPrice,
+      quantity: parsed.data.quantity,
+      payerEmail: parsed.data.payerEmail,
+      externalReference:
+        parsed.data.externalReference ?? `SMOKE_${country}_${Date.now()}`,
+    })
+
+    return NextResponse.json({
+      id: preference.id,
+      status: "created",
+      country,
+      external_reference: preference.external_reference,
+      init_point: preference.init_point,
+      sandbox_init_point: preference.sandbox_init_point,
+    })
   } catch (error) {
-    console.error("Error processing payment:", error)
-    return NextResponse.json({ error: "Error processing payment" }, { status: 500 })
+    const message = error instanceof Error ? error.message : "payment_error"
+    console.error("[api/mercadopago] create preference failed:", message)
+    const missingCreds = message.includes("Missing Mercado Pago")
+    return NextResponse.json(
+      { error: missingCreds ? "missing_credentials" : "payment_error", message },
+      { status: missingCreds ? 503 : 500 },
+    )
   }
 }

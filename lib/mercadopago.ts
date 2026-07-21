@@ -1,37 +1,7 @@
-// Este archivo contendría la configuración de Mercado Pago
-
-// Ejemplo de configuración
-import mercadopago from "mercadopago"
-
-export function initMercadoPago() {
-  if (!process.env.MERCADO_PAGO_ACCESS_TOKEN) {
-    throw new Error("MERCADO_PAGO_ACCESS_TOKEN is required")
-  }
-
-  mercadopago.configure({
-    access_token: process.env.MERCADO_PAGO_ACCESS_TOKEN,
-  })
-
-  return mercadopago
-}
-
-export async function createPreference(items: any[], payer: any, backUrls: any) {
-  const mp = initMercadoPago()
-
-  const preference = {
-    items,
-    payer,
-    back_urls: backUrls,
-    auto_return: "approved",
-    statement_descriptor: "Eneagrama - Fanny Torres",
-    external_reference: `ORDER_${Date.now()}`,
-  }
-
-  try {
-    const response = await mp.preferences.create(preference)
-    return response.body
-  } catch (error) {
-    console.error("Error creating preference:", error)
-    throw error
-  }
-}
+/**
+ * @deprecated Import from `@/lib/payments/*` instead.
+ * Kept as a thin re-export so older imports keep working.
+ */
+export { createCheckoutPreference as createPreference } from "@/lib/payments/preference"
+export { getMercadoPagoConfig, getPreferenceClient } from "@/lib/payments/client"
+export { getDefaultMpCountry, requireMpAccessToken } from "@/lib/payments/env"

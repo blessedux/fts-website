@@ -58,7 +58,7 @@ export function updateCartQuantity(id: string, quantity: number) {
 export function removeFromCart(id: string) {
   const items = getCartItems()
   const filtered = items.filter((i) => i.id !== id)
-  saveCartItems(items)
+  saveCartItems(filtered)
 }
 
 export function clearCart() {
