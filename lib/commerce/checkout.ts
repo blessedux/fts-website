@@ -34,7 +34,6 @@ export async function createBookCheckout(
   const currency = MP_CURRENCY_BY_COUNTRY[input.country]
   const total = unitPrice * quantity
 
-  // Placeholder ref until we have the order id; overwritten immediately below.
   const order = await createOrder({
     externalReference: "pending",
     country: input.country,
@@ -51,24 +50,19 @@ export async function createBookCheckout(
     buyer: input.buyer,
   })
 
-  const linked =
-    (await updateOrder(order.id, {
-      externalReference: order.id,
-    })) ?? { ...order, externalReference: order.id }
-
   const preference = await createCheckoutPreference({
     country: input.country,
     title: product.name,
     quantity,
     unitPrice,
     payerEmail: input.buyer.email,
-    externalReference: linked.id,
+    externalReference: order.id,
   })
 
   const withPreference =
-    (await updateOrder(linked.id, {
+    (await updateOrder(order.id, {
       mpPreferenceId: preference.id,
-    })) ?? linked
+    })) ?? order
 
   // Current MP docs: with TEST access tokens, use init_point (not sandbox_init_point).
   const initPoint = preference.init_point || preference.sandbox_init_point || ""

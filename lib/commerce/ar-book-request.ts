@@ -1,7 +1,16 @@
-import { promises as fs } from "fs"
-import path from "path"
 import { randomUUID } from "crypto"
+import { getDb } from "@/lib/booking/db"
 import { getBookProduct, getBookUnitPrice } from "@/lib/commerce/catalog"
+import {
+  assertCommerceStoreAvailable,
+  ensureCommerceSchema,
+  useCommerceDb,
+} from "@/lib/commerce/ensure-schema"
+import {
+  commerceDataPath,
+  readJsonArray,
+  writeJsonArray,
+} from "@/lib/commerce/file-store"
 import type { OrderBuyer } from "@/lib/commerce/types"
 
 export type ArBookRequest = {
@@ -18,23 +27,13 @@ export type ArBookRequest = {
   adminEmailSentAt?: string
 }
 
-const DATA_DIR = path.join(process.cwd(), "data")
-const FILE = path.join(DATA_DIR, "ar-book-requests.json")
-
-async function ensureStore() {
-  await fs.mkdir(DATA_DIR, { recursive: true })
-  try {
-    await fs.access(FILE)
-  } catch {
-    await fs.writeFile(FILE, "[]", "utf-8")
-  }
-}
+const FILE = commerceDataPath("ar-book-requests.json")
 
 export async function createArBookRequest(input: {
   quantity: number
   buyer: OrderBuyer
 }): Promise<ArBookRequest> {
-  await ensureStore()
+  assertCommerceStoreAvailable()
   const quantity = Math.max(1, Math.min(20, Math.floor(input.quantity)))
   const product = getBookProduct()
   const unitPrice = getBookUnitPrice("AR")
@@ -50,24 +49,57 @@ export async function createArBookRequest(input: {
     productName: product.name,
     createdAt: new Date().toISOString(),
   }
-  const raw = await fs.readFile(FILE, "utf-8")
-  const rows = JSON.parse(raw) as ArBookRequest[]
-  rows.push(row)
-  await fs.writeFile(FILE, JSON.stringify(rows, null, 2), "utf-8")
+
+  if (!useCommerceDb()) {
+    const rows = await readJsonArray<ArBookRequest>(FILE)
+    rows.push(row)
+    await writeJsonArray(FILE, rows)
+    return row
+  }
+
+  const sql = getDb()!
+  await ensureCommerceSchema()
+  await sql`
+    INSERT INTO commerce_ar_book_requests (
+      id, status, country, quantity, unit_price, total, currency,
+      buyer, product_name, created_at, admin_email_sent_at
+    ) VALUES (
+      ${row.id}::uuid,
+      ${row.status},
+      ${row.country},
+      ${row.quantity},
+      ${row.unitPrice},
+      ${row.total},
+      ${row.currency},
+      ${sql.json(row.buyer)},
+      ${row.productName},
+      ${row.createdAt}::timestamptz,
+      NULL
+    )
+  `
   return row
 }
 
 export async function markArBookRequestAdminEmailed(
   id: string,
 ): Promise<void> {
-  await ensureStore()
-  const raw = await fs.readFile(FILE, "utf-8")
-  const rows = JSON.parse(raw) as ArBookRequest[]
-  const idx = rows.findIndex((r) => r.id === id)
-  if (idx < 0) return
-  rows[idx] = {
-    ...rows[idx],
-    adminEmailSentAt: new Date().toISOString(),
+  assertCommerceStoreAvailable()
+  const sentAt = new Date().toISOString()
+
+  if (!useCommerceDb()) {
+    const rows = await readJsonArray<ArBookRequest>(FILE)
+    const idx = rows.findIndex((r) => r.id === id)
+    if (idx < 0) return
+    rows[idx] = { ...rows[idx], adminEmailSentAt: sentAt }
+    await writeJsonArray(FILE, rows)
+    return
   }
-  await fs.writeFile(FILE, JSON.stringify(rows, null, 2), "utf-8")
+
+  const sql = getDb()!
+  await ensureCommerceSchema()
+  await sql`
+    UPDATE commerce_ar_book_requests
+    SET admin_email_sent_at = ${sentAt}::timestamptz
+    WHERE id = ${id}::uuid
+  `
 }
